@@ -1,26 +1,175 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   THEME TOKENS — DARK FUTURE
+========================= */
+:root {
+  --bg: #0b0f1a;
+  --bg-2: #0f1524;
+  --card: #101827;
+  --ink: #e5e7eb;
+  --muted: #9aa3b2;
+  --line: #1f2937;
+  --violet: #7c3aed; /* primary */
+  --cyan: #22d3ee; /* accent */
+  --success: #22c55e;
+  --danger: #ef4444;
+
+  /* “glow” do herói / fundo */
+  --g-hero: radial-gradient(
+      1200px 600px at 50% -10%,
+      rgba(124, 58, 237, 0.25),
+      transparent 50%
+    ),
+    radial-gradient(
+      900px 600px at 90% 0%,
+      rgba(34, 211, 238, 0.15),
+      transparent 50%
+    ),
+    radial-gradient(
+      800px 600px at 10% 10%,
+      rgba(124, 58, 237, 0.15),
+      transparent 50%
+    );
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html,
+body {
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* =========================
+   LAYOUT HELPERS
+========================= */
+
+/* container util */
+.container-std {
+  @apply max-w-6xl mx-auto px-6;
+}
+
+/* sections */
+.section {
+  @apply py-16;
+}
+.section-muted {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+}
+
+/* headings */
+.h1 {
+  @apply text-4xl md:text-6xl font-extrabold tracking-tight;
+}
+.h2 {
+  @apply text-3xl font-bold;
+}
+.sub {
+  @apply text-neutral-300;
+}
+
+/* card */
+.card {
+  @apply rounded-2xl border border-neutral-800 bg-neutral-900/50 backdrop-blur;
+}
+
+/* timeline lib dark tune */
+.vertical-timeline-element-content {
+  background: rgba(16, 24, 39, 0.75) !important;
+  border: 1px solid #1f2937;
+  color: var(--ink) !important;
+}
+.vertical-timeline::before {
+  background: #374151 !important;
+}
+
+/* =========================
+   STARFIELD / GALAXY BACKDROP
+   (usada junto de <div class="starry fixed inset-0 -z-10" /> no layout)
+========================= */
+.starry {
+  position: relative;
+  isolation: isolate;
+  pointer-events: none;
+}
+
+/* Glow amplo + gradientes do “céu” */
+.starry::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--g-hero), /* camada base escura */ var(--bg);
+}
+
+/* Dots de estrelas (duas camadas) */
+.starry::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(white 1px, transparent 1.2px) 0 0/3px 3px,
+    radial-gradient(white 1px, transparent 1.2px) 1.5px 1.5px/3px 3px;
+  opacity: 0.12;
+  animation: twinkle 6s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0.18;
+    transform: translateY(-0.8px);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* =========================
+   EXTRAS
+========================= */
+
+/* animação de hue (para bordas RGB suaves) */
+@keyframes hue {
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+.animate-hue {
+  animation: hue 18s linear infinite;
+}
+
+/* focos mais discretos */
+:focus-visible {
+  outline: 2px solid rgba(124, 58, 237, 0.6);
+  outline-offset: 2px;
+}
+
+/* links padrão */
+a {
+  transition: color 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+.pulse-soft {
+  animation: pulse-soft 2.2s ease-in-out infinite;
 }
