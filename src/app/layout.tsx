@@ -7,7 +7,7 @@ import Galaxy from "@shared/ui/fx/Galaxy";
 export const metadata: Metadata = {
     title: "Portfólio — Carlos Eduardo",
     icons: { icon: [{ url: "/icon.svg?v=2", type: "image/svg+xml" }] },
-    description: "Full-Stack Developer • Data Engineer • AI Automation",
+    description: "SQL Developer • Database Administrator",
     themeColor: "#0b0f1a",
     manifest: "/site.webmanifest",
 };

@@ -25,12 +25,12 @@ export default function Hero() {
                     {/* Subtítulo com typewriter sem shift de layout */}
                     <div className="relative mt-3 h-7 md:h-8">
                         <p className="invisible text-xl text-neutral-300">
-                            Full-Stack Developer • Data Engineer • AI Automation Specialist
+                            SQL Developer • Database Administrator
                         </p>
                         <p className="absolute inset-0 text-xl text-neutral-300">
                             <Typewriter
-                                text="Full-Stack Developer • Data Engineer • AI Automation Specialist"
-                                speed={20}
+                                text="SQL Developer • Database Administrator"
+                                speed={30}
                             />
                         </p>
                     </div>
@@ -41,15 +41,16 @@ export default function Hero() {
                         <span className="inline-flex items-center gap-2 rounded-lg border border-neutral-800/80 bg-neutral-900/40 px-2.5 py-1
                    text-[13px] md:text-sm text-neutral-300 whitespace-nowrap">
                             <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(34,197,94,.8)]" />
-                            Brasília&nbsp;–&nbsp;DF,&nbsp;BR
+                            Brasília&nbsp;–&nbsp;DF,&nbsp;Brazil
                         </span>
                     </p>
 
 
                     <p className="mt-4 text-neutral-300">
-                        My background bridges software development, cloud infrastructure, and data
-                        pipelines, enabling me to design, build, and scale applications that deliver
-                        measurable business value.
+                        I turn raw data into reliable, high-performance systems. With 3+ years building
+                        and maintaining databases behind mission-critical government platforms, I bring
+                        a developer's mindset to database administration — writing optimized queries,
+                        designing scalable schemas, and keeping production data safe, fast, and available.
                     </p>
 
                     {/* Ações */}

@@ -48,7 +48,7 @@ export default function ProjectCard({ p }: { p: Project }) {
                 <div className="px-6 pb-6">
                     <div className="mb-2 flex items-center gap-2 text-xs text-violet-300/80">
                         <SparklesIcon className="h-4 w-4" />
-                        <span className="tracking-wide">DESTAQUE</span>
+                        <span className="tracking-wide">Highlight</span>
                     </div>
 
                     <h3 className="text-xl font-semibold tracking-tight">{p.title}</h3>

@@ -10,7 +10,7 @@ export default function ProjectsPage() {
                 <div className="container-std text-center">
                     <SectionHeader
                         title="Projects"
-                        subtitle="Selected work in product, architecture, and UX/UI."
+                        subtitle="Selected work in product, architecture, UX/UI and Database Administration."
                     />
                 </div>
             </Section>
