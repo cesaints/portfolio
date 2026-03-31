@@ -25,11 +25,11 @@ export default function Hero() {
                     {/* Subtítulo com typewriter sem shift de layout */}
                     <div className="relative mt-3 h-7 md:h-8">
                         <p className="invisible text-xl text-neutral-300">
-                            SQL Developer • Database Administrator
+                            QA Analyst | Functional & Automated Testing • Bug Tracking • Agile Methodologies
                         </p>
                         <p className="absolute inset-0 text-xl text-neutral-300">
                             <Typewriter
-                                text="SQL Developer • Database Administrator"
+                                text="QA Analyst | Functional & Automated Testing • Bug Tracking • Agile Methodologies"
                                 speed={30}
                             />
                         </p>
@@ -47,10 +47,18 @@ export default function Hero() {
 
 
                     <p className="mt-4 text-neutral-300">
-                        I turn raw data into reliable, high-performance systems. With 3+ years building
-                        and maintaining databases behind mission-critical government platforms, I bring
-                        a developer's mindset to database administration — writing optimized queries,
-                        designing scalable schemas, and keeping production data safe, fast, and available.
+                        I turn untested code into reliable, production-ready software.
+
+                        With experience delivering quality across mission-critical government
+                        platforms (ANTT, SEST SENAT, SISRH), I bring a developer's mindset
+                        to QA — which means I don't just find where the bug appeared,
+                        I understand how it was born.
+
+                        From writing unit tests in xUnit and validating REST APIs with Postman,
+                        to defining acceptance criteria and tracking defects end-to-end in Jira
+                        — I bridge the gap between development and quality, making sure
+                        software ships clean, stable, and ready for the real world.
+
                     </p>
 
                     {/* Ações */}
