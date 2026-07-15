@@ -1,29 +1,32 @@
-// server component
 import { projects } from "@/entities/project/projects";
-import ProjectCard from "@features/project-showcase/ProjectCard";
+import { ProjectCard, FeaturedCaseStudy } from "@features/project-showcase";
 import { Section, SectionHeader } from "@/shared/ui/Section";
+import Reveal from "@/shared/ui/Reveal";
 
 export default function ProjectsPage() {
-    return (
-        <>
-            <Section>
-                <div className="container-std text-center">
-                    <SectionHeader
-                        title="Projects"
-                        subtitle="Selected work in product, architecture, UX/UI and Database Administration."
-                    />
-                </div>
-            </Section>
+    const featured = projects.find((p) => p.featured);
+    const others = projects.filter((p) => !p.featured);
 
-            <Section>
-                <div className="container-std">
-                    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                        {projects.map((p) => (
-                            <ProjectCard key={p.slug} p={p} />
-                        ))}
-                    </div>
+    return (
+        <Section>
+            <SectionHeader
+                title="Case studies"
+                subtitle="Selected work across product, architecture, UX/UI and database engineering."
+            />
+
+            {featured && (
+                <div className="mb-8">
+                    <FeaturedCaseStudy project={featured} />
                 </div>
-            </Section>
-        </>
+            )}
+
+            <div className="grid gap-6 md:grid-cols-2">
+                {others.map((p, i) => (
+                    <Reveal key={p.slug} delay={i * 0.05}>
+                        <ProjectCard p={p} className="h-full" />
+                    </Reveal>
+                ))}
+            </div>
+        </Section>
     );
 }

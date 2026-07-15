@@ -2,40 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-/* =========================
-   THEME TOKENS — DARK FUTURE
-========================= */
+/* =========================================================
+   THEME TOKENS — executive dark (deep-space instrument panel)
+   ========================================================= */
 :root {
-  --bg: #0b0f1a;
-  --bg-2: #0f1524;
-  --card: #101827;
-  --ink: #e5e7eb;
-  --muted: #9aa3b2;
-  --line: #1f2937;
-  --violet: #7c3aed; /* primary */
-  --cyan: #22d3ee; /* accent */
-  --success: #22c55e;
-  --danger: #ef4444;
+  /* Surfaces (elevation ramp) */
+  --bg: #080b14;
+  --bg-2: #0b0f1a;
+  --surface-1: #0e1320;
+  --surface-2: #141b2b;
+  --surface-3: #1b2436;
 
-  /* “glow” do herói / fundo */
+  /* Borders / hairlines */
+  --line: #1e2637;
+  --line-strong: #2a3346;
+  --line-glow: rgba(124, 58, 237, 0.35);
+
+  /* Text tiers */
+  --ink: #f2f5fa;
+  --ink-2: #c3cad9;
+  --muted: #8b93a7;
+  --muted-2: #5b6479;
+
+  /* Brand & accent (aligned to Tailwind's native violet/cyan scale) */
+  --violet: #7c3aed;
+  --violet-500: #8b5cf6;
+  --violet-400: #a78bfa;
+  --violet-600: #6d28d9;
+  --cyan: #22d3ee;
+  --cyan-400: #38dbf0;
+  --cyan-600: #0e9fb8;
+  --success: #34d399;
+  --danger: #f87171;
+  --warn: #fbbf24;
+
+  /* Signature gradients — one family only */
+  --grad-brand: linear-gradient(135deg, #8b5cf6 0%, #22d3ee 100%);
+  --grad-brand-soft: linear-gradient(135deg, #a78bfa 0%, #38dbf0 100%);
+  --grad-card-top: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0) 40%
+  );
+
+  /* Hero atmosphere — one calm source */
   --g-hero: radial-gradient(
-      1200px 600px at 50% -10%,
-      rgba(124, 58, 237, 0.25),
-      transparent 50%
+      900px 520px at 72% -8%,
+      rgba(124, 58, 237, 0.2),
+      transparent 60%
     ),
     radial-gradient(
-      900px 600px at 90% 0%,
-      rgba(34, 211, 238, 0.15),
-      transparent 50%
-    ),
-    radial-gradient(
-      800px 600px at 10% 10%,
-      rgba(124, 58, 237, 0.15),
-      transparent 50%
+      700px 480px at 20% 8%,
+      rgba(34, 211, 238, 0.08),
+      transparent 55%
     );
-}
 
-:root {
+  /* Elevation shadows (dark-tuned, low-alpha) */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(255, 255, 255, 0.02) inset;
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.55), 0 1px 0 rgba(255, 255, 255, 0.03) inset;
+  --glow-violet: 0 0 0 1px rgba(124, 58, 237, 0.3), 0 8px 30px rgba(124, 58, 237, 0.25);
+
   color-scheme: dark;
 }
 
@@ -48,113 +75,95 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* =========================
-   LAYOUT HELPERS
-========================= */
-
-/* container util */
-.container-std {
-  @apply max-w-6xl mx-auto px-6;
+body {
+  font-family: var(--font-sans), system-ui, sans-serif;
 }
 
-/* sections */
+/* =========================================================
+   LAYOUT HELPERS
+   ========================================================= */
+.container-std {
+  @apply mx-auto max-w-[1200px] px-5 sm:px-6 lg:px-8;
+}
+
 .section {
-  @apply py-16;
+  @apply py-20 md:py-28;
 }
 .section-muted {
   background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
 }
 
-/* headings */
+/* =========================================================
+   TYPOGRAPHY UTILITIES
+   ========================================================= */
+.font-display {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+}
+
 .h1 {
-  @apply text-4xl md:text-6xl font-extrabold tracking-tight;
+  @apply font-display text-4xl font-bold leading-[1.08] tracking-[-0.02em] md:text-5xl;
 }
 .h2 {
-  @apply text-3xl font-bold;
+  @apply font-display text-2xl font-bold tracking-[-0.02em] md:text-[2.125rem];
 }
 .sub {
-  @apply text-neutral-300;
+  @apply text-ink-2;
+}
+.eyebrow {
+  @apply text-xs font-semibold uppercase tracking-[0.14em] text-violet-400;
 }
 
-/* card */
+.text-gradient {
+  background: var(--grad-brand-soft);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* =========================================================
+   CARD
+   ========================================================= */
 .card {
-  @apply rounded-2xl border border-neutral-800 bg-neutral-900/50 backdrop-blur;
+  @apply relative overflow-hidden rounded-2xl border border-line bg-surface-1;
+  box-shadow: var(--shadow-md);
 }
-
-/* timeline lib dark tune */
-.vertical-timeline-element-content {
-  background: rgba(16, 24, 39, 0.75) !important;
-  border: 1px solid #1f2937;
-  color: var(--ink) !important;
-}
-.vertical-timeline::before {
-  background: #374151 !important;
-}
-
-/* =========================
-   STARFIELD / GALAXY BACKDROP
-   (usada junto de <div class="starry fixed inset-0 -z-10" /> no layout)
-========================= */
-.starry {
-  position: relative;
-  isolation: isolate;
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--grad-card-top);
   pointer-events: none;
 }
 
-/* Glow amplo + gradientes do “céu” */
-.starry::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: var(--g-hero), /* camada base escura */ var(--bg);
+/* =========================================================
+   TIMELINE (react-vertical-timeline) DARK OVERRIDES
+   ========================================================= */
+.vertical-timeline-element-content {
+  background: var(--surface-1) !important;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md) !important;
+  border-radius: 16px !important;
+  color: var(--ink) !important;
+}
+.vertical-timeline-element-content .vertical-timeline-element-date {
+  color: var(--muted) !important;
+}
+.vertical-timeline::before {
+  background: var(--line) !important;
+}
+.vertical-timeline-element-icon {
+  box-shadow: 0 0 0 4px var(--surface-2), inset 0 2px 0 rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Dots de estrelas (duas camadas) */
-.starry::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: radial-gradient(white 1px, transparent 1.2px) 0 0/3px 3px,
-    radial-gradient(white 1px, transparent 1.2px) 1.5px 1.5px/3px 3px;
-  opacity: 0.12;
-  animation: twinkle 6s ease-in-out infinite alternate;
-  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
-}
-
-@keyframes twinkle {
-  0% {
-    opacity: 0.1;
-    transform: translateY(0px);
-  }
-  100% {
-    opacity: 0.18;
-    transform: translateY(-0.8px);
-  }
-}
-
-/* =========================
-   EXTRAS
-========================= */
-
-/* animação de hue (para bordas RGB suaves) */
-@keyframes hue {
-  to {
-    filter: hue-rotate(360deg);
-  }
-}
-.animate-hue {
-  animation: hue 18s linear infinite;
-}
-
-/* focos mais discretos */
+/* =========================================================
+   FOCUS / MOTION / A11Y
+   ========================================================= */
 :focus-visible {
-  outline: 2px solid rgba(124, 58, 237, 0.6);
+  outline: 2px solid var(--violet-400);
   outline-offset: 2px;
+  border-radius: 6px;
 }
 
-/* links padrão */
 a {
   transition: color 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
 }
@@ -172,4 +181,16 @@ a {
 }
 .pulse-soft {
   animation: pulse-soft 2.2s ease-in-out infinite;
+}
+
+/* Respect reduced-motion everywhere */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

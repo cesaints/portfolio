@@ -12,8 +12,20 @@ export type TimelineItem = {
 };
 
 const data: TimelineItem[] = [
+    // 2026 — the promotion
+    {
+        id: "2026-55hub-cpo-cto",
+        date: "2026 – present",
+        title: "Diretor de Produto e Tecnologia (CPO/CTO)",
+        org: "+55 HUB & Corporate Group",
+        summary:
+            "Promoted from Head of Product to lead product and technology end-to-end. Own the product roadmap (PMF, UX/UI across the customer journey), architecture & scalability (99.9% uptime target), Security & Compliance (LGPD), agile team leadership (Scrum/Kanban — shipped 5 landing pages in 2 days), and systems integration (Bitrix CRM). Built the company platform solo — 55hubcorp.com (public site + internal CRM) — and structured a data-driven RevOps motion. KPIs owned: Technical Churn, Product NPS, Lead Time & Deployment, SLA.",
+        tags: ["Product Strategy", "Architecture", "RevOps", "LGPD", "Cloudflare", "Astro"],
+        color: "violet",
+        icon: "star",
+    },
+
     // 2025 —
-    
     {
         id: "2025-pg-innovation",
         date: "2025 – 2026",
@@ -79,7 +91,7 @@ const data: TimelineItem[] = [
         title: "Software Developer (.NET)",
         org: "Websis",
         summary:
-            "C# and .NET Developer specializing in ASP.NET, Angular, Dapper, Entity Framework, and SQL Server.Expert in the development and maintenance of government systems, including ANTT, SEST SENAT, and SISRH.Proficient in implementing Elasticsearch, MVC architecture, and Clean Code principles to optimize performance, scalability, and maintainability of systems.",
+            "C# and .NET Developer specializing in ASP.NET, Angular, Dapper, Entity Framework, and SQL Server. Expert in the development and maintenance of government systems, including ANTT, SEST SENAT, and SISRH. Proficient in implementing Elasticsearch, MVC architecture, and Clean Code principles to optimize performance, scalability, and maintainability of systems.",
         tags: ["C#", ".NET", "ASP.NET", "SQL Server", "Dapper", "Angular", "Entity Framework", "Elasticsearch"],
         color: "cyan",
         icon: "work",
@@ -102,7 +114,7 @@ const data: TimelineItem[] = [
         title: "Intern → Full-Stack Developer (.NET)",
         org: "Websis",
         summary:
-            "JFull Stack Web Development Intern, contributing to sustainability systems and financial projects. Assisted in the development and optimization of services using C#, .NET, ASP.NET, MVC, SQL Server, Dapper, and Entity Framework. Gained hands-on experience with front-end technologies such as React and Angular, supporting the delivery of scalable and maintainable solutions.",
+            "Full-Stack Web Development Intern, contributing to sustainability systems and financial projects. Assisted in the development and optimization of services using C#, .NET, ASP.NET, MVC, SQL Server, Dapper, and Entity Framework. Gained hands-on experience with front-end technologies such as React and Angular, supporting the delivery of scalable and maintainable solutions.",
         tags: [".NET", "Angular", "SQL Server", "Dapper", "Entity Framework", "React", "MVC"],
         color: "green",
         icon: "work",

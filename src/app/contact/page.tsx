@@ -1,25 +1,90 @@
+import type { Metadata } from "next";
+import { Mail, MapPin, Linkedin, Github } from "lucide-react";
 import { Section, SectionHeader } from "@/shared/ui/Section";
 import { ContactForm } from "@/features/contact";
+import { buildMetadata, siteConfig } from "@/shared/config/seo";
+
+export const metadata: Metadata = buildMetadata({
+    title: "Contact",
+    path: "/contact",
+    description:
+        "Get in touch with Carlos Eduardo (Cadu) — Product & Technology Director (CPO/CTO). " +
+        "Send a message about product, technology, RevOps or engineering leadership.",
+});
 
 export default function ContactPage() {
     return (
-        <>
-            <Section>
-                <div className="container-std text-center">
-                    <SectionHeader
-                        title="Contact"
-                        subtitle="Send me a message and I’ll get back to you."
+        <Section>
+            <SectionHeader
+                title="Get in touch"
+                subtitle="Product, technology, RevOps or engineering leadership — let's talk."
+            />
+
+            <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+                <div className="space-y-4">
+                    <ContactMeta
+                        icon={<Mail className="h-5 w-5" aria-hidden />}
+                        label="Email"
+                        value={siteConfig.socials.email}
+                        href={`mailto:${siteConfig.socials.email}`}
+                    />
+                    <ContactMeta
+                        icon={<MapPin className="h-5 w-5" aria-hidden />}
+                        label="Location"
+                        value="Brasília – DF, Brazil · Remote"
+                    />
+                    <ContactMeta
+                        icon={<Linkedin className="h-5 w-5" aria-hidden />}
+                        label="LinkedIn"
+                        value="in/carlossaints"
+                        href={siteConfig.socials.linkedin}
+                    />
+                    <ContactMeta
+                        icon={<Github className="h-5 w-5" aria-hidden />}
+                        label="GitHub"
+                        value="cesaints"
+                        href={siteConfig.socials.github}
                     />
                 </div>
-            </Section>
 
-            <Section>
-                <div className="container-std">
-                    <div className="mx-auto w-full max-w-2xl">
-                        <ContactForm />
-                    </div>
-                </div>
-            </Section>
-        </>
+                <ContactForm />
+            </div>
+        </Section>
+    );
+}
+
+function ContactMeta({
+    icon,
+    label,
+    value,
+    href,
+}: {
+    icon: React.ReactNode;
+    label: string;
+    value: string;
+    href?: string;
+}) {
+    const inner = (
+        <div className="card flex items-center gap-4 p-5">
+            <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-surface-2 text-violet-400">
+                {icon}
+            </span>
+            <div>
+                <p className="text-xs uppercase tracking-[0.12em] text-muted">{label}</p>
+                <p className="text-ink">{value}</p>
+            </div>
+        </div>
+    );
+    return href ? (
+        <a
+            href={href}
+            target={href.startsWith("http") ? "_blank" : undefined}
+            rel={href.startsWith("http") ? "noreferrer" : undefined}
+            className="block transition-transform hover:-translate-y-0.5"
+        >
+            {inner}
+        </a>
+    ) : (
+        inner
     );
 }

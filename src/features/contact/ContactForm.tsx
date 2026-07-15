@@ -1,7 +1,7 @@
 // src/features/contact/ContactForm.tsx
 "use client";
 import { useState } from "react";
-import emailjs from "@emailjs/browser"; // use este pacote
+import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { contactSchema, ContactInput } from "@shared/validations/contact";
@@ -28,8 +28,9 @@ export default function ContactForm() {
                 process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!       // pk_...
             );
             if (res.status === 200) { setSent("ok"); reset(); } else { setSent("err"); }
-        } catch (e: any) {
-            console.error("EmailJS error:", e?.text || e?.message || e);
+        } catch (e: unknown) {
+            const err = e as { text?: string; message?: string };
+            console.error("EmailJS error:", err?.text || err?.message || e);
             setSent("err");
         }
     };
@@ -50,10 +51,18 @@ export default function ContactForm() {
                 <Textarea {...register("message")} placeholder="Your message" className="h-32" />
                 {errors.message && <p className="mt-1 text-sm text-red-400">{errors.message.message}</p>}
             </div>
-            <div className="flex items-center gap-3">
-                <Button disabled={isSubmitting}>{isSubmitting ? "Sending..." : "Send message"}</Button>
-                {sent === "ok" && <p className="text-emerald-400">Message sent. Thank you.</p>}
-                {sent === "err" && <p className="text-red-400">Failed to send. Check config and try again.</p>}
+            <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+                <Button disabled={isSubmitting} className="w-full sm:w-auto">
+                    {isSubmitting ? "Sending..." : "Send message"}
+                </Button>
+                {sent === "ok" && (
+                    <p className="text-[color:var(--success)]">Message sent. Thank you.</p>
+                )}
+                {sent === "err" && (
+                    <p className="text-[color:var(--danger)]">
+                        Failed to send. Please try again.
+                    </p>
+                )}
             </div>
         </form>
     );

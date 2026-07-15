@@ -1,14 +1,14 @@
-// src/app/layout.tsx
-import "@/app/globals.css";
 import type { Metadata } from "next";
-import Header from "@shared/ui/Header";
-import Galaxy from "@shared/ui/fx/Galaxy";
+import { buildMetadata } from "@/shared/config/seo";
 
-export const metadata = {
-  title: "Projetos — Carlos Eduardo",
-  description: "Cases e estudos",
-};
+export const metadata: Metadata = buildMetadata({
+    title: "Projects",
+    path: "/projects",
+    description:
+        "Case studies in product & engineering — the +55 HUB platform (55hubcorp.com) " +
+        "built solo end-to-end, plus mission-critical government systems (ANTT, SEST SENAT, SISRH).",
+});
+
 export default function ProjectsLayout({ children }: { children: React.ReactNode }) {
-  return children;
+    return children;
 }
-

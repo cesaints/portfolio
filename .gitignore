@@ -36,6 +36,11 @@ yarn-error.log*
 # vercel
 .vercel
 
+# internal / sensitive docs (never commit)
+/documento_promocao
+/arquivo
+*.docx
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

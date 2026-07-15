@@ -3,59 +3,83 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { cn } from "@shared/lib/cn";
-
-const links = [
-    { href: "/", label: "Home" },
-    { href: "/projects", label: "Projects" },
-    { href: "/timeline", label: "Timeline" },
-    { href: "/contact", label: "Contact" },
-    // { href: "/shop", label: "Shop" },
-];
+import { navLinks } from "@/shared/config/nav";
 
 export default function Header() {
     const pathname = usePathname();
     const [open, setOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
 
-    // Fecha o menu ao trocar de rota
     useEffect(() => setOpen(false), [pathname]);
 
-    return (
-        <header className="sticky top-0 z-40 border-b border-neutral-900 bg-neutral-950/70 backdrop-blur">
-            {/* área segura em iOS */}
-            <div className="h-[env(safe-area-inset-top)]" aria-hidden />
+    useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 8);
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
 
-            <nav className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+    return (
+        <header
+            className={cn(
+                "sticky top-0 z-40 border-b backdrop-blur-xl transition-colors duration-300",
+                scrolled
+                    ? "border-line-strong bg-bg/85"
+                    : "border-line bg-bg/60"
+            )}
+        >
+            <div className="h-[env(safe-area-inset-top)]" aria-hidden />
+            <nav
+                aria-label="Primary"
+                className="container-std flex h-16 items-center justify-between"
+            >
                 <Link
                     href="/"
-                    className="font-bold tracking-tight truncate"
-                    aria-label="carlos.engineer home"
+                    className="group inline-flex items-center gap-2.5"
+                    aria-label="Cadu — home"
                 >
-                    carlos.engineer
+                    <span
+                        aria-hidden
+                        className="h-6 w-6 rotate-45 rounded-[6px] [background:var(--grad-brand)] shadow-glow"
+                    />
+                    <span className="font-display text-lg font-bold tracking-tight text-ink">
+                        Cadu
+                        <span className="hidden font-sans text-sm font-normal text-muted sm:inline">
+                            {" "}
+                            · CPO/CTO
+                        </span>
+                    </span>
                 </Link>
 
                 {/* Desktop */}
-                <div className="hidden md:flex items-center gap-6 text-sm">
-                    {links.map((l) => (
-                        <Link
-                            key={l.href}
-                            href={l.href}
-                            className={cn(
-                                "hover:text-violet-400",
-                                pathname === l.href && "text-violet-400 font-medium"
-                            )}
-                        >
-                            {l.label}
-                        </Link>
-                    ))}
+                <div className="hidden items-center gap-7 text-sm md:flex">
+                    {navLinks.map((l) => {
+                        const active = pathname === l.href;
+                        return (
+                            <Link
+                                key={l.href}
+                                href={l.href}
+                                className={cn(
+                                    "relative py-1 transition-colors",
+                                    active ? "text-ink" : "text-muted hover:text-ink"
+                                )}
+                            >
+                                {l.label}
+                                {active && (
+                                    <span className="absolute -bottom-0.5 left-0 h-0.5 w-full rounded-full [background:var(--grad-brand)]" />
+                                )}
+                            </Link>
+                        );
+                    })}
                 </div>
 
-                {/* Mobile: botão */}
+                {/* Mobile toggle */}
                 <button
                     type="button"
-                    aria-label="Abrir menu"
+                    aria-label={open ? "Close menu" : "Open menu"}
                     aria-expanded={open}
                     onClick={() => setOpen((v) => !v)}
-                    className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-lg border border-neutral-800 hover:bg-neutral-900"
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-line hover:bg-surface-1 md:hidden"
                 >
                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
                         {open ? (
@@ -67,21 +91,23 @@ export default function Header() {
                 </button>
             </nav>
 
-            {/* Mobile: painel colapsável */}
+            {/* Mobile panel */}
             <div
                 className={cn(
-                    "md:hidden absolute inset-x-0 top-14 border-b border-neutral-900 bg-neutral-950/95 backdrop-blur",
+                    "absolute inset-x-0 top-16 border-b border-line bg-surface-1/95 backdrop-blur-xl md:hidden",
                     open ? "block" : "hidden"
                 )}
             >
-                <div className="max-w-6xl mx-auto px-6 py-3 grid gap-2 text-sm">
-                    {links.map((l) => (
+                <div className="container-std grid gap-1 py-3 text-sm">
+                    {navLinks.map((l) => (
                         <Link
                             key={l.href}
                             href={l.href}
                             className={cn(
-                                "block rounded-lg px-2 py-2 hover:bg-neutral-900",
-                                pathname === l.href && "text-violet-400 font-medium"
+                                "block rounded-lg px-3 py-2.5 transition-colors",
+                                pathname === l.href
+                                    ? "bg-surface-2 text-ink"
+                                    : "text-muted hover:bg-surface-2 hover:text-ink"
                             )}
                         >
                             {l.label}

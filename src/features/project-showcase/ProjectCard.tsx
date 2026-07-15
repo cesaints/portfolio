@@ -1,202 +1,264 @@
 "use client";
-import Image from "next/image";
-import { useState } from "react";
-import type { Project } from "@/entities/project/projects";
+import { useEffect, useState } from "react";
+import { Github, ExternalLink, Lock, Star, X } from "lucide-react";
+import type { Project } from "@/entities/project/types";
+import { cn } from "@shared/lib/cn";
+import Badge from "@shared/ui/Badge";
 
-export default function ProjectCard({ p }: { p: Project }) {
+export default function ProjectCard({
+    p,
+    className,
+}: {
+    p: Project;
+    className?: string;
+}) {
     const [open, setOpen] = useState(false);
 
     return (
         <>
             <article
-                className="group relative overflow-hidden rounded-3xl border border-neutral-800/70
-                   bg-neutral-950/60 shadow-[0_0_0_1px_rgba(124,58,237,.06)]
-                   transition-all hover:-translate-y-0.5 hover:border-violet-600/50"
+                className={cn(
+                    "card group flex flex-col p-0 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-lg",
+                    p.featured && "[background:var(--grad-brand)] p-px",
+                    className
+                )}
             >
-                {/* brilho suave no hover */}
-                <span className="pointer-events-none absolute inset-0 -z-10 rounded-3xl
-                         opacity-0 blur-2xl transition-opacity duration-500
-                         group-hover:opacity-40
-                         bg-[conic-gradient(from_220deg,#7c3aed_0%,#22d3ee_50%,#7c3aed_100%)]" />
+                <div className={cn("flex h-full flex-col", p.featured && "rounded-2xl bg-surface-1")}>
+                    <Cover p={p} />
 
-                {/* cover */}
-                <div className="relative m-4 overflow-hidden rounded-2xl">
-                    <div className="relative h-48 sm:h-56 w-full rounded-2xl ring-1 ring-white/5 bg-neutral-900">
-                        <Image
-                            src={p.cover}
-                            alt={`${p.title} — cover`}
-                            fill
-                            sizes="(min-width:1024px) 520px, 100vw"
-                            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                            priority
-                        />
-                        {/* tags sobre a imagem */}
-                        <div className="absolute left-3 top-3 flex gap-2">
-                            {p.tags.slice(0, 3).map((t) => (
-                                <span
-                                    key={t}
-                                    className="rounded-full border border-white/10 bg-black/45 px-2.5 py-1 text-xs text-neutral-200 backdrop-blur"
-                                >
-                                    {t}
+                    <div className="flex flex-1 flex-col p-6">
+                        <div className="mb-2 flex items-center gap-2 text-xs">
+                            {p.featured ? (
+                                <span className="inline-flex items-center gap-1.5 text-violet-400">
+                                    <Star className="h-3.5 w-3.5" aria-hidden /> Flagship
                                 </span>
+                            ) : (
+                                <span className="uppercase tracking-[0.1em] text-muted">
+                                    {p.category}
+                                </span>
+                            )}
+                            {p.year && <span className="ml-auto text-muted">{p.year}</span>}
+                        </div>
+
+                        <h3 className="font-display text-xl font-semibold tracking-tight text-ink">
+                            {p.title}
+                        </h3>
+                        <p className="mt-2 line-clamp-3 text-ink-2">{p.oneLiner ?? p.summary}</p>
+
+                        <div className="mt-4 flex flex-wrap gap-2">
+                            {p.tags.slice(0, 4).map((t) => (
+                                <Badge key={t}>{t}</Badge>
                             ))}
                         </div>
-                    </div>
-                </div>
 
-                {/* conteúdo */}
-                <div className="px-6 pb-6">
-                    <div className="mb-2 flex items-center gap-2 text-xs text-violet-300/80">
-                        <SparklesIcon className="h-4 w-4" />
-                        <span className="tracking-wide">Highlight</span>
-                    </div>
-
-                    <h3 className="text-xl font-semibold tracking-tight">{p.title}</h3>
-                    <p className="mt-2 line-clamp-2 text-neutral-400">{p.summary}</p>
-
-                    <div className="mt-5 flex items-center gap-2">
-                        {p.repo && (
-                            <a
-                                href={p.repo}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="inline-flex items-center gap-2 rounded-xl border border-neutral-700
-                           px-3 py-2 text-sm text-neutral-200 transition-colors hover:bg-neutral-800"
+                        <div className="mt-5 flex items-center gap-2 pt-1">
+                            {p.confidential ? (
+                                <Badge tone="muted">
+                                    <Lock className="h-3.5 w-3.5" aria-hidden /> Confidential ·{" "}
+                                    {p.category === "Enterprise / Government"
+                                        ? "Government"
+                                        : "Enterprise"}
+                                </Badge>
+                            ) : (
+                                <>
+                                    {p.repo && (
+                                        <a
+                                            href={p.repo}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="inline-flex items-center gap-2 rounded-xl border border-line px-3 py-2 text-sm text-ink-2 transition-colors hover:bg-surface-2"
+                                        >
+                                            <Github className="h-4 w-4" aria-hidden /> Code
+                                        </a>
+                                    )}
+                                    {p.demo && (
+                                        <a
+                                            href={p.demo}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="inline-flex items-center gap-2 rounded-xl border border-line px-3 py-2 text-sm text-ink-2 transition-colors hover:bg-surface-2"
+                                        >
+                                            <ExternalLink className="h-4 w-4" aria-hidden /> Live
+                                        </a>
+                                    )}
+                                </>
+                            )}
+                            <button
+                                onClick={() => setOpen(true)}
+                                className="ml-auto text-sm text-muted underline decoration-dotted underline-offset-4 transition-colors hover:text-ink"
                             >
-                                <GitHubIcon className="h-4 w-4" /> GitHub
-                            </a>
-                        )}
-                        {p.demo && (
-                            <a
-                                href={p.demo}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="inline-flex items-center gap-2 rounded-xl bg-violet-600 px-3 py-2
-                           text-sm font-medium text-white transition-colors hover:bg-violet-500"
-                            >
-                                <ExternalIcon className="h-4 w-4" /> Demo
-                            </a>
-                        )}
-                        <button
-                            onClick={() => setOpen(true)}
-                            className="ml-auto text-sm text-neutral-300 underline decoration-dotted
-                         underline-offset-4 hover:text-white"
-                        >
-                            About
-                        </button>
+                                Read case study
+                            </button>
+                        </div>
                     </div>
                 </div>
             </article>
 
-            {/* MODAL */}
-            {open && (
-                <div
-                    className="fixed inset-0 z-50 grid place-items-center p-6"
-                    onClick={() => setOpen(false)}
-                >
-                    {/* backdrop */}
-                    <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-
-                    {/* conteúdo */}
-                    <div
-                        className="relative w-full max-w-3xl overflow-hidden rounded-3xl border border-white/10
-                       bg-neutral-950 text-neutral-200 shadow-2xl"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        {/* hero do modal */}
-                        <div className="relative h-56 w-full">
-                            <Image
-                                src={p.cover}
-                                alt={`${p.title} cover`}
-                                fill
-                                className="object-cover"
-                                sizes="(min-width:1024px) 768px, 100vw"
-                            />
-                            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-neutral-950" />
-                            <h4 className="absolute bottom-4 left-5 text-2xl font-semibold drop-shadow">
-                                {p.title}
-                            </h4>
-                        </div>
-
-                        <div className="space-y-5 p-5">
-                            <p className="text-neutral-300">{p.summary}</p>
-
-                            {/* chips */}
-                            <div className="flex flex-wrap gap-2">
-                                {p.tags.map((t) => (
-                                    <span
-                                        key={t}
-                                        className="rounded-full border border-white/10 bg-black/40 px-3 py-1 text-xs backdrop-blur"
-                                    >
-                                        {t}
-                                    </span>
-                                ))}
-                            </div>
-
-                            <div className="flex gap-2">
-                                {p.repo && (
-                                    <a
-                                        href={p.repo}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="inline-flex items-center gap-2 rounded-xl border border-neutral-700
-                               px-3 py-2 text-sm hover:bg-neutral-800"
-                                    >
-                                        <GitHubIcon className="h-4 w-4" />
-                                        Repo
-                                    </a>
-                                )}
-                                {p.demo && (
-                                    <a
-                                        href={p.demo}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="inline-flex items-center gap-2 rounded-xl bg-violet-600 px-3 py-2
-                               text-sm font-medium text-white hover:bg-violet-500"
-                                    >
-                                        <ExternalIcon className="h-4 w-4" />
-                                        Open demo
-                                    </a>
-                                )}
-                            </div>
-
-                            <div className="pt-2 text-right">
-                                <button
-                                    onClick={() => setOpen(false)}
-                                    className="rounded-xl border border-neutral-700 px-4 py-2 text-sm hover:bg-neutral-800"
-                                >
-                                    Close
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
+            {open && <CaseStudyModal p={p} onClose={() => setOpen(false)} />}
         </>
     );
 }
 
-/* === Ícones inline para não depender de libs === */
-function SparklesIcon(props: React.SVGProps<SVGSVGElement>) {
+/** On-brand gradient cover (no binary asset needed). */
+function Cover({ p }: { p: Project }) {
     return (
-        <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-            <path d="M9.3 2.7c.3-.9 1.6-.9 1.9 0l.8 2.6c.2.7.7 1.2 1.4 1.4l2.6.8c.9.3.9 1.6 0 1.9l-2.6.8c-.7.2-1.2.7-1.4 1.4l-.8 2.6c-.3.9-1.6.9-1.9 0l-.8-2.6c-.2-.7-.7-1.2-1.4-1.4l-2.6-.8c-.9-.3-.9-1.6 0-1.9l2.6-.8c.7-.2 1.2-.7 1.4-1.4l.8-2.6z" />
-            <path d="M18 14.5l.5-1.5.5 1.5 1.5.5-1.5.5-.5 1.5-.5-1.5-1.5-.5 1.5-.5z" />
-        </svg>
+        <div className="relative m-4 mb-0 overflow-hidden rounded-xl border border-line">
+            <div
+                className="relative flex h-44 items-end p-4 sm:h-48"
+                style={{
+                    background:
+                        "radial-gradient(120% 120% at 80% -20%, rgba(124,58,237,.35), transparent 55%)," +
+                        "radial-gradient(120% 120% at 0% 120%, rgba(34,211,238,.22), transparent 55%)," +
+                        "var(--surface-1)",
+                }}
+            >
+                <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 opacity-[0.15]"
+                    style={{
+                        backgroundImage:
+                            "radial-gradient(rgba(255,255,255,.6) 1px, transparent 1.2px)",
+                        backgroundSize: "22px 22px",
+                    }}
+                />
+                <span className="relative font-display text-sm font-semibold uppercase tracking-[0.16em] text-ink/90">
+                    {p.category}
+                </span>
+            </div>
+        </div>
     );
 }
-function GitHubIcon(props: React.SVGProps<SVGSVGElement>) {
+
+function CaseStudyModal({ p, onClose }: { p: Project; onClose: () => void }) {
+    useEffect(() => {
+        const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+        document.addEventListener("keydown", onKey);
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.removeEventListener("keydown", onKey);
+            document.body.style.overflow = "";
+        };
+    }, [onClose]);
+
     return (
-        <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-            <path d="M12 .5a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.6-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.9 1.3 3.6 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.9 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.4 1.2a11.7 11.7 0 016.2 0C16.1 6.6 17 7 17 7c.6 1.6.2 2.9.1 3.2.8.9 1.2 2 1.2 3.3 0 4.6-2.7 5.6-5.3 5.9.4.3.8 1 .8 2.1v3.1c0 .3.2.7.8.6A12 12 0 0012 .5z" />
-        </svg>
+        <div
+            className="fixed inset-0 z-50 grid place-items-center p-4 sm:p-6"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${p.title} case study`}
+            onClick={onClose}
+        >
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+            <div
+                className="card relative max-h-[85vh] w-full max-w-3xl overflow-y-auto p-0"
+                onClick={(e) => e.stopPropagation()}
+            >
+                <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-line bg-surface-1/95 p-6 backdrop-blur">
+                    <div>
+                        <p className="eyebrow">{p.category}</p>
+                        <h4 className="mt-1 font-display text-2xl font-bold text-ink">
+                            {p.title}
+                        </h4>
+                        {p.role && <p className="mt-1 text-sm text-muted">{p.role}</p>}
+                    </div>
+                    <button
+                        onClick={onClose}
+                        aria-label="Close"
+                        className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-line text-muted hover:bg-surface-2 hover:text-ink"
+                    >
+                        <X className="h-4 w-4" aria-hidden />
+                    </button>
+                </div>
+
+                <div className="space-y-6 p-6">
+                    {p.metrics && (
+                        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                            {p.metrics.map((m) => (
+                                <div
+                                    key={m.label}
+                                    className="rounded-xl border border-line bg-surface-1 p-3 text-center"
+                                >
+                                    <div className="text-gradient font-mono text-lg font-medium">
+                                        {m.value}
+                                    </div>
+                                    <div className="mt-1 text-[11px] uppercase tracking-wide text-muted">
+                                        {m.label}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+
+                    {p.context && <Block title="Context" body={p.context} />}
+                    {p.problem && <Block title="Problem" body={p.problem} />}
+                    {p.solution && <BulletBlock title="What I built" items={p.solution} />}
+                    {p.highlights && (
+                        <BulletBlock title="Engineering highlights" items={p.highlights} />
+                    )}
+
+                    {p.stack && (
+                        <div>
+                            <h5 className="mb-2 text-sm font-semibold text-ink">Stack</h5>
+                            <div className="flex flex-wrap gap-2">
+                                {p.stack.map((s) => (
+                                    <Badge key={s}>{s}</Badge>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {p.confidential ? (
+                        <Badge tone="muted">
+                            <Lock className="h-3.5 w-3.5" aria-hidden /> Confidential work — no
+                            public links
+                        </Badge>
+                    ) : (
+                        p.links && (
+                            <div className="flex flex-wrap gap-2">
+                                {p.links.map((l) => (
+                                    <a
+                                        key={l.href}
+                                        href={l.href}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="inline-flex items-center gap-2 rounded-xl border border-line px-3 py-2 text-sm text-ink-2 hover:bg-surface-2"
+                                    >
+                                        <ExternalLink className="h-4 w-4" aria-hidden /> {l.label}
+                                    </a>
+                                ))}
+                            </div>
+                        )
+                    )}
+                </div>
+            </div>
+        </div>
     );
 }
-function ExternalIcon(props: React.SVGProps<SVGSVGElement>) {
+
+function Block({ title, body }: { title: string; body: string }) {
     return (
-        <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-            <path d="M14 3h7v7h-2V7.4l-8.3 8.3-1.4-1.4L17.6 6H14V3z" />
-            <path d="M5 5h6v2H7v10h10v-4h2v6H5V5z" />
-        </svg>
+        <div>
+            <h5 className="mb-1.5 text-sm font-semibold text-ink">{title}</h5>
+            <p className="text-ink-2">{body}</p>
+        </div>
+    );
+}
+
+function BulletBlock({ title, items }: { title: string; items: string[] }) {
+    return (
+        <div>
+            <h5 className="mb-2 text-sm font-semibold text-ink">{title}</h5>
+            <ul className="space-y-2">
+                {items.map((it) => (
+                    <li key={it} className="flex gap-2.5 text-ink-2">
+                        <span
+                            aria-hidden
+                            className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full [background:var(--grad-brand)]"
+                        />
+                        <span>{it}</span>
+                    </li>
+                ))}
+            </ul>
+        </div>
     );
 }
