@@ -61,6 +61,10 @@ const en = {
         visit: "Visit 55hubcorp.com",
         source: "Source",
         badge: "Flagship",
+        tabSite: "Public site",
+        tabCrm: "Internal CRM",
+        crmNote: "Internal system, secure login and 5-role access.",
+        liveNote: "Live product, captured from production.",
     },
     work: {
         heading: "Selected work",
@@ -173,6 +177,10 @@ const pt: Shape = {
         visit: "Acessar 55hubcorp.com",
         source: "Código",
         badge: "Destaque",
+        tabSite: "Site público",
+        tabCrm: "CRM interno",
+        crmNote: "Sistema interno, login seguro e acesso por 5 papéis.",
+        liveNote: "Produto no ar, capturado da produção.",
     },
     work: {
         heading: "Trabalhos selecionados",

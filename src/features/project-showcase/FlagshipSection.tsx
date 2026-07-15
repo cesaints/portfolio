@@ -1,7 +1,7 @@
 "use client";
 import { Section, SectionHeader } from "@/shared/ui/Section";
 import Reveal from "@shared/ui/Reveal";
-import FeaturedCaseStudy from "./FeaturedCaseStudy";
+import LiveFlagship from "./LiveFlagship";
 import { projects } from "@/entities/project/projects";
 import { useI18n } from "@/shared/i18n/I18nProvider";
 
@@ -14,7 +14,7 @@ export default function FlagshipSection() {
         <Section id="flagship">
             <SectionHeader title={t.flagship.heading} subtitle={t.flagship.sub} />
             <Reveal>
-                <FeaturedCaseStudy project={featured} />
+                <LiveFlagship project={featured} />
             </Reveal>
         </Section>
     );
