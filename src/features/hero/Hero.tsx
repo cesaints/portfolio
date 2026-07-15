@@ -1,17 +1,15 @@
+"use client";
 import Link from "next/link";
 import AvatarFrame from "@shared/ui/AvatarFrame";
 import Typewriter from "./Typewriter";
 import { buttonClasses } from "@shared/ui/button/styles";
 import { siteConfig } from "@/shared/config/seo";
-
-const TAGLINES = [
-    "Product strategy backed by real engineering.",
-    "From roadmap to production — hands on the code.",
-    "RevOps, architecture, and shipping.",
-    "I decide what to build, then I build it.",
-];
+import { useI18n } from "@/shared/i18n/I18nProvider";
 
 export default function Hero() {
+    const { t } = useI18n();
+    const h = t.hero;
+
     return (
         <section
             className="relative flex min-h-[88vh] items-center pt-20 md:pt-28"
@@ -19,7 +17,7 @@ export default function Hero() {
         >
             <div
                 aria-hidden
-                className="pointer-events-none absolute inset-0 -z-10"
+                className="aurora pointer-events-none absolute -inset-[10%] -z-10"
                 style={{ background: "var(--g-hero)" }}
             />
             <div className="container-std grid items-center gap-12 md:grid-cols-[340px_minmax(0,1fr)]">
@@ -28,7 +26,7 @@ export default function Hero() {
                 </div>
 
                 <div className="min-w-0">
-                    <p className="eyebrow">Product &amp; Technology Leadership</p>
+                    <p className="eyebrow">{h.eyebrow}</p>
 
                     <h1
                         id="hero-name"
@@ -38,19 +36,12 @@ export default function Hero() {
                     </h1>
 
                     <p className="mt-4 font-display text-xl font-semibold tracking-tight text-ink md:text-2xl">
-                        Diretor de Produto e Tecnologia ·{" "}
-                        <span className="text-gradient">CPO / CTO</span>
-                        <span className="block text-base font-normal text-muted">
-                            @ +55 HUB &amp; Corporate Group
-                        </span>
+                        {h.roleTitle} · <span className="text-gradient">{h.roleShort}</span>
+                        <span className="block text-base font-normal text-muted">{h.org}</span>
                     </p>
 
-                    {/* Rotating subline (never the LCP element) — fixed height avoids CLS */}
                     <div className="mt-5 flex h-7 items-center md:h-8">
-                        <Typewriter
-                            text={TAGLINES}
-                            className="text-lg text-ink-2 md:text-xl"
-                        />
+                        <Typewriter text={h.taglines} className="text-lg text-ink-2 md:text-xl" />
                     </div>
 
                     <p className="mt-5">
@@ -59,30 +50,20 @@ export default function Hero() {
                                 aria-hidden
                                 className="pulse-soft h-1.5 w-1.5 rounded-full bg-[color:var(--success)] shadow-[0_0_6px_rgba(52,211,153,.6)]"
                             />
-                            Brasília – DF, Brazil · Remote (Salvador – BA)
+                            {h.location}
                         </span>
                     </p>
 
                     <p className="mt-6 max-w-[60ch] text-lg leading-relaxed text-ink-2">
-                        A product leader with engineering roots. I own the roadmap, the
-                        architecture, and the RevOps that turns leads into deals — and I still
-                        ship the code, from a multilingual public platform to the internal CRM
-                        behind it. My yardsticks are the ones that matter: product NPS, lead time
-                        to production, and a 99.9% uptime target.
+                        {h.pitch}
                     </p>
 
                     <div className="mt-8 flex flex-wrap items-center gap-3">
-                        <Link
-                            href="/projects"
-                            className={buttonClasses({ variant: "primary-grad", size: "lg" })}
-                        >
-                            View case studies
+                        <Link href="/projects" className={buttonClasses({ variant: "primary-grad", size: "lg" })}>
+                            {h.ctaPrimary}
                         </Link>
-                        <Link
-                            href="/contact"
-                            className={buttonClasses({ variant: "outline", size: "lg" })}
-                        >
-                            Get in touch
+                        <Link href="/contact" className={buttonClasses({ variant: "outline", size: "lg" })}>
+                            {h.ctaSecondary}
                         </Link>
 
                         <a

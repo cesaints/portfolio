@@ -1,16 +1,20 @@
+"use client";
 import { ExternalLink, Github } from "lucide-react";
 import type { Project } from "@/entities/project/types";
 import Badge from "@shared/ui/Badge";
 import { buttonClasses } from "@shared/ui/button/styles";
+import { useI18n } from "@/shared/i18n/I18nProvider";
+import { localizeProject } from "@/shared/i18n/content";
 
 export default function FeaturedCaseStudy({ project }: { project: Project }) {
-    const p = project;
+    const { t, lang } = useI18n();
+    const p = localizeProject(project, lang);
     return (
-        <div className="rounded-3xl p-px [background:var(--grad-brand)] shadow-lg">
+        <div className="flagship-ring rounded-3xl shadow-lg">
             <div className="grid gap-8 rounded-3xl bg-surface-1 p-6 md:grid-cols-2 md:p-10">
                 <div>
                     <div className="flex items-center gap-3">
-                        <Badge tone="accent">Flagship</Badge>
+                        <Badge tone="accent">{t.flagship.badge}</Badge>
                         {p.year && <span className="text-sm text-muted">{p.year}</span>}
                     </div>
                     <h3 className="mt-4 font-display text-2xl font-bold tracking-tight text-ink md:text-3xl">
@@ -27,7 +31,7 @@ export default function FeaturedCaseStudy({ project }: { project: Project }) {
                                 rel="noreferrer"
                                 className={buttonClasses({ variant: "primary-grad" })}
                             >
-                                <ExternalLink className="h-4 w-4" aria-hidden /> Visit 55hubcorp.com
+                                <ExternalLink className="h-4 w-4" aria-hidden /> {t.flagship.visit}
                             </a>
                         )}
                         {p.repo && (
@@ -37,7 +41,7 @@ export default function FeaturedCaseStudy({ project }: { project: Project }) {
                                 rel="noreferrer"
                                 className={buttonClasses({ variant: "outline" })}
                             >
-                                <Github className="h-4 w-4" aria-hidden /> Source
+                                <Github className="h-4 w-4" aria-hidden /> {t.flagship.source}
                             </a>
                         )}
                     </div>

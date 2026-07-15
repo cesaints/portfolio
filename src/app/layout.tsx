@@ -4,6 +4,8 @@ import Header from "@shared/ui/Header";
 import Galaxy from "@shared/ui/fx/Galaxy";
 import { siteConfig } from "@/shared/config/seo";
 import { PersonJsonLd, WebSiteJsonLd } from "@/shared/seo/JsonLd";
+import { I18nProvider } from "@/shared/i18n/I18nProvider";
+import ScrollProgress from "@shared/ui/ScrollProgress";
 import { fontVariables } from "./fonts";
 
 export const metadata: Metadata = {
@@ -57,15 +59,17 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en" className={fontVariables}>
+        <html lang="pt-BR" className={fontVariables}>
             <body className="min-h-dvh bg-bg text-ink antialiased">
                 <PersonJsonLd />
                 <WebSiteJsonLd />
+                <ScrollProgress />
                 <Galaxy />
-                <div className="relative z-10 flex min-h-dvh flex-col">
-                    <Header />
-                    <main className="flex-1">{children}</main>
-                    <footer className="border-t border-line bg-bg-2">
+                <I18nProvider>
+                    <div className="relative z-10 flex min-h-dvh flex-col">
+                        <Header />
+                        <main className="flex-1">{children}</main>
+                        <footer className="border-t border-line bg-bg-2">
                         <div className="container-std flex flex-col items-center justify-between gap-4 py-8 text-sm text-muted sm:flex-row">
                             <p>
                                 © {new Date().getFullYear()} {siteConfig.author}
@@ -96,7 +100,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                             </div>
                         </div>
                     </footer>
-                </div>
+                    </div>
+                </I18nProvider>
             </body>
         </html>
     );

@@ -1,7 +1,12 @@
+"use client";
 import Link from "next/link";
 import { buttonClasses } from "@shared/ui/button/styles";
+import { useI18n } from "@/shared/i18n/I18nProvider";
 
 export default function CTASection() {
+    const { t } = useI18n();
+    const c = t.cta;
+
     return (
         <div className="card relative overflow-hidden p-8 text-center md:p-14">
             <span
@@ -14,18 +19,12 @@ export default function CTASection() {
             />
             <div className="relative">
                 <h2 className="font-display text-3xl font-bold tracking-tight text-ink md:text-4xl">
-                    Let&apos;s build something that ships.
+                    {c.heading}
                 </h2>
-                <p className="mx-auto mt-3 max-w-xl text-ink-2">
-                    Product strategy, architecture, RevOps — the whole stack. Tell me what you
-                    are building and where it needs to go.
-                </p>
+                <p className="mx-auto mt-3 max-w-xl text-ink-2">{c.body}</p>
                 <div className="mt-7 flex justify-center">
-                    <Link
-                        href="/contact"
-                        className={buttonClasses({ variant: "primary-grad", size: "lg" })}
-                    >
-                        Get in touch
+                    <Link href="/contact" className={buttonClasses({ variant: "primary-grad", size: "lg" })}>
+                        {c.button}
                     </Link>
                 </div>
             </div>

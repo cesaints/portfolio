@@ -168,6 +168,53 @@ a {
   transition: color 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
 }
 
+/* Slow atmospheric drift for the hero background (very subtle) */
+@keyframes aurora-drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-1.5%, 1%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.aurora {
+  animation: aurora-drift 26s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Slowly rotating conic ring for the flagship card border */
+@keyframes border-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+.flagship-ring {
+  position: relative;
+}
+.flagship-ring::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from 0deg,
+    #8b5cf6,
+    #22d3ee,
+    #8b5cf6,
+    #22d3ee,
+    #8b5cf6
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: border-spin 12s linear infinite;
+  pointer-events: none;
+}
+
 @keyframes pulse-soft {
   0%,
   100% {

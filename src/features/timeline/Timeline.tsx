@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import data, { TimelineItem } from "./data";
+import { useI18n } from "@/shared/i18n/I18nProvider";
+import { localizeTimelineItem } from "@/shared/i18n/content";
 
 const palette = {
     violet: { bg: "#7c3aed", fg: "#ffffff" },
@@ -26,7 +28,8 @@ function Icon({ kind }: { kind?: TimelineItem["icon"] }) {
 }
 
 export default function Timeline() {
-    const items = useMemo(() => data, []);
+    const { lang } = useI18n();
+    const items = useMemo(() => data.map((it) => localizeTimelineItem(it, lang)), [lang]);
 
     return (
         <section className="section">

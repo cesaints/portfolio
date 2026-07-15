@@ -1,47 +1,40 @@
-import type { Metadata } from "next";
+"use client";
 import { Mail, MapPin, Linkedin, Github } from "lucide-react";
 import { Section, SectionHeader } from "@/shared/ui/Section";
 import { ContactForm } from "@/features/contact";
-import { buildMetadata, siteConfig } from "@/shared/config/seo";
-
-export const metadata: Metadata = buildMetadata({
-    title: "Contact",
-    path: "/contact",
-    description:
-        "Get in touch with Carlos Eduardo (Cadu) — Product & Technology Director (CPO/CTO). " +
-        "Send a message about product, technology, RevOps or engineering leadership.",
-});
+import { siteConfig } from "@/shared/config/seo";
+import { useI18n } from "@/shared/i18n/I18nProvider";
 
 export default function ContactPage() {
+    const { t } = useI18n();
+    const c = t.contact;
+
     return (
         <Section>
-            <SectionHeader
-                title="Get in touch"
-                subtitle="Product, technology, RevOps or engineering leadership — let's talk."
-            />
+            <SectionHeader title={c.heading} subtitle={c.sub} />
 
             <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
                 <div className="space-y-4">
                     <ContactMeta
                         icon={<Mail className="h-5 w-5" aria-hidden />}
-                        label="Email"
+                        label={c.emailLabel}
                         value={siteConfig.socials.email}
                         href={`mailto:${siteConfig.socials.email}`}
                     />
                     <ContactMeta
                         icon={<MapPin className="h-5 w-5" aria-hidden />}
-                        label="Location"
-                        value="Brasília – DF, Brazil · Remote"
+                        label={c.locationLabel}
+                        value={c.locationValue}
                     />
                     <ContactMeta
                         icon={<Linkedin className="h-5 w-5" aria-hidden />}
-                        label="LinkedIn"
+                        label={c.linkedinLabel}
                         value="in/carlossaints"
                         href={siteConfig.socials.linkedin}
                     />
                     <ContactMeta
                         icon={<Github className="h-5 w-5" aria-hidden />}
-                        label="GitHub"
+                        label={c.githubLabel}
                         value="cesaints"
                         href={siteConfig.socials.github}
                     />

@@ -1,25 +1,17 @@
 "use client";
-import { projects } from "@/entities/project/projects";
-import { ProjectCard, FeaturedCaseStudy } from "@features/project-showcase";
 import { Section, SectionHeader } from "@/shared/ui/Section";
-import Reveal from "@/shared/ui/Reveal";
+import Reveal from "@shared/ui/Reveal";
+import ProjectCard from "./ProjectCard";
+import { projects } from "@/entities/project/projects";
 import { useI18n } from "@/shared/i18n/I18nProvider";
 
-export default function ProjectsPage() {
+export default function WorkSection() {
     const { t } = useI18n();
-    const featured = projects.find((p) => p.featured);
     const others = projects.filter((p) => !p.featured);
 
     return (
-        <Section>
-            <SectionHeader title={t.projectsPage.heading} subtitle={t.projectsPage.sub} />
-
-            {featured && (
-                <div className="mb-8">
-                    <FeaturedCaseStudy project={featured} />
-                </div>
-            )}
-
+        <Section id="work" muted>
+            <SectionHeader title={t.work.heading} subtitle={t.work.sub} />
             <div className="grid gap-6 md:grid-cols-2">
                 {others.map((p, i) => (
                     <Reveal key={p.slug} delay={i * 0.05}>

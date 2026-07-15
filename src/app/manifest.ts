@@ -3,7 +3,7 @@ import { siteConfig } from "@/shared/config/seo";
 
 export default function manifest(): MetadataRoute.Manifest {
     return {
-        name: `${siteConfig.author} — Product & Technology Director`,
+        name: `${siteConfig.author} · Product and Technology Director`,
         short_name: siteConfig.nickname,
         description: siteConfig.description,
         start_url: "/",

@@ -4,9 +4,12 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { cn } from "@shared/lib/cn";
 import { navLinks } from "@/shared/config/nav";
+import { useI18n } from "@/shared/i18n/I18nProvider";
+import LanguageToggle from "@shared/ui/LanguageToggle";
 
 export default function Header() {
     const pathname = usePathname();
+    const { t } = useI18n();
     const [open, setOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
@@ -36,7 +39,7 @@ export default function Header() {
                 <Link
                     href="/"
                     className="group inline-flex items-center gap-2.5"
-                    aria-label="Cadu — home"
+                    aria-label="Cadu, home"
                 >
                     <span
                         aria-hidden
@@ -64,31 +67,35 @@ export default function Header() {
                                     active ? "text-ink" : "text-muted hover:text-ink"
                                 )}
                             >
-                                {l.label}
+                                {t.nav[l.key]}
                                 {active && (
                                     <span className="absolute -bottom-0.5 left-0 h-0.5 w-full rounded-full [background:var(--grad-brand)]" />
                                 )}
                             </Link>
                         );
                     })}
+                    <LanguageToggle />
                 </div>
 
-                {/* Mobile toggle */}
-                <button
-                    type="button"
-                    aria-label={open ? "Close menu" : "Open menu"}
-                    aria-expanded={open}
-                    onClick={() => setOpen((v) => !v)}
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-line hover:bg-surface-1 md:hidden"
-                >
+                {/* Mobile controls */}
+                <div className="flex items-center gap-2 md:hidden">
+                    <LanguageToggle />
+                    <button
+                        type="button"
+                        aria-label={open ? "Close menu" : "Open menu"}
+                        aria-expanded={open}
+                        onClick={() => setOpen((v) => !v)}
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-line hover:bg-surface-1"
+                    >
                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
                         {open ? (
                             <path d="M18.3 5.7L12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7 4.3 4.3 10.6 10.6 16.9 4.3z" />
                         ) : (
                             <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" />
                         )}
-                    </svg>
-                </button>
+                        </svg>
+                    </button>
+                </div>
             </nav>
 
             {/* Mobile panel */}
@@ -110,7 +117,7 @@ export default function Header() {
                                     : "text-muted hover:bg-surface-2 hover:text-ink"
                             )}
                         >
-                            {l.label}
+                            {t.nav[l.key]}
                         </Link>
                     ))}
                 </div>

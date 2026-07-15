@@ -4,23 +4,28 @@ import { Github, ExternalLink, Lock, Star, X } from "lucide-react";
 import type { Project } from "@/entities/project/types";
 import { cn } from "@shared/lib/cn";
 import Badge from "@shared/ui/Badge";
+import Spotlight from "@shared/ui/Spotlight";
+import { useI18n } from "@/shared/i18n/I18nProvider";
+import { localizeProject } from "@/shared/i18n/content";
 
 export default function ProjectCard({
-    p,
+    p: pInput,
     className,
 }: {
     p: Project;
     className?: string;
 }) {
+    const { t, lang } = useI18n();
+    const p = localizeProject(pInput, lang);
     const [open, setOpen] = useState(false);
 
     return (
         <>
+            <Spotlight className={className}>
             <article
                 className={cn(
-                    "card group flex flex-col p-0 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-lg",
-                    p.featured && "[background:var(--grad-brand)] p-px",
-                    className
+                    "card group flex h-full flex-col p-0 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-lg",
+                    p.featured && "[background:var(--grad-brand)] p-px"
                 )}
             >
                 <div className={cn("flex h-full flex-col", p.featured && "rounded-2xl bg-surface-1")}>
@@ -54,10 +59,10 @@ export default function ProjectCard({
                         <div className="mt-5 flex items-center gap-2 pt-1">
                             {p.confidential ? (
                                 <Badge tone="muted">
-                                    <Lock className="h-3.5 w-3.5" aria-hidden /> Confidential ·{" "}
+                                    <Lock className="h-3.5 w-3.5" aria-hidden />{" "}
                                     {p.category === "Enterprise / Government"
-                                        ? "Government"
-                                        : "Enterprise"}
+                                        ? t.work.confidentialGov
+                                        : t.work.confidentialEnterprise}
                                 </Badge>
                             ) : (
                                 <>
@@ -68,7 +73,7 @@ export default function ProjectCard({
                                             rel="noreferrer"
                                             className="inline-flex items-center gap-2 rounded-xl border border-line px-3 py-2 text-sm text-ink-2 transition-colors hover:bg-surface-2"
                                         >
-                                            <Github className="h-4 w-4" aria-hidden /> Code
+                                            <Github className="h-4 w-4" aria-hidden /> {t.work.code}
                                         </a>
                                     )}
                                     {p.demo && (
@@ -78,7 +83,7 @@ export default function ProjectCard({
                                             rel="noreferrer"
                                             className="inline-flex items-center gap-2 rounded-xl border border-line px-3 py-2 text-sm text-ink-2 transition-colors hover:bg-surface-2"
                                         >
-                                            <ExternalLink className="h-4 w-4" aria-hidden /> Live
+                                            <ExternalLink className="h-4 w-4" aria-hidden /> {t.work.live}
                                         </a>
                                     )}
                                 </>
@@ -87,12 +92,13 @@ export default function ProjectCard({
                                 onClick={() => setOpen(true)}
                                 className="ml-auto text-sm text-muted underline decoration-dotted underline-offset-4 transition-colors hover:text-ink"
                             >
-                                Read case study
+                                {t.work.readCase}
                             </button>
                         </div>
                     </div>
                 </div>
             </article>
+            </Spotlight>
 
             {open && <CaseStudyModal p={p} onClose={() => setOpen(false)} />}
         </>
@@ -130,6 +136,8 @@ function Cover({ p }: { p: Project }) {
 }
 
 function CaseStudyModal({ p, onClose }: { p: Project; onClose: () => void }) {
+    const { t } = useI18n();
+    const ui = t.caseStudyUi;
     useEffect(() => {
         const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
         document.addEventListener("keydown", onKey);
@@ -189,16 +197,16 @@ function CaseStudyModal({ p, onClose }: { p: Project; onClose: () => void }) {
                         </div>
                     )}
 
-                    {p.context && <Block title="Context" body={p.context} />}
-                    {p.problem && <Block title="Problem" body={p.problem} />}
-                    {p.solution && <BulletBlock title="What I built" items={p.solution} />}
+                    {p.context && <Block title={ui.context} body={p.context} />}
+                    {p.problem && <Block title={ui.problem} body={p.problem} />}
+                    {p.solution && <BulletBlock title={ui.built} items={p.solution} />}
                     {p.highlights && (
-                        <BulletBlock title="Engineering highlights" items={p.highlights} />
+                        <BulletBlock title={ui.highlights} items={p.highlights} />
                     )}
 
                     {p.stack && (
                         <div>
-                            <h5 className="mb-2 text-sm font-semibold text-ink">Stack</h5>
+                            <h5 className="mb-2 text-sm font-semibold text-ink">{ui.stack}</h5>
                             <div className="flex flex-wrap gap-2">
                                 {p.stack.map((s) => (
                                     <Badge key={s}>{s}</Badge>
@@ -209,8 +217,7 @@ function CaseStudyModal({ p, onClose }: { p: Project; onClose: () => void }) {
 
                     {p.confidential ? (
                         <Badge tone="muted">
-                            <Lock className="h-3.5 w-3.5" aria-hidden /> Confidential work — no
-                            public links
+                            <Lock className="h-3.5 w-3.5" aria-hidden /> {ui.confidentialNote}
                         </Badge>
                     ) : (
                         p.links && (

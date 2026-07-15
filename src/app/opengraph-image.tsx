@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/shared/config/seo";
 
-export const alt = `${siteConfig.author} — ${siteConfig.jobTitle}`;
+export const alt = `${siteConfig.author} · ${siteConfig.jobTitle}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -44,7 +44,7 @@ export default function OgImage() {
                         display: "flex",
                     }}
                 >
-                    Carlos Eduardo — Cadu
+                    Carlos Eduardo · Cadu
                 </div>
                 <div
                     style={{

@@ -34,18 +34,18 @@ function resolveUrl(): string {
 }
 
 export const siteConfig: SiteConfig = {
-    siteName: "Carlos Eduardo — Cadu",
+    siteName: "Carlos Eduardo · Cadu",
     author: "Carlos Eduardo Gonçalves dos Santos",
     nickname: "Cadu",
     jobTitle: "Diretor de Produto e Tecnologia (CPO/CTO)",
     organization: "+55 HUB & Corporate Group",
     defaultTitle:
-        "Carlos Eduardo — Diretor de Produto e Tecnologia (CPO/CTO)",
-    titleTemplate: "%s — Carlos Eduardo (Cadu)",
+        "Carlos Eduardo · Diretor de Produto e Tecnologia (CPO/CTO)",
+    titleTemplate: "%s · Carlos Eduardo (Cadu)",
     description:
-        "Product & Technology Director (CPO/CTO) at +55 HUB & Corporate Group. " +
-        "A product leader with engineering roots — owning product strategy, " +
-        "architecture, scalability and RevOps end-to-end, and still shipping code.",
+        "Product and Technology Director (CPO/CTO) at +55 HUB & Corporate Group. " +
+        "A product leader with engineering roots. I own product strategy, architecture, " +
+        "scalability and RevOps, and I still ship the code.",
     url: resolveUrl(),
     locale: "en",
     ogLocale: "en_US",
@@ -110,7 +110,7 @@ export function buildMetadata(opts: {
             title: title
                 ? absoluteTitle
                     ? title
-                    : `${title} — Carlos Eduardo (Cadu)`
+                    : `${title} · Carlos Eduardo (Cadu)`
                 : siteConfig.defaultTitle,
             description: desc,
         },

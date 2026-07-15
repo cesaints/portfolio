@@ -2,62 +2,62 @@
 import { useEffect, useRef, useState } from "react";
 import { useInView, useReducedMotion } from "framer-motion";
 
-/** A single instrumented metric: mono gradient value + muted label. */
-export default function StatTile({
-    value,
-    label,
-}: {
-    value: string;
-    label: string;
-}) {
-    return (
-        <div className="flex flex-col items-center gap-2 px-6 py-8 text-center md:items-start md:text-left">
-            <AnimatedValue value={value} />
-            <span className="text-sm uppercase tracking-[0.08em] text-muted">
-                {label}
-            </span>
-        </div>
-    );
+/** Parse a stat value; only pure-numeric values (e.g. "99.9%", "3", "5+") animate. */
+function parseStat(raw: string) {
+    const m = /^(\d+(?:[.,]\d+)?)([%+x]?)$/.exec(raw.trim());
+    if (!m) return { isNum: false as const };
+    const normalized = m[1].replace(",", ".");
+    return {
+        isNum: true as const,
+        target: parseFloat(normalized),
+        suffix: m[2],
+        decimals: (normalized.split(".")[1] || "").length,
+        final: raw.trim(),
+    };
 }
 
-/** Counts up when the value is a plain number; otherwise renders as-is. */
-function AnimatedValue({ value }: { value: string }) {
+/** A single instrumented metric: mono gradient value + muted label. */
+export default function StatTile({ value, label }: { value: string; label: string }) {
     const ref = useRef<HTMLSpanElement>(null);
     const inView = useInView(ref, { once: true, margin: "-60px" });
     const reduced = useReducedMotion();
-    const numeric = value.match(/^(\d+(?:\.\d+)?)(.*)$/);
+    const parsed = parseStat(value);
     const [display, setDisplay] = useState(
-        numeric && !reduced ? `0${numeric[2]}` : value
+        parsed.isNum && !reduced ? `0${parsed.suffix}` : value
     );
 
     useEffect(() => {
-        if (!numeric || reduced || !inView) {
+        const p = parseStat(value);
+        if (!p.isNum || reduced || !inView) {
             setDisplay(value);
             return;
         }
-        const target = parseFloat(numeric[1]);
-        const suffix = numeric[2];
-        const decimals = (numeric[1].split(".")[1] || "").length;
-        const start = performance.now();
-        const dur = 1100;
         let raf = 0;
+        const startT = performance.now();
+        const dur = 1200;
         const tick = (now: number) => {
-            const t = Math.min(1, (now - start) / dur);
+            const t = Math.min(1, (now - startT) / dur);
             const eased = 1 - Math.pow(1 - t, 3);
-            const current = (target * eased).toFixed(decimals);
-            setDisplay(`${current}${suffix}`);
-            if (t < 1) raf = requestAnimationFrame(tick);
+            if (t < 1) {
+                setDisplay(`${(p.target * eased).toFixed(p.decimals)}${p.suffix}`);
+                raf = requestAnimationFrame(tick);
+            } else {
+                setDisplay(p.final); // land exactly on the real value
+            }
         };
         raf = requestAnimationFrame(tick);
         return () => cancelAnimationFrame(raf);
-    }, [inView, numeric, reduced, value]);
+    }, [inView, reduced, value]);
 
     return (
-        <span
-            ref={ref}
-            className="text-gradient font-mono text-4xl font-medium tracking-tight tabular-nums md:text-[2.75rem]"
-        >
-            {display}
-        </span>
+        <div className="flex flex-col items-center gap-2 px-6 py-8 text-center md:items-start md:text-left">
+            <span
+                ref={ref}
+                className="text-gradient font-mono text-4xl font-medium tracking-tight tabular-nums md:text-[2.75rem]"
+            >
+                {display}
+            </span>
+            <span className="text-sm uppercase tracking-[0.08em] text-muted">{label}</span>
+        </div>
     );
 }
