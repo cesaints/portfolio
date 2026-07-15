@@ -58,10 +58,12 @@ export const projects: Project[] = [
         links: [
             { label: "Live site", href: "https://55hubcorp.com" },
             { label: "CRM app", href: "https://app.55hubcorp.com" },
-            { label: "Source", href: "https://github.com/cesaints/mais55hub" },
         ],
-        repo: "https://github.com/cesaints/mais55hub",
         demo: "https://55hubcorp.com",
+        screenshots: [
+            { src: "/projects/55hubcorp/site.png", url: "55hubcorp.com" },
+            { src: "/projects/55hubcorp/crm.png", url: "app.55hubcorp.com/console" },
+        ],
         confidential: false,
     },
     {
@@ -156,6 +158,7 @@ export const projects: Project[] = [
         ],
         demo: "https://cboobrasil.org.br",
         links: [{ label: "cboobrasil.org.br", href: "https://cboobrasil.org.br" }],
+        screenshots: [{ src: "/projects/cboo/site.png", url: "cboo.org.br" }],
         confidential: false,
     },
 ];

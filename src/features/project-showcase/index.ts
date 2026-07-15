@@ -1,5 +1,4 @@
-export { default as ProjectCard } from "./ProjectCard";
-export { default as FeaturedCaseStudy } from "./FeaturedCaseStudy";
-export { default as LiveFlagship } from "./LiveFlagship";
-export { default as FlagshipSection } from "./FlagshipSection";
-export { default as WorkSection } from "./WorkSection";
+export { default as ProjectPreview } from "./ProjectPreview";
+export { default as ProjectShowcase } from "./ProjectShowcase";
+export { default as ProjectShowcaseSection } from "./ProjectShowcaseSection";
+export { default as CaseStudyModal } from "./CaseStudyModal";

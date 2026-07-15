@@ -4,7 +4,7 @@ import { StatsStrip } from "@/features/stats";
 import { About } from "@/features/about";
 import { ValueProps } from "@/features/value-props";
 import { CTASection } from "@/features/cta";
-import { FlagshipSection, WorkSection } from "@/features/project-showcase";
+import { ProjectShowcaseSection } from "@/features/project-showcase";
 import { Section } from "@/shared/ui/Section";
 import { siteConfig, buildMetadata } from "@/shared/config/seo";
 
@@ -21,8 +21,7 @@ export default function HomePage() {
             <StatsStrip />
             <About />
             <ValueProps />
-            <FlagshipSection />
-            <WorkSection />
+            <ProjectShowcaseSection />
             <Section>
                 <CTASection />
             </Section>

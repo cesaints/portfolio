@@ -30,7 +30,7 @@ const en = {
         { value: "99.9%", label: "Uptime / SLA target" },
         { value: "PT/EN/ES", label: "Trilingual platform, built solo" },
         { value: "5 / 2 days", label: "Landing pages delivered" },
-        { value: "3", label: "Government platforms delivered" },
+        { value: "2 products", label: "Public site + internal CRM" },
     ],
     about: {
         heading: "From engineer to product and technology leader",
@@ -77,6 +77,11 @@ const en = {
         confidentialEnterprise: "Confidential · Enterprise",
         code: "Code",
         live: "Live",
+        viewSite: "Visit site",
+        next: "Next project",
+        prev: "Previous project",
+        confidentialPreview: "Confidential system",
+        confidentialPreviewSub: "No public preview available.",
     },
     caseStudyUi: {
         context: "Context",
@@ -149,7 +154,7 @@ const pt: Shape = {
         { value: "99,9%", label: "Meta de uptime / SLA" },
         { value: "PT/EN/ES", label: "Plataforma trilíngue, feita sozinho" },
         { value: "5 / 2 dias", label: "Landing pages entregues" },
-        { value: "3", label: "Plataformas de governo entregues" },
+        { value: "2 produtos", label: "Site público + CRM interno" },
     ],
     about: {
         heading: "De engenheiro a líder de produto e tecnologia",
@@ -196,6 +201,11 @@ const pt: Shape = {
         confidentialEnterprise: "Confidencial · Corporativo",
         code: "Código",
         live: "Ao vivo",
+        viewSite: "Acessar site",
+        next: "Próximo projeto",
+        prev: "Projeto anterior",
+        confidentialPreview: "Sistema confidencial",
+        confidentialPreviewSub: "Sem preview público.",
     },
     caseStudyUi: {
         context: "Contexto",
