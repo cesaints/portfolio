@@ -1,18 +1,42 @@
 "use client";
 import { useI18n } from "@/shared/i18n/I18nProvider";
+import type { Lang } from "@/shared/i18n/dictionary";
+import { cn } from "@shared/lib/cn";
+
+const langs: { code: Lang; label: string }[] = [
+    { code: "pt", label: "PT" },
+    { code: "en", label: "EN" },
+    { code: "es", label: "ES" },
+];
 
 export default function LanguageToggle({ className = "" }: { className?: string }) {
-    const { lang, toggle, t } = useI18n();
+    const { lang, setLang } = useI18n();
     return (
-        <button
-            type="button"
-            onClick={toggle}
-            aria-label={lang === "pt" ? "Switch to English" : "Mudar para Português"}
-            className={`inline-flex h-9 items-center gap-1.5 rounded-lg border border-line bg-surface-1 px-3 text-xs font-semibold text-muted transition-colors hover:border-line-strong hover:text-ink ${className}`}
+        <div
+            role="group"
+            aria-label="Language"
+            className={cn(
+                "inline-flex items-center gap-0.5 rounded-lg border border-line bg-surface-1 p-0.5",
+                className
+            )}
         >
-            <span className="text-ink">{lang.toUpperCase()}</span>
-            <span aria-hidden className="text-muted-2">/</span>
-            <span>{t.switchTo}</span>
-        </button>
+            {langs.map((l) => {
+                const active = lang === l.code;
+                return (
+                    <button
+                        key={l.code}
+                        type="button"
+                        onClick={() => setLang(l.code)}
+                        aria-pressed={active}
+                        className={cn(
+                            "rounded-md px-2 py-1 text-xs font-semibold transition-colors",
+                            active ? "bg-surface-3 text-ink" : "text-muted hover:text-ink"
+                        )}
+                    >
+                        {l.label}
+                    </button>
+                );
+            })}
+        </div>
     );
 }

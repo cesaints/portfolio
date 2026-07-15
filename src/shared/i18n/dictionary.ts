@@ -1,11 +1,11 @@
-// Bilingual content dictionary. pt = Brazilian Portuguese (default), en = English.
+// Trilingual content dictionary. en = English (default), pt = Brazilian
+// Portuguese, es = Spanish.
 // Rule: no em-dashes (—) or en-dashes (–) anywhere; plain, professional copy.
 
-export type Lang = "pt" | "en";
+export type Lang = "pt" | "en" | "es";
 
 const en = {
     nav: { home: "Home", projects: "Projects", timeline: "Timeline", contact: "Contact" },
-    switchTo: "PT",
     hero: {
         eyebrow: "Product & Technology Leadership",
         roleTitle: "Diretor de Produto e Tecnologia",
@@ -108,7 +108,7 @@ const en = {
         err: "Could not send. Please try again.",
         emailLabel: "Email",
         locationLabel: "Location",
-        locationValue: "Brasília, DF, Brazil. Remote.",
+        locationValue: "Brasília, DF, Brazil",
         linkedinLabel: "LinkedIn",
         githubLabel: "GitHub",
         validName: "Please enter your name",
@@ -129,7 +129,6 @@ type Shape = typeof en;
 
 const pt: Shape = {
     nav: { home: "Início", projects: "Projetos", timeline: "Trajetória", contact: "Contato" },
-    switchTo: "EN",
     hero: {
         eyebrow: "Liderança de Produto e Tecnologia",
         roleTitle: "Diretor de Produto e Tecnologia",
@@ -232,7 +231,7 @@ const pt: Shape = {
         err: "Não foi possível enviar. Tente novamente.",
         emailLabel: "E-mail",
         locationLabel: "Localização",
-        locationValue: "Brasília, DF, Brasil. Remoto.",
+        locationValue: "Brasília, DF, Brasil",
         linkedinLabel: "LinkedIn",
         githubLabel: "GitHub",
         validName: "Digite seu nome",
@@ -249,5 +248,126 @@ const pt: Shape = {
     },
 };
 
-export const dictionary = { en, pt } as const;
+const es: Shape = {
+    nav: { home: "Inicio", projects: "Proyectos", timeline: "Trayectoria", contact: "Contacto" },
+    hero: {
+        eyebrow: "Liderazgo de Producto y Tecnología",
+        roleTitle: "Director de Producto y Tecnología",
+        roleShort: "CPO / CTO",
+        org: "+55 HUB & Corporate Group",
+        role2Title: "Ingeniero y Arquitecto de Software",
+        role2Org: "CBOO",
+        rolesLabel: "Dos cargos activos",
+        taglines: [
+            "Estrategia de producto con ingeniería de verdad.",
+            "Del roadmap a producción, con las manos en el código.",
+            "RevOps, arquitectura y entrega.",
+            "Decido qué construir y lo construyo.",
+        ],
+        pitch:
+            "Llevo producto y tecnología en +55 HUB y soy el ingeniero y arquitecto de software detrás de los sistemas de CBOO. Defino el roadmap, diseño la arquitectura y construyo el RevOps que convierte leads en ingresos, y sigo entregando el código. Respondo por NPS de producto, lead time hasta producción y 99,9% de uptime.",
+        location: "Brasília, DF, Brasil",
+        ctaPrimary: "Ver casos",
+        ctaSecondary: "Hablar conmigo",
+    },
+    stats: [
+        { value: "99,9%", label: "Meta de uptime / SLA" },
+        { value: "PT/EN/ES", label: "Plataforma trilingüe, hecha en solitario" },
+        { value: "5 / 2 días", label: "Landing pages entregadas" },
+        { value: "2 productos", label: "Sitio público + CRM interno" },
+    ],
+    about: {
+        heading: "De ingeniero a líder de producto y tecnología",
+        sub: "Soy dueño del roadmap y de la arquitectura.",
+        paragraphs: [
+            "Empecé en el código. Construí y probé sistemas críticos para ANTT, SEST SENAT y SISRH como desarrollador full stack .NET, y luego lideré la entrega como Scrum Master. Me encargué de la arquitectura y del rendimiento de la base de datos como DBA, y modernicé plataformas heredadas en PHP hacia Vue.js. Trabajé en toda la stack, desde el diseño de la base de datos hasta la planificación de los sprints.",
+            "Ese trabajo me llevó a las decisiones por encima del código. En +55 HUB & Corporate Group pasé de Head of Product a Director de Producto y Tecnología (CPO/CTO), donde soy dueño de lo que construimos, de cómo escala y de cómo convierte. Construí la plataforma de la empresa en solitario: un sitio público multilingüe PT/EN/ES y un CRM interno con un pipeline completo de lead a negocio, RBAC y analítica, corriendo en Cloudflare Workers, D1 y Workers AI.",
+            "Trabajo en los dos lados. Leo la arquitectura y soy dueño del roadmap, así que las decisiones de producto coinciden con lo que el código entrega de verdad. La seguridad y el cumplimiento (LGPD) se tratan como ingeniería, no como papeleo.",
+        ],
+        timelineLink: "Ver la trayectoria completa",
+        clusters: [
+            { label: "Producto", skills: ["Estrategia", "Roadmap", "PMF", "UX/UI", "RevOps"] },
+            { label: "Ingeniería", skills: ["Arquitectura", "TypeScript", ".NET", "Vue / Next", "Cloudflare"] },
+            { label: "Datos y Cloud", skills: ["SQL / NoSQL", "Azure", "Docker", "Power BI"] },
+            { label: "Liderazgo", skills: ["Scrum / Kanban", "LGPD", "Entrega de equipo"] },
+        ],
+    },
+    values: {
+        heading: "En qué me enfoco",
+        sub: "Las métricas de las que respondo, y cómo trabajo para ellas.",
+        items: [
+            { title: "Decisiones de producto que encajan con el código", body: "Defino el roadmap sabiendo qué puede entregar la arquitectura, así los planes son realistas." },
+            { title: "RevOps que acorta el lead hasta el negocio", body: "CRM, tracking e integraciones, con Bitrix como hub, ajustados para reducir el lead time y subir la conversión." },
+            { title: "Arquitectura que aguanta el crecimiento", body: "Hecha para más tráfico sin perder rendimiento, con meta de 99,9% de uptime." },
+            { title: "Seguridad y cumplimiento desde el inicio", body: "Protección de datos de nivel financiero y LGPD ya integradas: RBAC, sesiones con hash, rate limiting y headers reforzados." },
+        ],
+    },
+    flagship: {
+        heading: "Proyecto principal",
+        sub: "La plataforma de +55 HUB, diseñada, construida y publicada por mí.",
+        visit: "Ir a 55hubcorp.com",
+        source: "Código",
+        badge: "Destacado",
+        tabSite: "Sitio público",
+        tabCrm: "CRM interno",
+        crmNote: "Sistema interno, login seguro y acceso por 5 roles.",
+        liveNote: "Producto en vivo, capturado de producción.",
+    },
+    work: {
+        heading: "Trabajos seleccionados",
+        sub: "Proyectos profesionales y críticos.",
+        readCase: "Ver el caso",
+        confidentialGov: "Confidencial · Gobierno",
+        confidentialEnterprise: "Confidencial · Corporativo",
+        code: "Código",
+        live: "En vivo",
+        viewSite: "Ir al sitio",
+        next: "Siguiente proyecto",
+        prev: "Proyecto anterior",
+        confidentialPreview: "Sistema confidencial",
+        confidentialPreviewSub: "Sin vista previa pública.",
+    },
+    caseStudyUi: {
+        context: "Contexto",
+        problem: "Problema",
+        built: "Lo que construí",
+        highlights: "Aspectos de ingeniería",
+        stack: "Stack",
+        confidentialNote: "Trabajo confidencial, sin enlaces públicos.",
+    },
+    cta: {
+        heading: "Construyamos algo que salga a producción.",
+        body: "Estrategia de producto, arquitectura, RevOps. Cuéntame qué estás construyendo y a dónde necesita llegar.",
+        button: "Hablar conmigo",
+    },
+    contact: {
+        heading: "Hablar conmigo",
+        sub: "Producto, tecnología, RevOps o liderazgo de ingeniería. Hablemos.",
+        namePh: "Tu nombre",
+        emailPh: "Tu correo",
+        messagePh: "Tu mensaje",
+        send: "Enviar mensaje",
+        sending: "Enviando...",
+        ok: "Mensaje enviado. Gracias.",
+        err: "No se pudo enviar. Inténtalo de nuevo.",
+        emailLabel: "Correo",
+        locationLabel: "Ubicación",
+        locationValue: "Brasília, DF, Brasil",
+        linkedinLabel: "LinkedIn",
+        githubLabel: "GitHub",
+        validName: "Escribe tu nombre",
+        validEmail: "Escribe un correo válido",
+        validMessage: "Tu mensaje es muy corto",
+    },
+    projectsPage: {
+        heading: "Casos",
+        sub: "Trabajos en producto, arquitectura, UX/UI e ingeniería de datos.",
+    },
+    timelinePage: {
+        heading: "Trayectoria",
+        sub: "Formación, cargos e hitos.",
+    },
+};
+
+export const dictionary = { en, pt, es } as const;
 export type Dict = Shape;

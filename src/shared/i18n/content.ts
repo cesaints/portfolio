@@ -212,6 +212,103 @@ export const caseStudyText: Record<Lang, Record<string, CaseStudyText>> = {
             ],
         },
     },
+    es: {
+        "55hubcorp": {
+            title: "55hubcorp.com, la plataforma de +55 HUB",
+            oneLiner: "Una plataforma pública trilingüe y su propio CRM interno, publicados en solitario en el edge de Cloudflare.",
+            summary:
+                "La plataforma digital completa de +55 HUB & Corporate Group. Un sitio público multilingüe PT/EN/ES con un Readiness Scorecard interactivo, landing pages, un área de propiedades y un blog con apoyo de IA, además de un CRM interno hecho a medida que convierte leads en un pipeline de negocios. Diseñado, construido, asegurado y publicado por mí con Astro 5 en Cloudflare Workers, D1, R2 y Workers AI.",
+            role: "Ingeniero de producto y plataforma (CPO/CTO), hecho de punta a punta",
+            context:
+                "+55 HUB & Corporate Group ayuda a empresas e inversores internacionales a llegar y crecer en Brasil, en real estate, entrada global y servicios corporativos. Necesitaban una plataforma que hablara a un público PT/EN/ES con un aire de confianza, capturara leads calificados desde varias puertas de entrada, y diera al equipo interno un sistema de verdad para trabajar esos leads, sin pagar y unir varias herramientas SaaS.",
+            problem:
+                "Dos productos que suelen vivir separados tenían que compartir un solo código y un solo presupuesto. Un sitio público de nivel marketing (rápido, multilingüe, listo para SEO) y un CRM de back office (login, roles, pipeline, analítica). Tenía que ser barato de operar, seguro para alianzas financieras B2B y LGPD, y mantenible por una sola persona mientras el negocio escalaba el tráfico.",
+            solution: [
+                "Sitio público (55hubcorp.com): experiencia trilingüe PT/EN/ES, un Readiness Scorecard interactivo, dos landing pages de conversión, un área de propiedades y un blog.",
+                "CRM interno (app.55hubcorp.com): captura de leads, un Kanban de negocios, tareas, gestión de equipo y usuarios, administración de blog y propiedades, ajustes y analítica.",
+                "Un repositorio, dos productos, compartiendo i18n, design system, autenticación y capa de datos para mantener el costo y el mantenimiento bajos.",
+                "Pipeline de lead a negocio: los formularios públicos caen directo en el CRM, así la captura de marketing y el trabajo de ventas ocurren en el mismo sistema.",
+                "Contenido con apoyo de IA: los posts escritos en portugués se traducen automáticamente a EN y ES con Workers AI, manteniendo los tres idiomas en sincronía.",
+            ],
+            highlights: [
+                "Astro 5 (SSR más islas estáticas) en Cloudflare Workers, renderizado en el edge y rápido en todo el mundo.",
+                "Cloudflare D1 (SQLite) para datos, R2 para archivos, Workers AI para traducción de PT a EN/ES.",
+                "i18n por deep merge: el portugués es la base, EN/ES son overrides, las claves ausentes caen a PT.",
+                "Globo del mundo interactivo (Canvas 2D con d3-geo), cargado bajo demanda, se pausa fuera de pantalla, estático con reduced motion.",
+                "Readiness Scorecard como isla React con gráfico radar, así el JS solo va donde hace falta.",
+                "Pipeline de leads reforzado: anti bot Turnstile, protección CSRF de mismo origen, sanitización de entrada.",
+                "RBAC de 5 roles (viewer, closer, gestor, admin, super_admin) con segregación de datos por dueño.",
+                "Seguridad: PBKDF2 con salt, tokens de sesión con hash, rate limiting en el login, headers CSP y HSTS.",
+                "Embudo de analítica: conversión por etapa, ingresos ganados y perdidos, motivos de pérdida y origen del lead.",
+            ],
+            metrics: [
+                { value: "PT/EN/ES", label: "Trilingüe, un solo código" },
+                { value: "2 productos", label: "Sitio público y CRM interno" },
+                { value: "5 roles", label: "RBAC con segregación de datos" },
+                { value: "Edge", label: "Astro 5 en Cloudflare Workers" },
+            ],
+        },
+        "gov-systems-websis": {
+            title: "Sistemas críticos de gobierno",
+            oneLiner: "Construcción y liderazgo de entrega de sistemas de alto riesgo para agencias federales.",
+            summary:
+                "Desarrollo y entrega ágil de sistemas críticos para organismos del gobierno brasileño (ANTT, SEST SENAT y SISRH) en una stack .NET, SQL Server y Angular. Pasé de becario a desarrollador full stack y a Scrum Master, entregando funcionalidades y dashboards ejecutivos en Power BI para operaciones del sector público.",
+            role: "Desarrollador full stack .NET, luego Scrum Master",
+            context:
+                "Websis Tecnologia construye y opera software para el gobierno federal brasileño. Estos sistemas sostienen operaciones regulatorias y administrativas reales, donde la disponibilidad, la corrección y la auditabilidad no son negociables.",
+            problem:
+                "Los sistemas del sector público tienen requisitos estrictos de fiabilidad, integridad y trazabilidad, y los trabajan equipos que deben entregar de forma predecible ante las expectativas del organismo. El trabajo era entregar funcionalidades correctas y performantes en una stack corporativa madura, manteniendo la cadencia ajustada y visible para los stakeholders.",
+            solution: [
+                "Construí y mantuve funcionalidades para ANTT, SEST SENAT y SISRH en un backend C# y ASP.NET (MVC) con front ends en Angular.",
+                "Acceso a datos con Dapper y Entity Framework sobre SQL Server, eligiendo la herramienta correcta para cada consulta.",
+                "Integración con Elasticsearch para búsqueda rápida sobre grandes bases operativas.",
+                "Dashboards ejecutivos en Power BI que dieron visibilidad operativa al liderazgo.",
+                "Como Scrum Master, conduje las ceremonias ágiles y protegí la cadencia y la previsibilidad de entrega del equipo.",
+            ],
+            highlights: [
+                "Crecí de becario a desarrollador full stack .NET y a Scrum Master en el mismo programa.",
+                "Stack corporativa .NET: C#, ASP.NET, MVC, Dapper, Entity Framework, SQL Server.",
+                "Búsqueda con Elasticsearch sobre datos operativos.",
+                "Dashboards ejecutivos en Power BI para el liderazgo del sector público.",
+                "Liderazgo ágil en entrega de gobierno con responsabilidad real.",
+            ],
+            metrics: [
+                { value: "3", label: "Organismos: ANTT, SEST SENAT, SISRH" },
+                { value: "Becario a SM", label: "De desarrollador a Scrum Master" },
+                { value: "Power BI", label: "Dashboards ejecutivos entregados" },
+            ],
+        },
+        "cboo-modernization": {
+            title: "CBOO, modernización de legado y arquitectura de base de datos",
+            oneLiner: "Modernizar un sistema heredado en PHP hacia Vue.js, y rearquitectar la base de datos por debajo.",
+            summary:
+                "Modernización full stack para CBOO (Conselho Brasileiro de Óptica e Optometria). Migración de una aplicación heredada en PHP y Bootstrap a un front end en Vue.js, rearquitectando el esquema MySQL, migrando datos y ajustando el rendimiento como DBA responsable (backups, control de acceso, indexación y optimización de SQL).",
+            role: "Ingeniero y Arquitecto de Software, DBA (freelance)",
+            context:
+                "CBOO es el consejo brasileño de óptica y optometría. Su sistema web era una aplicación heredada en PHP y Bootstrap que necesitaba modernizarse para el mantenimiento y una mejor experiencia, mientras la base de datos necesitaba trabajo real de arquitectura y rendimiento.",
+            problem:
+                "El código heredado y una base de datos poco optimizada limitaban el mantenimiento y el rendimiento. El sistema necesitaba un front end moderno, un esquema relacional sólido, migración segura de datos de la estructura antigua y administración continua de la base de datos, todo entregado por un ingeniero trabajando directo con la organización.",
+            solution: [
+                "Lideré la modernización full stack de PHP y Bootstrap heredados a un front end en Vue.js.",
+                "Rearquitecté el esquema MySQL y ejecuté la migración de datos de la estructura antigua.",
+                "Optimización de SQL, ajuste de rendimiento e indexación para consultas más rápidas y confiables.",
+                "DBA responsable: backups, control de acceso y administración del día a día vía phpMyAdmin y CLI.",
+                "Apliqué prácticas de Clean Code para dejar un código mantenible.",
+            ],
+            highlights: [
+                "Responsabilidad de punta a punta: modernización del front end, arquitectura de base de datos y DBA, en solitario.",
+                "PHP y Bootstrap heredados reemplazados por un front end en Vue.js.",
+                "Rearquitectura del esquema MySQL con un camino real de migración de datos.",
+                "Trabajo de rendimiento: optimización de consultas, indexación, ajustes.",
+                "Administración de base de datos: backups y control de acceso vía phpMyAdmin y CLI.",
+            ],
+            metrics: [
+                { value: "PHP a Vue", label: "Front end heredado modernizado" },
+                { value: "Rearquitectado", label: "Esquema MySQL y migración de datos" },
+                { value: "Desde 2024", label: "Trabajo en curso" },
+            ],
+        },
+    },
 };
 
 /** Merge the current language's case-study text over the structural project. */
@@ -365,6 +462,78 @@ export const timelineText: Record<Lang, Record<string, TimelineText>> = {
             org: "UDF",
             date: "2022 a 2024",
             summary: "Base de engenharia de software, bancos e web, com uma virada para negócio e comunicação com stakeholders.",
+        },
+    },
+    es: {
+        "2026-55hub-cpo-cto": {
+            title: "Director de Producto y Tecnología (CPO/CTO)",
+            org: "+55 HUB & Corporate Group",
+            date: "Desde 2026",
+            summary:
+                "Promovido de Head of Product a liderar producto y tecnología de punta a punta. Soy dueño del roadmap (PMF, UX/UI en todo el recorrido), de la arquitectura y escalabilidad (meta de 99,9% de uptime), de Seguridad y Cumplimiento (LGPD), del liderazgo ágil del equipo (Scrum/Kanban, 5 landing pages en 2 días) y de la integración de sistemas (Bitrix CRM). Construí la plataforma de la empresa en solitario, 55hubcorp.com, y estructuré un RevOps orientado a datos. KPIs que llevo: churn técnico, NPS de producto, lead time y deploy, SLA.",
+        },
+        "2025-pg-innovation": {
+            title: "Posgrado en Innovación, IA y Robótica",
+            org: "GRAN",
+            date: "2025 a 2026",
+            summary: "Apliqué IA y automatización a productos y flujos reales.",
+        },
+        "2025-pg-process-projects": {
+            title: "Posgrado en Gestión de Procesos y Proyectos",
+            org: "GRAN",
+            date: "2025 a 2026",
+            summary: "Ejecución híbrida de ágil y PMBOK para entrega a escala.",
+        },
+        "2024-cboo": {
+            title: "Ingeniero y Arquitecto de Software (freelance)",
+            org: "CBOO",
+            date: "Desde nov 2024",
+            summary:
+                "Lideré la modernización full stack de un sistema heredado en PHP a Vue.js, con arquitectura de base de datos, migración de datos y rendimiento. Diseñé y mantuve el esquema MySQL, ajusté SQL complejo y me encargué de las tareas de DBA (backups, control de acceso, indexación) vía phpMyAdmin y CLI.",
+        },
+        "2024-scrum-master": {
+            title: "Scrum Master",
+            org: "Websis",
+            date: "Abr 2024 a dic 2025",
+            summary:
+                "Scrum Master de squads multifuncionales entregando sistemas críticos de gobierno en SQL Server y .NET. Conduje las ceremonias ágiles, coordiné entregas de base de datos en producción y construí dashboards en Power BI para visibilidad ejecutiva.",
+        },
+        "2024-certifications": {
+            title: "Certificaciones",
+            date: "2024",
+            summary: "Scrum Fundamentals Certified, Registered Scrum Basics, Six Sigma Yellow Belt.",
+        },
+        "2023-2024-websis": {
+            title: "Desarrollador de Software (.NET)",
+            org: "Websis",
+            date: "Sep 2023 a abr 2024",
+            summary:
+                "Desarrollador C# y .NET en ASP.NET, Angular, Dapper, Entity Framework y SQL Server, construyendo y manteniendo sistemas de gobierno (ANTT, SEST SENAT, SISRH). Implementé Elasticsearch, MVC y Clean Code para rendimiento y mantenimiento.",
+        },
+        "2023-pmi-hackathon": {
+            title: "2º lugar, Hackathon PMI-DF",
+            date: "2023",
+            summary: "Segundo lugar por la facultad (UDF) en el hackathon del PMI-DF.",
+        },
+        "2022-2023-websis": {
+            title: "Becario a Desarrollador Full Stack (.NET)",
+            org: "Websis",
+            date: "Sep 2022 a sep 2023",
+            summary:
+                "Becario de desarrollo web full stack en proyectos de sostenibilidad y financieros. Trabajé con C#, .NET, ASP.NET, MVC, SQL Server, Dapper y Entity Framework, además de React y Angular en la práctica.",
+        },
+        "2022-tcb-trainee": {
+            title: "Trainee, primer programa en la industria",
+            org: "TCB (Brasília)",
+            date: "Jul 2022 a oct 2022",
+            summary:
+                "Desarrollador trainee migrando un sistema de PHP y Laravel a Java, Spring Boot y Angular. Gané experiencia en soporte técnico, redes y resolución de problemas.",
+        },
+        "2022-udf": {
+            title: "Análisis y Desarrollo de Sistemas",
+            org: "UDF",
+            date: "2022 a 2024",
+            summary: "Base de ingeniería de software, bases de datos y web, con un giro hacia negocio y comunicación con stakeholders.",
         },
     },
 };

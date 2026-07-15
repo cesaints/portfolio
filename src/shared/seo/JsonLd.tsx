@@ -44,7 +44,7 @@ export function PersonJsonLd() {
             "Power BI",
             "Bitrix",
         ],
-        knowsLanguage: ["pt-BR", "en"],
+        knowsLanguage: ["pt-BR", "en", "es"],
         alumniOf: [
             { "@type": "CollegeOrUniversity", name: "UDF Centro Universitário" },
             { "@type": "EducationalOrganization", name: "GRAN" },

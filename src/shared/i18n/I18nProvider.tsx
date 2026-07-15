@@ -19,11 +19,12 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     // Restore the stored preference after mount (SSR renders the default lang).
     useEffect(() => {
         const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored === "pt" || stored === "en") setLangState(stored);
+        if (stored === "pt" || stored === "en" || stored === "es") setLangState(stored);
     }, []);
 
     useEffect(() => {
-        document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+        document.documentElement.lang =
+            lang === "pt" ? "pt-BR" : lang === "es" ? "es" : "en";
     }, [lang]);
 
     const setLang = (l: Lang) => {
@@ -34,7 +35,8 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
             /* ignore */
         }
     };
-    const toggle = () => setLang(lang === "pt" ? "en" : "pt");
+    const order: Lang[] = ["en", "pt", "es"];
+    const toggle = () => setLang(order[(order.indexOf(lang) + 1) % order.length]);
 
     return (
         <I18nContext.Provider value={{ lang, setLang, toggle, t: dictionary[lang] }}>
