@@ -154,6 +154,8 @@ export const projects: Project[] = [
             { value: "Re-architected", label: "MySQL schema + data migration" },
             { value: "Since 2024", label: "Ongoing engagement" },
         ],
-        confidential: true,
+        demo: "https://cboobrasil.org.br",
+        links: [{ label: "cboobrasil.org.br", href: "https://cboobrasil.org.br" }],
+        confidential: false,
     },
 ];
