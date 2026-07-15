@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import Badge from "@shared/ui/Badge";
+import Reveal from "@shared/ui/Reveal";
 import { Section, SectionHeader } from "@/shared/ui/Section";
 import { useI18n } from "@/shared/i18n/I18nProvider";
 
@@ -11,31 +12,35 @@ export default function About() {
     return (
         <Section id="about">
             <SectionHeader title={a.heading} subtitle={a.sub} />
-            <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-                <div className="max-w-prose space-y-5 text-lg leading-relaxed text-ink-2">
-                    {a.paragraphs.map((p, i) => (
-                        <p key={i}>{p}</p>
-                    ))}
-                    <p className="text-base">
-                        <Link
-                            href="/timeline"
-                            className="text-violet-400 underline decoration-dotted underline-offset-4 hover:text-violet-300"
-                        >
-                            {a.timelineLink} →
-                        </Link>
-                    </p>
-                </div>
+            <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+                <Reveal direction="right">
+                    <div className="max-w-prose space-y-5 text-lg leading-relaxed text-ink-2">
+                        {a.paragraphs.map((p, i) => (
+                            <p key={i}>{p}</p>
+                        ))}
+                        <p className="text-base">
+                            <Link
+                                href="/timeline"
+                                className="text-violet-400 underline decoration-dotted underline-offset-4 hover:text-violet-300"
+                            >
+                                {a.timelineLink} →
+                            </Link>
+                        </p>
+                    </div>
+                </Reveal>
 
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-                    {a.clusters.map((c) => (
-                        <div key={c.label} className="card p-5">
-                            <p className="eyebrow">{c.label}</p>
-                            <div className="mt-3 flex flex-wrap gap-2">
-                                {c.skills.map((s) => (
-                                    <Badge key={s}>{s}</Badge>
-                                ))}
+                    {a.clusters.map((c, i) => (
+                        <Reveal key={c.label} delay={i * 0.08} direction="left">
+                            <div className="card p-5">
+                                <p className="eyebrow">{c.label}</p>
+                                <div className="mt-3 flex flex-wrap gap-2">
+                                    {c.skills.map((s) => (
+                                        <Badge key={s}>{s}</Badge>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
+                        </Reveal>
                     ))}
                 </div>
             </div>

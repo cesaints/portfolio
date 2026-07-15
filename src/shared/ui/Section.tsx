@@ -1,4 +1,5 @@
 import { cn } from "@shared/lib/cn";
+import Reveal from "@shared/ui/Reveal";
 
 export function Section({ id, muted = false, children }: {
     id?: string; muted?: boolean; children: React.ReactNode;
@@ -14,9 +15,9 @@ export function SectionHeader({ title, subtitle }: {
     title: string; subtitle?: string;
 }) {
     return (
-        <div className="mb-8">
+        <Reveal className="mb-10 md:mb-12">
             <h2 className="h2">{title}</h2>
-            {subtitle && <p className="sub mt-2">{subtitle}</p>}
-        </div>
+            {subtitle && <p className="sub mt-3 max-w-2xl text-lg">{subtitle}</p>}
+        </Reveal>
     );
 }

@@ -59,7 +59,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="pt-BR" className={fontVariables}>
+        <html lang="en" className={fontVariables}>
             <body className="min-h-dvh bg-bg text-ink antialiased">
                 <PersonJsonLd />
                 <WebSiteJsonLd />

@@ -2,6 +2,7 @@
 import { Mail, MapPin, Linkedin, Github } from "lucide-react";
 import { Section, SectionHeader } from "@/shared/ui/Section";
 import { ContactForm } from "@/features/contact";
+import Reveal from "@shared/ui/Reveal";
 import { siteConfig } from "@/shared/config/seo";
 import { useI18n } from "@/shared/i18n/I18nProvider";
 
@@ -15,32 +16,40 @@ export default function ContactPage() {
 
             <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
                 <div className="space-y-4">
-                    <ContactMeta
-                        icon={<Mail className="h-5 w-5" aria-hidden />}
-                        label={c.emailLabel}
-                        value={siteConfig.socials.email}
-                        href={`mailto:${siteConfig.socials.email}`}
-                    />
-                    <ContactMeta
-                        icon={<MapPin className="h-5 w-5" aria-hidden />}
-                        label={c.locationLabel}
-                        value={c.locationValue}
-                    />
-                    <ContactMeta
-                        icon={<Linkedin className="h-5 w-5" aria-hidden />}
-                        label={c.linkedinLabel}
-                        value="in/carlossaints"
-                        href={siteConfig.socials.linkedin}
-                    />
-                    <ContactMeta
-                        icon={<Github className="h-5 w-5" aria-hidden />}
-                        label={c.githubLabel}
-                        value="cesaints"
-                        href={siteConfig.socials.github}
-                    />
+                    {[
+                        {
+                            icon: <Mail className="h-5 w-5" aria-hidden />,
+                            label: c.emailLabel,
+                            value: siteConfig.socials.email,
+                            href: `mailto:${siteConfig.socials.email}`,
+                        },
+                        {
+                            icon: <MapPin className="h-5 w-5" aria-hidden />,
+                            label: c.locationLabel,
+                            value: c.locationValue,
+                        },
+                        {
+                            icon: <Linkedin className="h-5 w-5" aria-hidden />,
+                            label: c.linkedinLabel,
+                            value: "in/carlossaints",
+                            href: siteConfig.socials.linkedin,
+                        },
+                        {
+                            icon: <Github className="h-5 w-5" aria-hidden />,
+                            label: c.githubLabel,
+                            value: "cesaints",
+                            href: siteConfig.socials.github,
+                        },
+                    ].map((m, i) => (
+                        <Reveal key={m.label} delay={i * 0.07} direction="right">
+                            <ContactMeta {...m} />
+                        </Reveal>
+                    ))}
                 </div>
 
-                <ContactForm />
+                <Reveal direction="left">
+                    <ContactForm />
+                </Reveal>
             </div>
         </Section>
     );

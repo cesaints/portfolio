@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Reveal from "@shared/ui/Reveal";
 import { buttonClasses } from "@shared/ui/button/styles";
 import { useI18n } from "@/shared/i18n/I18nProvider";
 
@@ -17,7 +18,7 @@ export default function CTASection() {
                         "radial-gradient(600px 240px at 50% -20%, rgba(124,58,237,.22), transparent 60%)",
                 }}
             />
-            <div className="relative">
+            <Reveal className="relative">
                 <h2 className="font-display text-3xl font-bold tracking-tight text-ink md:text-4xl">
                     {c.heading}
                 </h2>
@@ -27,7 +28,7 @@ export default function CTASection() {
                         {c.button}
                     </Link>
                 </div>
-            </div>
+            </Reveal>
         </div>
     );
 }

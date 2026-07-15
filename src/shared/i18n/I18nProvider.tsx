@@ -10,7 +10,7 @@ type I18nContextValue = {
 };
 
 const I18nContext = createContext<I18nContextValue | null>(null);
-const DEFAULT_LANG: Lang = "pt";
+const DEFAULT_LANG: Lang = "en";
 const STORAGE_KEY = "cadu-lang";
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {
