@@ -50,14 +50,14 @@ export default function StatTile({ value, label }: { value: string; label: strin
     }, [inView, reduced, value]);
 
     return (
-        <div className="flex flex-col gap-2 px-2 py-8 md:px-0">
+        <div className="flex flex-col items-center gap-2 px-6 py-8 text-center md:items-start md:text-left">
             <span
                 ref={ref}
-                className="font-mono text-4xl font-medium tracking-tight tabular-nums text-ink md:text-5xl"
+                className="text-gradient font-mono text-4xl font-medium tracking-tight tabular-nums md:text-[2.75rem]"
             >
                 {display}
             </span>
-            <span className="text-sm text-muted">{label}</span>
+            <span className="text-sm uppercase tracking-[0.08em] text-muted">{label}</span>
         </div>
     );
 }

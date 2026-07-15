@@ -3,37 +3,67 @@
 @tailwind utilities;
 
 /* =========================================================
-   EDITORIAL LIGHT THEME
-   Warm paper, near-black ink, one vermilion accent.
+   THEME TOKENS — executive dark (deep-space instrument panel)
    ========================================================= */
 :root {
-  /* Surfaces */
-  --bg: #f3f1ea;
-  --bg-2: #ece9e0;
-  --surface-1: #ffffff;
-  --surface-2: #efece3;
-  --surface-3: #e4e0d5;
+  /* Surfaces (elevation ramp) */
+  --bg: #080b14;
+  --bg-2: #0b0f1a;
+  --surface-1: #0e1320;
+  --surface-2: #141b2b;
+  --surface-3: #1b2436;
 
-  /* Hairlines */
-  --line: #dcd7cb;
-  --line-strong: #c6c0b1;
+  /* Borders / hairlines */
+  --line: #1e2637;
+  --line-strong: #2a3346;
+  --line-glow: rgba(124, 58, 237, 0.35);
 
-  /* Ink / text tiers */
-  --ink: #17160f;
-  --ink-2: #45433b;
-  --muted: #78756a;
-  --muted-2: #a29e91;
+  /* Text tiers */
+  --ink: #f2f5fa;
+  --ink-2: #c3cad9;
+  --muted: #8b93a7;
+  --muted-2: #5b6479;
 
-  /* Single accent */
-  --accent: #d93a15;
-  --accent-600: #b42f0f;
-  --accent-tint: rgba(217, 58, 21, 0.1);
+  /* Brand & accent (aligned to Tailwind's native violet/cyan scale) */
+  --violet: #7c3aed;
+  --violet-500: #8b5cf6;
+  --violet-400: #a78bfa;
+  --violet-600: #6d28d9;
+  --cyan: #22d3ee;
+  --cyan-400: #38dbf0;
+  --cyan-600: #0e9fb8;
+  --success: #34d399;
+  --danger: #f87171;
+  --warn: #fbbf24;
 
-  /* Shadows (editorial: minimal) */
-  --shadow-card: 0 1px 2px rgba(23, 22, 15, 0.05);
-  --shadow-lift: 0 12px 30px rgba(23, 22, 15, 0.1);
+  /* Signature gradients — one family only */
+  --grad-brand: linear-gradient(135deg, #8b5cf6 0%, #22d3ee 100%);
+  --grad-brand-soft: linear-gradient(135deg, #a78bfa 0%, #38dbf0 100%);
+  --grad-card-top: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0) 40%
+  );
 
-  color-scheme: light;
+  /* Hero atmosphere — one calm source */
+  --g-hero: radial-gradient(
+      900px 520px at 72% -8%,
+      rgba(124, 58, 237, 0.2),
+      transparent 60%
+    ),
+    radial-gradient(
+      700px 480px at 20% 8%,
+      rgba(34, 211, 238, 0.08),
+      transparent 55%
+    );
+
+  /* Elevation shadows (dark-tuned, low-alpha) */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(255, 255, 255, 0.02) inset;
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.55), 0 1px 0 rgba(255, 255, 255, 0.03) inset;
+  --glow-violet: 0 0 0 1px rgba(124, 58, 237, 0.3), 0 8px 30px rgba(124, 58, 237, 0.25);
+
+  color-scheme: dark;
 }
 
 html,
@@ -49,69 +79,70 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
-::selection {
-  background: var(--ink);
-  color: var(--bg);
-}
-
 /* =========================================================
-   LAYOUT
+   LAYOUT HELPERS
    ========================================================= */
 .container-std {
-  @apply mx-auto max-w-[1160px] px-6 sm:px-8 lg:px-10;
+  @apply mx-auto max-w-[1200px] px-5 sm:px-6 lg:px-8;
 }
 
 .section {
-  @apply py-24 md:py-32;
+  @apply py-20 md:py-28;
 }
 .section-muted {
-  background: var(--bg-2);
-}
-
-/* Thin section separators (editorial rhythm) */
-.rule {
-  height: 1px;
-  background: var(--line);
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
 }
 
 /* =========================================================
-   TYPOGRAPHY
+   TYPOGRAPHY UTILITIES
    ========================================================= */
 .font-display {
   font-family: var(--font-display), var(--font-sans), sans-serif;
 }
 
 .h1 {
-  @apply font-display text-4xl font-extrabold leading-[1.02] tracking-[-0.02em] text-ink md:text-6xl;
+  @apply font-display text-4xl font-bold leading-[1.08] tracking-[-0.02em] md:text-5xl;
 }
 .h2 {
-  @apply font-display text-3xl font-bold tracking-[-0.02em] text-ink md:text-[2.5rem] md:leading-[1.05];
+  @apply font-display text-2xl font-bold tracking-[-0.02em] md:text-[2.125rem];
 }
 .sub {
   @apply text-ink-2;
 }
-
-/* Small technical label / kicker */
 .eyebrow {
-  @apply font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent;
+  @apply text-xs font-semibold uppercase tracking-[0.14em] text-violet-400;
+}
+
+.text-gradient {
+  background: var(--grad-brand-soft);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* =========================================================
-   CARD (flat, bordered, editorial)
+   CARD
    ========================================================= */
 .card {
-  @apply rounded-md border border-line bg-surface-1;
-  box-shadow: var(--shadow-card);
+  @apply relative overflow-hidden rounded-2xl border border-line bg-surface-1;
+  box-shadow: var(--shadow-md);
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--grad-card-top);
+  pointer-events: none;
 }
 
 /* =========================================================
-   TIMELINE (react-vertical-timeline) LIGHT OVERRIDES
+   TIMELINE (react-vertical-timeline) DARK OVERRIDES
    ========================================================= */
 .vertical-timeline-element-content {
   background: var(--surface-1) !important;
   border: 1px solid var(--line);
-  box-shadow: var(--shadow-card) !important;
-  border-radius: 8px !important;
+  box-shadow: var(--shadow-md) !important;
+  border-radius: 16px !important;
   color: var(--ink) !important;
 }
 .vertical-timeline-element-content .vertical-timeline-element-date {
@@ -121,37 +152,85 @@ body {
   background: var(--line) !important;
 }
 .vertical-timeline-element-icon {
-  box-shadow: 0 0 0 4px var(--bg), inset 0 1px 0 rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 0 0 4px var(--surface-2), inset 0 2px 0 rgba(0, 0, 0, 0.2) !important;
 }
 
 /* =========================================================
-   FOCUS / A11Y / MOTION
+   FOCUS / MOTION / A11Y
    ========================================================= */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--violet-400);
   outline-offset: 2px;
-  border-radius: 3px;
+  border-radius: 6px;
 }
 
 a {
-  transition: color 0.18s ease, background-color 0.18s ease, opacity 0.18s ease;
+  transition: color 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+}
+
+/* Slow atmospheric drift for the hero background (very subtle) */
+@keyframes aurora-drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-1.5%, 1%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.aurora {
+  animation: aurora-drift 26s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Slowly rotating conic ring for the flagship card border */
+@keyframes border-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+.flagship-ring {
+  position: relative;
+}
+.flagship-ring::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from 0deg,
+    #8b5cf6,
+    #22d3ee,
+    #8b5cf6,
+    #22d3ee,
+    #8b5cf6
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: border-spin 12s linear infinite;
+  pointer-events: none;
 }
 
 @keyframes pulse-soft {
   0%,
   100% {
     transform: scale(1);
-    opacity: 0.85;
+    opacity: 0.9;
   }
   50% {
-    transform: scale(1.25);
+    transform: scale(1.2);
     opacity: 1;
   }
 }
 .pulse-soft {
-  animation: pulse-soft 2.4s ease-in-out infinite;
+  animation: pulse-soft 2.2s ease-in-out infinite;
 }
 
+/* Respect reduced-motion everywhere */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

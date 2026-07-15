@@ -59,7 +59,7 @@ function ContactMeta({
 }) {
     const inner = (
         <div className="card flex items-center gap-4 p-5">
-            <span className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-line bg-surface-2 text-accent">
+            <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-surface-2 text-violet-400">
                 {icon}
             </span>
             <div>

@@ -1,8 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Github, Lock } from "lucide-react";
+import { Github, ExternalLink, Lock, Star, X } from "lucide-react";
 import type { Project } from "@/entities/project/types";
 import { cn } from "@shared/lib/cn";
+import Badge from "@shared/ui/Badge";
+import Spotlight from "@shared/ui/Spotlight";
 import { useI18n } from "@/shared/i18n/I18nProvider";
 import { localizeProject } from "@/shared/i18n/content";
 
@@ -19,80 +21,117 @@ export default function ProjectCard({
 
     return (
         <>
+            <Spotlight className={className}>
             <article
                 className={cn(
-                    "card group flex h-full flex-col p-6 transition-shadow duration-200 hover:shadow-lift md:p-8",
-                    p.featured && "border-l-2 border-l-accent",
-                    className
+                    "card group flex h-full flex-col p-0 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-lg",
+                    p.featured && "[background:var(--grad-brand)] p-px"
                 )}
             >
-                <div className="flex items-baseline justify-between gap-4">
-                    <span className="eyebrow">
-                        {p.featured ? t.flagship.badge : p.category}
-                    </span>
-                    {p.year && (
-                        <span className="font-mono text-xs text-muted">{p.year}</span>
-                    )}
-                </div>
+                <div className={cn("flex h-full flex-col", p.featured && "rounded-2xl bg-surface-1")}>
+                    <Cover p={p} />
 
-                <h3 className="mt-4 font-display text-2xl font-bold tracking-[-0.01em] text-ink">
-                    {p.title}
-                </h3>
-                <p className="mt-2 text-ink-2">{p.oneLiner ?? p.summary}</p>
-
-                <div className="mt-5 flex flex-wrap gap-x-3 gap-y-1.5">
-                    {p.tags.slice(0, 5).map((tag) => (
-                        <span key={tag} className="font-mono text-xs text-muted">
-                            {tag}
-                        </span>
-                    ))}
-                </div>
-
-                <div className="mt-auto flex flex-wrap items-center gap-4 border-t border-line pt-5">
-                    {p.confidential ? (
-                        <span className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wide text-muted">
-                            <Lock className="h-3.5 w-3.5" aria-hidden />
-                            {p.category === "Enterprise / Government"
-                                ? t.work.confidentialGov
-                                : t.work.confidentialEnterprise}
-                        </span>
-                    ) : (
-                        <>
-                            {p.repo && (
-                                <a
-                                    href={p.repo}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="inline-flex items-center gap-1.5 text-sm text-ink-2 transition-colors hover:text-accent"
-                                >
-                                    <Github className="h-4 w-4" aria-hidden /> {t.work.code}
-                                </a>
+                    <div className="flex flex-1 flex-col p-6">
+                        <div className="mb-2 flex items-center gap-2 text-xs">
+                            {p.featured ? (
+                                <span className="inline-flex items-center gap-1.5 text-violet-400">
+                                    <Star className="h-3.5 w-3.5" aria-hidden /> Flagship
+                                </span>
+                            ) : (
+                                <span className="uppercase tracking-[0.1em] text-muted">
+                                    {p.category}
+                                </span>
                             )}
-                            {p.demo && (
-                                <a
-                                    href={p.demo}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="inline-flex items-center gap-1.5 text-sm text-ink-2 transition-colors hover:text-accent"
-                                >
-                                    {t.work.live}
-                                    <ArrowUpRight className="h-4 w-4" aria-hidden />
-                                </a>
+                            {p.year && <span className="ml-auto text-muted">{p.year}</span>}
+                        </div>
+
+                        <h3 className="font-display text-xl font-semibold tracking-tight text-ink">
+                            {p.title}
+                        </h3>
+                        <p className="mt-2 line-clamp-3 text-ink-2">{p.oneLiner ?? p.summary}</p>
+
+                        <div className="mt-4 flex flex-wrap gap-2">
+                            {p.tags.slice(0, 4).map((t) => (
+                                <Badge key={t}>{t}</Badge>
+                            ))}
+                        </div>
+
+                        <div className="mt-5 flex items-center gap-2 pt-1">
+                            {p.confidential ? (
+                                <Badge tone="muted">
+                                    <Lock className="h-3.5 w-3.5" aria-hidden />{" "}
+                                    {p.category === "Enterprise / Government"
+                                        ? t.work.confidentialGov
+                                        : t.work.confidentialEnterprise}
+                                </Badge>
+                            ) : (
+                                <>
+                                    {p.repo && (
+                                        <a
+                                            href={p.repo}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="inline-flex items-center gap-2 rounded-xl border border-line px-3 py-2 text-sm text-ink-2 transition-colors hover:bg-surface-2"
+                                        >
+                                            <Github className="h-4 w-4" aria-hidden /> {t.work.code}
+                                        </a>
+                                    )}
+                                    {p.demo && (
+                                        <a
+                                            href={p.demo}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="inline-flex items-center gap-2 rounded-xl border border-line px-3 py-2 text-sm text-ink-2 transition-colors hover:bg-surface-2"
+                                        >
+                                            <ExternalLink className="h-4 w-4" aria-hidden /> {t.work.live}
+                                        </a>
+                                    )}
+                                </>
                             )}
-                        </>
-                    )}
-                    <button
-                        onClick={() => setOpen(true)}
-                        className="ml-auto inline-flex items-center gap-1 text-sm font-medium text-ink transition-colors hover:text-accent"
-                    >
-                        {t.work.readCase}
-                        <ArrowUpRight className="h-4 w-4" aria-hidden />
-                    </button>
+                            <button
+                                onClick={() => setOpen(true)}
+                                className="ml-auto text-sm text-muted underline decoration-dotted underline-offset-4 transition-colors hover:text-ink"
+                            >
+                                {t.work.readCase}
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </article>
+            </Spotlight>
 
             {open && <CaseStudyModal p={p} onClose={() => setOpen(false)} />}
         </>
+    );
+}
+
+/** On-brand gradient cover (no binary asset needed). */
+function Cover({ p }: { p: Project }) {
+    return (
+        <div className="relative m-4 mb-0 overflow-hidden rounded-xl border border-line">
+            <div
+                className="relative flex h-44 items-end p-4 sm:h-48"
+                style={{
+                    background:
+                        "radial-gradient(120% 120% at 80% -20%, rgba(124,58,237,.35), transparent 55%)," +
+                        "radial-gradient(120% 120% at 0% 120%, rgba(34,211,238,.22), transparent 55%)," +
+                        "var(--surface-1)",
+                }}
+            >
+                <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 opacity-[0.15]"
+                    style={{
+                        backgroundImage:
+                            "radial-gradient(rgba(255,255,255,.6) 1px, transparent 1.2px)",
+                        backgroundSize: "22px 22px",
+                    }}
+                />
+                <span className="relative font-display text-sm font-semibold uppercase tracking-[0.16em] text-ink/90">
+                    {p.category}
+                </span>
+            </div>
+        </div>
     );
 }
 
@@ -114,18 +153,18 @@ function CaseStudyModal({ p, onClose }: { p: Project; onClose: () => void }) {
             className="fixed inset-0 z-50 grid place-items-center p-4 sm:p-6"
             role="dialog"
             aria-modal="true"
-            aria-label={p.title}
+            aria-label={`${p.title} case study`}
             onClick={onClose}
         >
-            <div className="absolute inset-0 bg-ink/40 backdrop-blur-sm" />
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
             <div
-                className="card relative max-h-[86vh] w-full max-w-2xl overflow-y-auto p-0"
+                className="card relative max-h-[85vh] w-full max-w-3xl overflow-y-auto p-0"
                 onClick={(e) => e.stopPropagation()}
             >
                 <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-line bg-surface-1/95 p-6 backdrop-blur">
                     <div>
                         <p className="eyebrow">{p.category}</p>
-                        <h4 className="mt-2 font-display text-2xl font-bold text-ink">
+                        <h4 className="mt-1 font-display text-2xl font-bold text-ink">
                             {p.title}
                         </h4>
                         {p.role && <p className="mt-1 text-sm text-muted">{p.role}</p>}
@@ -133,21 +172,26 @@ function CaseStudyModal({ p, onClose }: { p: Project; onClose: () => void }) {
                     <button
                         onClick={onClose}
                         aria-label="Close"
-                        className="shrink-0 font-mono text-sm text-muted hover:text-accent"
+                        className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-line text-muted hover:bg-surface-2 hover:text-ink"
                     >
-                        [ ESC ]
+                        <X className="h-4 w-4" aria-hidden />
                     </button>
                 </div>
 
-                <div className="space-y-7 p-6">
+                <div className="space-y-6 p-6">
                     {p.metrics && (
-                        <div className="grid grid-cols-2 gap-x-6 gap-y-4 border-b border-line pb-6 sm:grid-cols-4">
+                        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                             {p.metrics.map((m) => (
-                                <div key={m.label}>
-                                    <div className="font-mono text-lg font-medium text-ink">
+                                <div
+                                    key={m.label}
+                                    className="rounded-xl border border-line bg-surface-1 p-3 text-center"
+                                >
+                                    <div className="text-gradient font-mono text-lg font-medium">
                                         {m.value}
                                     </div>
-                                    <div className="mt-1 text-xs text-muted">{m.label}</div>
+                                    <div className="mt-1 text-[11px] uppercase tracking-wide text-muted">
+                                        {m.label}
+                                    </div>
                                 </div>
                             ))}
                         </div>
@@ -162,34 +206,31 @@ function CaseStudyModal({ p, onClose }: { p: Project; onClose: () => void }) {
 
                     {p.stack && (
                         <div>
-                            <h5 className="eyebrow mb-3">{ui.stack}</h5>
-                            <div className="flex flex-wrap gap-x-3 gap-y-1.5">
+                            <h5 className="mb-2 text-sm font-semibold text-ink">{ui.stack}</h5>
+                            <div className="flex flex-wrap gap-2">
                                 {p.stack.map((s) => (
-                                    <span key={s} className="font-mono text-xs text-muted">
-                                        {s}
-                                    </span>
+                                    <Badge key={s}>{s}</Badge>
                                 ))}
                             </div>
                         </div>
                     )}
 
                     {p.confidential ? (
-                        <p className="inline-flex items-center gap-1.5 font-mono text-xs text-muted">
+                        <Badge tone="muted">
                             <Lock className="h-3.5 w-3.5" aria-hidden /> {ui.confidentialNote}
-                        </p>
+                        </Badge>
                     ) : (
                         p.links && (
-                            <div className="flex flex-wrap gap-4">
+                            <div className="flex flex-wrap gap-2">
                                 {p.links.map((l) => (
                                     <a
                                         key={l.href}
                                         href={l.href}
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="inline-flex items-center gap-1.5 text-sm font-medium text-ink hover:text-accent"
+                                        className="inline-flex items-center gap-2 rounded-xl border border-line px-3 py-2 text-sm text-ink-2 hover:bg-surface-2"
                                     >
-                                        {l.label}
-                                        <ArrowUpRight className="h-4 w-4" aria-hidden />
+                                        <ExternalLink className="h-4 w-4" aria-hidden /> {l.label}
                                     </a>
                                 ))}
                             </div>
@@ -204,7 +245,7 @@ function CaseStudyModal({ p, onClose }: { p: Project; onClose: () => void }) {
 function Block({ title, body }: { title: string; body: string }) {
     return (
         <div>
-            <h5 className="eyebrow mb-2">{title}</h5>
+            <h5 className="mb-1.5 text-sm font-semibold text-ink">{title}</h5>
             <p className="text-ink-2">{body}</p>
         </div>
     );
@@ -213,11 +254,14 @@ function Block({ title, body }: { title: string; body: string }) {
 function BulletBlock({ title, items }: { title: string; items: string[] }) {
     return (
         <div>
-            <h5 className="eyebrow mb-3">{title}</h5>
-            <ul className="space-y-2.5">
+            <h5 className="mb-2 text-sm font-semibold text-ink">{title}</h5>
+            <ul className="space-y-2">
                 {items.map((it) => (
-                    <li key={it} className="flex gap-3 text-ink-2">
-                        <span aria-hidden className="mt-2 h-1 w-4 shrink-0 bg-accent" />
+                    <li key={it} className="flex gap-2.5 text-ink-2">
+                        <span
+                            aria-hidden
+                            className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full [background:var(--grad-brand)]"
+                        />
                         <span>{it}</span>
                     </li>
                 ))}

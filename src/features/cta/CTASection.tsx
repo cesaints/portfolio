@@ -8,19 +8,22 @@ export default function CTASection() {
     const c = t.cta;
 
     return (
-        <div className="rounded-md bg-ink px-8 py-16 md:px-14 md:py-24">
-            <div className="max-w-3xl">
-                <h2 className="font-display text-3xl font-extrabold leading-[1.05] tracking-[-0.02em] text-[color:var(--bg)] md:text-5xl">
+        <div className="card relative overflow-hidden p-8 text-center md:p-14">
+            <span
+                aria-hidden
+                className="pointer-events-none absolute inset-0 opacity-60"
+                style={{
+                    background:
+                        "radial-gradient(600px 240px at 50% -20%, rgba(124,58,237,.22), transparent 60%)",
+                }}
+            />
+            <div className="relative">
+                <h2 className="font-display text-3xl font-bold tracking-tight text-ink md:text-4xl">
                     {c.heading}
                 </h2>
-                <p className="mt-5 max-w-xl text-lg text-[color:var(--surface-3)]">
-                    {c.body}
-                </p>
-                <div className="mt-9">
-                    <Link
-                        href="/contact"
-                        className={buttonClasses({ variant: "primary-grad", size: "lg" })}
-                    >
+                <p className="mx-auto mt-3 max-w-xl text-ink-2">{c.body}</p>
+                <div className="mt-7 flex justify-center">
+                    <Link href="/contact" className={buttonClasses({ variant: "primary-grad", size: "lg" })}>
                         {c.button}
                     </Link>
                 </div>

@@ -49,7 +49,7 @@ export const siteConfig: SiteConfig = {
     url: resolveUrl(),
     locale: "en",
     ogLocale: "en_US",
-    themeColor: "#f3f1ea",
+    themeColor: "#080b14",
     keywords: [
         "Carlos Eduardo Gonçalves dos Santos",
         "Cadu",
