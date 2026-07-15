@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { Lock } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 import type { Project } from "@/entities/project/types";
 import { cn } from "@shared/lib/cn";
 import { useI18n } from "@/shared/i18n/I18nProvider";
 
-/** Browser-chrome mock. Shows production screenshots (with tabs) or a
- *  confidential placeholder when the work has no public preview. */
+/** Browser-chrome mock for projects with production screenshots; a designed
+ *  confidential panel (no fake browser) for work without a public preview. */
 export default function ProjectPreview({
     project,
     tabLabels,
@@ -15,15 +15,28 @@ export default function ProjectPreview({
     project: Project;
     tabLabels?: string[];
 }) {
-    const { t } = useI18n();
     const shots = project.screenshots ?? [];
+
+    if (shots.length === 0) return <ConfidentialPanel project={project} />;
+
+    return <BrowserMock project={project} shots={shots} tabLabels={tabLabels} />;
+}
+
+function BrowserMock({
+    project,
+    shots,
+    tabLabels,
+}: {
+    project: Project;
+    shots: NonNullable<Project["screenshots"]>;
+    tabLabels?: string[];
+}) {
     const [idx, setIdx] = useState(0);
     const hasTabs = shots.length > 1 && tabLabels && tabLabels.length === shots.length;
-    const url = shots[idx]?.url ?? "internal";
+    const url = shots[idx]?.url ?? "";
 
     return (
         <div className="overflow-hidden rounded-xl border border-line bg-surface-1 shadow-[var(--shadow-lg)]">
-            {/* chrome */}
             <div className="flex items-center gap-3 border-b border-line bg-surface-2 px-3 py-2.5 sm:px-4">
                 <div className="flex gap-1.5">
                     <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
@@ -31,7 +44,7 @@ export default function ProjectPreview({
                     <span className="h-3 w-3 rounded-full bg-[#28c840]" />
                 </div>
                 <div className="hidden flex-1 truncate rounded-md border border-line bg-bg px-3 py-1 font-mono text-xs text-muted sm:block">
-                    {shots.length ? `https://${url}` : "internal · confidential"}
+                    https://{url}
                 </div>
                 {hasTabs && (
                     <div className="ml-auto flex rounded-md border border-line bg-bg p-0.5 text-xs font-medium">
@@ -51,44 +64,62 @@ export default function ProjectPreview({
                 )}
             </div>
 
-            {/* viewport */}
             <div className="relative aspect-[16/10] bg-bg">
-                {shots.length ? (
-                    shots.map((s, i) => (
-                        <Image
-                            key={s.src}
-                            src={s.src}
-                            alt={`${project.title} preview`}
-                            fill
-                            sizes="(min-width:1024px) 55vw, 100vw"
-                            className={cn(
-                                "object-cover object-top transition-opacity duration-500",
-                                idx === i ? "opacity-100" : "opacity-0"
-                            )}
-                        />
-                    ))
-                ) : (
-                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-8 text-center">
-                        <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-line bg-surface-2 text-muted">
-                            <Lock className="h-6 w-6" aria-hidden />
-                        </span>
-                        <div>
-                            <p className="font-display text-lg font-semibold text-ink">
-                                {t.work.confidentialPreview}
-                            </p>
-                            <p className="mt-1 text-sm text-muted">
-                                {t.work.confidentialPreviewSub}
-                            </p>
-                        </div>
-                        <div className="flex flex-wrap justify-center gap-x-3 gap-y-1">
-                            {project.tags.slice(0, 5).map((tag) => (
-                                <span key={tag} className="font-mono text-xs text-muted">
-                                    {tag}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                )}
+                {shots.map((s, i) => (
+                    <Image
+                        key={s.src}
+                        src={s.src}
+                        alt={`${project.title} preview`}
+                        fill
+                        sizes="(min-width:1024px) 55vw, 100vw"
+                        className={cn(
+                            "object-cover object-top transition-opacity duration-500",
+                            idx === i ? "opacity-100" : "opacity-0"
+                        )}
+                    />
+                ))}
+            </div>
+        </div>
+    );
+}
+
+function ConfidentialPanel({ project }: { project: Project }) {
+    const { t } = useI18n();
+    return (
+        <div className="relative flex aspect-[16/10] flex-col items-center justify-center gap-5 overflow-hidden rounded-xl border border-line bg-surface-1 p-8 text-center shadow-[var(--shadow-lg)]">
+            {/* soft brand glow + grid motif */}
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0"
+                style={{
+                    background:
+                        "radial-gradient(600px 300px at 50% 0%, rgba(124,58,237,.16), transparent 60%)",
+                }}
+            />
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 opacity-[0.14]"
+                style={{
+                    backgroundImage:
+                        "linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px)",
+                    backgroundSize: "40px 40px",
+                }}
+            />
+            <span className="relative inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-[color:var(--line-glow)] bg-surface-2 text-violet-300">
+                <ShieldCheck className="h-7 w-7" aria-hidden />
+            </span>
+            <div className="relative">
+                <p className="font-display text-xl font-semibold text-ink">
+                    {t.work.confidentialPreview}
+                </p>
+                <p className="mt-1 text-sm text-muted">{t.work.confidentialPreviewSub}</p>
+            </div>
+            <div className="relative flex flex-wrap justify-center gap-x-3 gap-y-1.5">
+                {project.tags.slice(0, 6).map((tag) => (
+                    <span key={tag} className="font-mono text-xs text-muted">
+                        {tag}
+                    </span>
+                ))}
             </div>
         </div>
     );

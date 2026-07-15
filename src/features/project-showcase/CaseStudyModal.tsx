@@ -29,7 +29,7 @@ export default function CaseStudyModal({
     return (
         // Outer element is the scroll container, so any content height scrolls.
         <div
-            className="fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-black/70 backdrop-blur-sm"
+            className="fixed inset-0 z-[60] overflow-y-auto overscroll-contain bg-bg/92 backdrop-blur-md"
             role="dialog"
             aria-modal="true"
             aria-label={p.title}
