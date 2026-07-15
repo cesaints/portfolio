@@ -1,7 +1,6 @@
 import "@/app/globals.css";
 import type { Metadata, Viewport } from "next";
 import Header from "@shared/ui/Header";
-import Galaxy from "@shared/ui/fx/Galaxy";
 import { siteConfig } from "@/shared/config/seo";
 import { PersonJsonLd, WebSiteJsonLd } from "@/shared/seo/JsonLd";
 import { I18nProvider } from "@/shared/i18n/I18nProvider";
@@ -64,7 +63,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <PersonJsonLd />
                 <WebSiteJsonLd />
                 <ScrollProgress />
-                <Galaxy />
                 <I18nProvider>
                     <div className="relative z-10 flex min-h-dvh flex-col">
                         <Header />

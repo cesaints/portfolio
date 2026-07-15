@@ -1,6 +1,6 @@
 import { cn } from "@shared/lib/cn";
 
-/** Small chip used for tech tags, categories and status. */
+/** Small bordered chip, editorial mono style. */
 export default function Badge({
     children,
     className,
@@ -12,13 +12,13 @@ export default function Badge({
 }) {
     const tones = {
         default: "border-line bg-surface-2 text-ink-2",
-        muted: "border-line bg-surface-1 text-muted",
-        accent: "border-[color:var(--line-glow)] bg-surface-2 text-violet-400",
+        muted: "border-line bg-transparent text-muted",
+        accent: "border-accent text-accent bg-transparent",
     } as const;
     return (
         <span
             className={cn(
-                "inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1 text-xs font-medium",
+                "inline-flex items-center gap-1.5 rounded border px-2 py-0.5 font-mono text-xs",
                 tones[tone],
                 className
             )}

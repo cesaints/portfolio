@@ -14,38 +14,24 @@ export default {
                 display: ["var(--font-display)", "var(--font-sans)", "sans-serif"],
                 mono: ["var(--font-mono)", "ui-monospace", "monospace"],
             },
-            // Semantic tokens (brand violet/cyan use Tailwind's native scale, which already matches).
             colors: {
-                bg: {
-                    DEFAULT: "var(--bg)",
-                    2: "var(--bg-2)",
-                },
+                bg: { DEFAULT: "var(--bg)", 2: "var(--bg-2)" },
                 surface: {
                     1: "var(--surface-1)",
                     2: "var(--surface-2)",
                     3: "var(--surface-3)",
                 },
-                line: {
-                    DEFAULT: "var(--line)",
-                    strong: "var(--line-strong)",
-                },
-                ink: {
-                    DEFAULT: "var(--ink)",
-                    2: "var(--ink-2)",
-                },
-                muted: {
-                    DEFAULT: "var(--muted)",
-                    2: "var(--muted-2)",
-                },
+                ink: { DEFAULT: "var(--ink)", 2: "var(--ink-2)" },
+                muted: { DEFAULT: "var(--muted)", 2: "var(--muted-2)" },
+                line: { DEFAULT: "var(--line)", strong: "var(--line-strong)" },
+                accent: { DEFAULT: "var(--accent)", 600: "var(--accent-600)" },
             },
             boxShadow: {
-                sm: "var(--shadow-sm)",
-                md: "var(--shadow-md)",
-                lg: "var(--shadow-lg)",
-                glow: "var(--glow-violet)",
+                card: "var(--shadow-card)",
+                lift: "var(--shadow-lift)",
             },
             maxWidth: {
-                prose: "65ch",
+                prose: "62ch",
             },
         },
     },

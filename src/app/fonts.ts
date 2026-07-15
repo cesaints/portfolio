@@ -1,10 +1,9 @@
-// Self-hosted fonts via next/font (no render-blocking Google request, no CLS).
-// Display = Montserrat (brand continuity with 55hubcorp). Body = Inter. Mono = JetBrains Mono for instrumented stats.
-import { Montserrat, Inter, JetBrains_Mono } from "next/font/google";
+// Editorial type system: Archivo (strong grotesque display) + Inter (body) + JetBrains Mono (labels/numbers).
+import { Archivo, Inter, JetBrains_Mono } from "next/font/google";
 
-export const display = Montserrat({
+export const display = Archivo({
     subsets: ["latin"],
-    weight: ["600", "700", "800"],
+    weight: ["600", "700", "800", "900"],
     variable: "--font-display",
     display: "swap",
 });
@@ -18,7 +17,7 @@ export const sans = Inter({
 
 export const mono = JetBrains_Mono({
     subsets: ["latin"],
-    weight: ["500"],
+    weight: ["400", "500"],
     variable: "--font-mono",
     display: "swap",
 });

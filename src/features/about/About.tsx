@@ -19,7 +19,7 @@ export default function About() {
                     <p className="text-base">
                         <Link
                             href="/timeline"
-                            className="text-violet-400 underline decoration-dotted underline-offset-4 hover:text-violet-300"
+                            className="font-medium text-ink underline decoration-accent decoration-2 underline-offset-4 hover:text-accent"
                         >
                             {a.timelineLink} →
                         </Link>

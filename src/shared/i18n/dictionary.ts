@@ -18,7 +18,7 @@ const en = {
             "I decide what to build, then I build it.",
         ],
         pitch:
-            "I lead product and technology at +55 HUB. I own the roadmap, the architecture, and the RevOps that turns leads into deals, and I still write the code behind it. The numbers I answer for are product NPS, lead time to production, and a 99.9% uptime target.",
+            "I run product and technology at +55 HUB. I set the roadmap, design the architecture, and build the RevOps that turns leads into revenue. I still ship the code. I answer for product NPS, lead time to production, and 99.9% uptime.",
         location: "Brasília, DF, Brazil. Remote (Salvador, BA).",
         ctaPrimary: "View case studies",
         ctaSecondary: "Get in touch",
@@ -130,7 +130,7 @@ const pt: Shape = {
             "Decido o que construir e construo.",
         ],
         pitch:
-            "Lidero produto e tecnologia na +55 HUB. Sou dono do roadmap, da arquitetura e do RevOps que transforma leads em negócios, e continuo escrevendo o código por trás disso. Respondo por NPS de produto, lead time até produção e uma meta de 99,9% de uptime.",
+            "Toco produto e tecnologia na +55 HUB. Defino o roadmap, desenho a arquitetura e construo o RevOps que transforma leads em receita. Continuo entregando o código. Respondo por NPS de produto, lead time até produção e 99,9% de uptime.",
         location: "Brasília, DF, Brasil. Remoto (Salvador, BA).",
         ctaPrimary: "Ver cases",
         ctaSecondary: "Falar comigo",
