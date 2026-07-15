@@ -6,6 +6,7 @@ import { cn } from "@shared/lib/cn";
 import { navLinks } from "@/shared/config/nav";
 import { useI18n } from "@/shared/i18n/I18nProvider";
 import LanguageToggle from "@shared/ui/LanguageToggle";
+import Logo from "@shared/ui/Logo";
 
 export default function Header() {
     const pathname = usePathname();
@@ -41,16 +42,9 @@ export default function Header() {
                     className="group inline-flex items-center gap-2.5"
                     aria-label="Cadu, home"
                 >
-                    <span
-                        aria-hidden
-                        className="h-6 w-6 rotate-45 rounded-[6px] [background:var(--grad-brand)] shadow-glow"
-                    />
+                    <Logo size={30} className="transition-transform duration-300 group-hover:scale-105" />
                     <span className="font-display text-lg font-bold tracking-tight text-ink">
                         Cadu
-                        <span className="hidden font-sans text-sm font-normal text-muted sm:inline">
-                            {" "}
-                            · CPO/CTO
-                        </span>
                     </span>
                 </Link>
 

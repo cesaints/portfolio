@@ -89,7 +89,7 @@ export const caseStudyText: Record<Lang, Record<string, CaseStudyText>> = {
             oneLiner: "Modernizing a legacy PHP system to Vue.js, and re architecting the database beneath it.",
             summary:
                 "Full stack modernization for CBOO (Conselho Brasileiro de Óptica e Optometria). Migrating a legacy PHP and Bootstrap application to a Vue.js front end while re architecting the MySQL schema, migrating data, and tuning performance as the acting DBA (backups, access control, indexing and SQL optimization).",
-            role: "Software engineer and database administrator (freelance)",
+            role: "Software Engineer & Architect, DBA (freelance)",
             context:
                 "CBOO is Brazil's council for optics and optometry. Its web system was a legacy PHP and Bootstrap application that needed modernizing for maintainability and a better user experience, while the database needed real architectural and performance work.",
             problem:
@@ -186,7 +186,7 @@ export const caseStudyText: Record<Lang, Record<string, CaseStudyText>> = {
             oneLiner: "Modernizar um sistema legado em PHP para Vue.js, e rearquitetar o banco por baixo dele.",
             summary:
                 "Modernização full stack para o CBOO (Conselho Brasileiro de Óptica e Optometria). Migração de uma aplicação legada em PHP e Bootstrap para um front end em Vue.js, rearquitetando o schema MySQL, migrando dados e ajustando performance como DBA responsável (backups, controle de acesso, indexação e otimização de SQL).",
-            role: "Engenheiro de software e administrador de banco (freelance)",
+            role: "Engenheiro e Arquiteto de Software, DBA (freelance)",
             context:
                 "O CBOO é o conselho brasileiro de óptica e optometria. O sistema web era uma aplicação legada em PHP e Bootstrap que precisava ser modernizada para manutenção e uma melhor experiência, enquanto o banco precisava de trabalho real de arquitetura e performance.",
             problem:
@@ -244,7 +244,7 @@ export const timelineText: Record<Lang, Record<string, TimelineText>> = {
             summary: "Agile and PMBOK hybrid execution for delivery at scale.",
         },
         "2024-cboo": {
-            title: "Software Engineer and DBA (freelance)",
+            title: "Software Engineer & Architect (freelance)",
             org: "CBOO",
             date: "Since Nov 2024",
             summary:
@@ -316,7 +316,7 @@ export const timelineText: Record<Lang, Record<string, TimelineText>> = {
             summary: "Execução híbrida de ágil e PMBOK para entrega em escala.",
         },
         "2024-cboo": {
-            title: "Engenheiro de Software e DBA (freelance)",
+            title: "Engenheiro e Arquiteto de Software (freelance)",
             org: "CBOO",
             date: "Desde nov 2024",
             summary:

@@ -1,0 +1,36 @@
+/** Elegant "CE" monogram, used in the header and (as icon.svg) the favicon. */
+export default function Logo({
+    size = 30,
+    className = "",
+}: {
+    size?: number;
+    className?: string;
+}) {
+    return (
+        <svg
+            width={size}
+            height={size}
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className={className}
+            aria-hidden
+        >
+            <defs>
+                <linearGradient id="ce-logo" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#a78bfa" />
+                    <stop offset="1" stopColor="#22d3ee" />
+                </linearGradient>
+            </defs>
+            <rect x="3" y="3" width="58" height="58" rx="16" fill="#0b0f1a" />
+            <rect x="3.75" y="3.75" width="56.5" height="56.5" rx="15.25" fill="none" stroke="url(#ce-logo)" strokeWidth="1.5" opacity="0.9" />
+            <path d="M35 21 A11 11 0 1 0 35 43" fill="none" stroke="url(#ce-logo)" strokeWidth="5.5" strokeLinecap="round" />
+            <g fill="url(#ce-logo)">
+                <rect x="39" y="21" width="5.5" height="22" rx="2.75" />
+                <rect x="39" y="21" width="13.5" height="5.5" rx="2.75" />
+                <rect x="39" y="29.25" width="10.5" height="5.5" rx="2.75" />
+                <rect x="39" y="37.5" width="13.5" height="5.5" rx="2.75" />
+            </g>
+        </svg>
+    );
+}

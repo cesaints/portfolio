@@ -39,10 +39,38 @@ export default function Hero() {
                     </h1>
 
                     <Reveal delay={0.05}>
-                        <p className="mt-5 font-display text-xl font-semibold tracking-tight text-ink md:text-2xl">
-                            {h.roleTitle} · <span className="text-gradient">{h.roleShort}</span>
-                            <span className="block text-base font-normal text-muted">{h.org}</span>
-                        </p>
+                        <div className="mt-6">
+                            <p className="mb-3 font-mono text-xs uppercase tracking-[0.16em] text-muted">
+                                {h.rolesLabel}
+                            </p>
+                            <div className="space-y-3">
+                                <div className="flex items-start gap-3">
+                                    <span
+                                        aria-hidden
+                                        className="mt-1.5 h-9 w-1 rounded-full [background:var(--grad-brand)]"
+                                    />
+                                    <div>
+                                        <p className="font-display text-lg font-semibold tracking-tight text-ink md:text-xl">
+                                            {h.roleTitle} ·{" "}
+                                            <span className="text-gradient">{h.roleShort}</span>
+                                        </p>
+                                        <p className="text-sm text-muted">{h.org}</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                    <span
+                                        aria-hidden
+                                        className="mt-1.5 h-9 w-1 rounded-full bg-cyan-400/80"
+                                    />
+                                    <div>
+                                        <p className="font-display text-lg font-semibold tracking-tight text-ink md:text-xl">
+                                            {h.role2Title}
+                                        </p>
+                                        <p className="text-sm text-muted">{h.role2Org}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </Reveal>
 
                     <Reveal delay={0.1}>

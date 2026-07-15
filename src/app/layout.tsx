@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     keywords: siteConfig.keywords,
     alternates: { canonical: "/" },
     icons: {
-        icon: [{ url: "/icon.svg?v=3", type: "image/svg+xml" }],
+        icon: [{ url: "/icon.svg?v=4", type: "image/svg+xml" }],
     },
     manifest: "/manifest.webmanifest",
     openGraph: {
