@@ -33,7 +33,7 @@ export default function OgImage() {
                         display: "flex",
                     }}
                 >
-                    +55 HUB &amp; Corporate Group
+                    Distópico Holding · +55 HUB &amp; Corporate Group
                 </div>
                 <div
                     style={{
@@ -55,7 +55,7 @@ export default function OgImage() {
                         display: "flex",
                     }}
                 >
-                    Diretor de Produto e Tecnologia · CPO / CTO
+                    Diretor de Produto e Tecnologia · CPTO
                 </div>
                 <div
                     style={{

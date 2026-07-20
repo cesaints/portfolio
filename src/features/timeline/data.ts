@@ -12,15 +12,28 @@ export type TimelineItem = {
 };
 
 const data: TimelineItem[] = [
-    // 2026 — the promotion
+    // 2026 — the promotion (holding umbrella)
     {
-        id: "2026-55hub-cpo-cto",
+        id: "2026-distopico-cpto",
         date: "2026 – present",
-        title: "Diretor de Produto e Tecnologia (CPO/CTO)",
-        org: "+55 HUB & Corporate Group",
+        title: "Diretor de Produto e Tecnologia (CPTO)",
+        org: "Distópico Holding",
         summary:
-            "Promoted from Head of Product to lead product and technology end-to-end. Own the product roadmap (PMF, UX/UI across the customer journey), architecture & scalability (99.9% uptime target), Security & Compliance (LGPD), agile team leadership (Scrum/Kanban — shipped 5 landing pages in 2 days), and systems integration (Bitrix CRM). Built the company platform solo — 55hubcorp.com (public site + internal CRM) — and structured a data-driven RevOps motion. KPIs owned: Technical Churn, Product NPS, Lead Time & Deployment, SLA.",
-        tags: ["Product Strategy", "Architecture", "RevOps", "LGPD", "Cloudflare", "Astro"],
+            "Promoted from Head of Product to lead product and technology end-to-end across the Distópico holding and its +55 HUB & Corporate Group. Own the product roadmap (PMF, UX/UI across the customer journey), architecture & scalability (99.9% uptime target), Security & Compliance (LGPD), agile team leadership (Scrum/Kanban — 8 landing pages, 3 websites and a CRM in 13 days), and systems integration (Bitrix CRM). Built the group platforms solo — 55hubcorp.com and distopicoglobal.com — and structured a data-driven RevOps motion. KPIs owned: Technical Churn, Product NPS, Lead Time, Deployment Frequency, SLA.",
+        tags: ["Product Strategy", "Architecture", "RevOps", "LGPD", "Cloudflare", "Next.js", "Astro"],
+        color: "violet",
+        icon: "star",
+    },
+
+    // 2025 — founder
+    {
+        id: "2025-aprovaki-founder",
+        date: "2025 – present",
+        title: "Founder & CEO",
+        org: "Aprovaki (TreinaEdital)",
+        summary:
+            "Founded and lead Aprovaki, the company behind TreinaEdital, a study platform for Brazilian public-service exams. Set the product vision and built the platform end-to-end: a Turborepo monorepo with three Next.js apps (public site, student app, admin) over a shared package layer. PostgreSQL with Prisma, NextAuth v5 with mandatory 2FA for admin, Stripe payments (card and Pix) with server-side pricing and idempotent webhooks, Cloudflare R2 with signed links, and AI-generated and reviewed questions with Anthropic Claude. Own strategy, engineering, security (LGPD) and go-to-market.",
+        tags: ["Founder", "CEO", "Product Strategy", "Next.js", "Turborepo", "PostgreSQL", "Prisma", "Stripe", "NextAuth", "Claude AI"],
         color: "violet",
         icon: "star",
     },

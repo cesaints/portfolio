@@ -54,6 +54,72 @@ export const caseStudyText: Record<Lang, Record<string, CaseStudyText>> = {
                 { value: "Edge", label: "Astro 5 on Cloudflare Workers" },
             ],
         },
+        "treinaedital": {
+            title: "TreinaEdital, a study platform for public exams",
+            oneLiner: "Three apps, payments and AI generated questions, founded and built end to end.",
+            summary:
+                "TreinaEdital, by Aprovaki, is a study platform for Brazilian public service exams. Students buy access to a specific exam and study through text lessons, AI assisted question practice, timed mock exams, performance tracking and a ranking against real vacancies. Built as a Turborepo monorepo with three Next.js apps (public site, student app, admin) over a shared package layer, with Stripe payments, mandatory 2FA and Anthropic Claude for question generation. As founder and CEO, I own product, engineering and go to market.",
+            role: "Founder and CEO, product vision and full stack build",
+            context:
+                "Candidates for Brazilian public service exams often fail not from lack of effort but from studying the wrong material. TreinaEdital focuses each candidate only on what their specific edital actually charges, subject by subject, weighted by importance, with a ranking that compares performance against the real number of vacancies.",
+            problem:
+                "Delivering this meant three distinct products (a selling public site, a student learning app, and an admin to run exams, content, sales and marketing) on one secure, payment grade platform: money never trusted from the browser, webhooks idempotent, admin protected by 2FA, content behind signed links, and a question bank that can grow with AI without losing quality.",
+            solution: [
+                "Turborepo and pnpm monorepo: web (public site and checkout), app (student), admin (operations), plus a shared package layer.",
+                "One time purchase per exam with lifetime access, priced on the server; an all access subscription on the roadmap.",
+                "Stripe payments (card and Pix) with signed, idempotent webhooks, so a single event never grants access twice.",
+                "PostgreSQL with Prisma, NextAuth v5 with mandatory TOTP 2FA for admin, and LGPD routines.",
+                "AI question generation and PDF exam extraction with Anthropic Claude, output validated by zod, with a configurable model and a spend cap.",
+                "Cloudflare R2 for content behind signed links, Resend for email, Upstash Redis for rate limit and cache, plus Sentry, PostHog, GA4 and Meta Pixel.",
+            ],
+            highlights: [
+                "Founder and CEO: set the product vision and built the platform end to end.",
+                "Three app Turborepo monorepo (web, student app, admin) over a shared package layer.",
+                "Server side pricing plus signed, idempotent Stripe webhooks (card and Pix), so access is never double granted.",
+                "Admin locked behind NextAuth v5 with mandatory TOTP 2FA, plus a dedicated security package.",
+                "AI question generation and PDF extraction with Anthropic Claude, zod validated and cost capped.",
+                "PostgreSQL and Prisma, Cloudflare R2 signed links, Upstash Redis, Resend, Sentry and PostHog.",
+            ],
+            metrics: [
+                { value: "3 apps", label: "Site, student app, admin" },
+                { value: "Founder & CEO", label: "Product and full stack build" },
+                { value: "Card + Pix", label: "Stripe, server side pricing" },
+                { value: "AI questions", label: "Claude, zod validated" },
+            ],
+        },
+        "distopico-solutions": {
+            title: "Distópico Solutions, the holding site and admin",
+            oneLiner: "The multilingual site and admin for a global creative holding, on Next.js 16 and Cloudflare's edge.",
+            summary:
+                "The institutional multilingual (PT/EN/ES) website and admin panel for Distópico Solutions, a global creative holding built on results over appearance. A public site presenting the holding's five verticals, method and manifesto, plus a custom admin (auth, RBAC, leads, analytics, SEO, audit log), shipped on Next.js 16 running on Cloudflare Workers with D1, R2 and KV.",
+            role: "CPTO, built the multilingual site and admin end to end",
+            context:
+                "Distópico Solutions is a global creative holding that governs a company's whole revenue architecture (strategy, creation, distribution, performance, reputation and measurement) under one integrated cycle, across five verticals (Performance, AD, Influence, Films, Academy). It needed a high craft trilingual presence that feels like the brand, results over appearance, and a real back office to capture and work leads.",
+            problem:
+                "The site had to feel premium and alive, with motion from start to finish, while staying fast and SEO ready in three languages with translated slugs and hreflang, and it had to ship with a genuine admin (auth, roles, leads, analytics, audit) rather than a static brochure, all cheap to run and maintainable solo.",
+            solution: [
+                "Public site in PT/EN/ES with next-intl: translated slugs per language and hreflang, covering home, Ecosystem (5 verticals), Method, Manifesto, Academy, Contact and legal pages.",
+                "Custom admin panel (noindex): dashboard, leads, analytics, SEO editor, users and audit log.",
+                "Own auth: Argon2id password hashing, 256 bit opaque database sessions, owner/admin/editor/viewer RBAC, forced temporary password reset and audit logging.",
+                "Animated Rede Viva living network background (Canvas 2D) with motion and lenis, honoring prefers-reduced-motion.",
+                "Drizzle ORM over SQLite in dev and Cloudflare D1 in production, from one schema.",
+                "Deployed on Cloudflare Workers via OpenNext (D1, R2 and KV).",
+            ],
+            highlights: [
+                "Next.js 16 (App Router, React 19): SSG on the public pages, dynamic on admin and API.",
+                "Trilingual by design with next-intl: translated slugs, hreflang and full PT/EN/ES parity.",
+                "Custom Argon2id auth with database sessions, 4 role RBAC and an audit log, no third party auth SaaS.",
+                "Rede Viva Canvas 2D animated background, motion and lenis, reduced motion aware.",
+                "Drizzle ORM: SQLite in dev and Cloudflare D1 in production from a single schema.",
+                "Edge deploy via OpenNext on Workers with D1, R2 and KV.",
+            ],
+            metrics: [
+                { value: "PT / EN / ES", label: "Trilingual, translated slugs" },
+                { value: "5 verticals", label: "Holding ecosystem" },
+                { value: "Site + admin", label: "Public site and back office" },
+                { value: "Edge", label: "Next.js 16 on Cloudflare" },
+            ],
+        },
         "gov-systems-websis": {
             title: "Mission critical government systems",
             oneLiner: "Building and leading delivery of high stakes systems for Brazilian federal agencies.",
@@ -149,6 +215,72 @@ export const caseStudyText: Record<Lang, Record<string, CaseStudyText>> = {
                 { value: "2 produtos", label: "Site público e CRM interno" },
                 { value: "5 papéis", label: "RBAC com segregação de dados" },
                 { value: "Edge", label: "Astro 5 na Cloudflare Workers" },
+            ],
+        },
+        "treinaedital": {
+            title: "TreinaEdital, plataforma de estudos para concursos",
+            oneLiner: "Três apps, pagamentos e questões geradas por IA, fundada e construída de ponta a ponta.",
+            summary:
+                "A TreinaEdital, da Aprovaki, é uma plataforma de estudos para concursos públicos. O aluno compra o acesso de um concurso e estuda por aulas em texto, prática de questões com apoio de IA, simulados cronometrados, acompanhamento de desempenho e um ranking contra as vagas reais. Construída como um monorepo Turborepo com três apps Next.js (site público, app do aluno, admin) sobre uma camada de pacotes compartilhados, com pagamentos Stripe, 2FA obrigatório e Anthropic Claude para geração de questões. Como fundador e CEO, sou dono de produto, engenharia e go to market.",
+            role: "Fundador e CEO, visão de produto e construção full stack",
+            context:
+                "Candidatos a concursos públicos costumam ser reprovados não por falta de esforço, mas por estudar o material errado. A TreinaEdital foca cada candidato só no que o edital dele realmente cobra, matéria por matéria, com peso por importância, e um ranking que compara o desempenho ao número real de vagas.",
+            problem:
+                "Entregar isso exigiu três produtos distintos (um site público que vende, um app de estudo do aluno e um admin para operar concursos, conteúdo, vendas e marketing) em uma só plataforma segura e pronta para pagamentos: valor nunca confiado do navegador, webhooks idempotentes, admin protegido por 2FA, conteúdo atrás de links assinados e um banco de questões que cresce com IA sem perder qualidade.",
+            solution: [
+                "Monorepo Turborepo e pnpm: web (site público e checkout), app (aluno), admin (operação), mais uma camada de pacotes compartilhados.",
+                "Compra única por concurso com acesso vitalício, com preço calculado no servidor; uma assinatura all access no roadmap.",
+                "Pagamentos Stripe (cartão e Pix) com webhooks assinados e idempotentes, para que um mesmo evento nunca libere acesso duas vezes.",
+                "PostgreSQL com Prisma, NextAuth v5 com 2FA TOTP obrigatório no admin, e rotinas de LGPD.",
+                "Geração de questões e extração de provas em PDF com Anthropic Claude, saída validada por zod, com modelo configurável e teto de gasto.",
+                "Cloudflare R2 para conteúdo atrás de links assinados, Resend para e-mail, Upstash Redis para rate limit e cache, além de Sentry, PostHog, GA4 e Meta Pixel.",
+            ],
+            highlights: [
+                "Fundador e CEO: defini a visão de produto e construí a plataforma de ponta a ponta.",
+                "Monorepo Turborepo de três apps (web, app do aluno, admin) sobre uma camada de pacotes compartilhados.",
+                "Preço no servidor mais webhooks Stripe assinados e idempotentes (cartão e Pix), então o acesso nunca é liberado em dobro.",
+                "Admin protegido por NextAuth v5 com 2FA TOTP obrigatório, mais um pacote de segurança dedicado.",
+                "Geração de questões e extração de PDF com Anthropic Claude, validadas por zod e com teto de custo.",
+                "PostgreSQL e Prisma, links assinados no Cloudflare R2, Upstash Redis, Resend, Sentry e PostHog.",
+            ],
+            metrics: [
+                { value: "3 apps", label: "Site, app do aluno, admin" },
+                { value: "Fundador & CEO", label: "Produto e construção full stack" },
+                { value: "Cartão + Pix", label: "Stripe, preço no servidor" },
+                { value: "Questões por IA", label: "Claude, validadas por zod" },
+            ],
+        },
+        "distopico-solutions": {
+            title: "Distópico Solutions, o site e o admin da holding",
+            oneLiner: "O site multilíngue e o admin de uma holding criativa global, em Next.js 16 na edge da Cloudflare.",
+            summary:
+                "O site institucional multilíngue (PT/EN/ES) e o painel administrativo da Distópico Solutions, uma holding criativa global feita sobre resultado acima de aparência. Um site público apresentando as cinco verticais da holding, método e manifesto, mais um admin próprio (auth, RBAC, leads, analytics, SEO, audit log), publicado em Next.js 16 rodando em Cloudflare Workers com D1, R2 e KV.",
+            role: "CPTO, construí o site multilíngue e o admin de ponta a ponta",
+            context:
+                "A Distópico Solutions é uma holding criativa global que governa toda a arquitetura de receita de uma empresa (estratégia, criação, distribuição, performance, reputação e medição) em um único ciclo integrado, através de cinco verticais (Performance, AD, Influence, Films, Academy). Ela precisava de uma presença trilíngue de alto acabamento com a cara da marca, resultado acima de aparência, e de um back office de verdade para capturar e trabalhar leads.",
+            problem:
+                "O site tinha que parecer premium e vivo, com animação do início ao fim, e ao mesmo tempo ser rápido e pronto para SEO em três idiomas, com slugs traduzidos e hreflang, e tinha que vir com um admin de verdade (auth, papéis, leads, analytics, auditoria) em vez de um folder estático, tudo barato de rodar e mantido sozinho.",
+            solution: [
+                "Site público em PT/EN/ES com next-intl: slugs traduzidos por idioma e hreflang, cobrindo home, Ecossistema (5 verticais), Método, Manifesto, Academy, Contato e páginas legais.",
+                "Painel admin próprio (noindex): dashboard, leads, analytics, editor de SEO, usuários e audit log.",
+                "Auth próprio: hash de senha Argon2id, sessões opacas de 256 bits em banco, RBAC owner/admin/editor/viewer, troca obrigatória de senha temporária e audit log.",
+                "Fundo animado Rede Viva (Canvas 2D) com motion e lenis, respeitando prefers-reduced-motion.",
+                "Drizzle ORM sobre SQLite no dev e Cloudflare D1 em produção, a partir de um só schema.",
+                "Publicado em Cloudflare Workers via OpenNext (D1, R2 e KV).",
+            ],
+            highlights: [
+                "Next.js 16 (App Router, React 19): SSG nas páginas públicas, dinâmico no admin e na API.",
+                "Trilíngue por design com next-intl: slugs traduzidos, hreflang e paridade total PT/EN/ES.",
+                "Auth Argon2id próprio com sessões em banco, RBAC de 4 papéis e audit log, sem SaaS de auth de terceiro.",
+                "Fundo animado Rede Viva em Canvas 2D, motion e lenis, ciente de reduced motion.",
+                "Drizzle ORM: SQLite no dev e Cloudflare D1 em produção a partir de um único schema.",
+                "Deploy na edge via OpenNext em Workers com D1, R2 e KV.",
+            ],
+            metrics: [
+                { value: "PT / EN / ES", label: "Trilíngue, slugs traduzidos" },
+                { value: "5 verticais", label: "Ecossistema da holding" },
+                { value: "Site + admin", label: "Site público e back office" },
+                { value: "Edge", label: "Next.js 16 na Cloudflare" },
             ],
         },
         "gov-systems-websis": {
@@ -248,6 +380,72 @@ export const caseStudyText: Record<Lang, Record<string, CaseStudyText>> = {
                 { value: "Edge", label: "Astro 5 en Cloudflare Workers" },
             ],
         },
+        "treinaedital": {
+            title: "TreinaEdital, plataforma de estudio para oposiciones",
+            oneLiner: "Tres apps, pagos y preguntas generadas por IA, fundada y construida de punta a punta.",
+            summary:
+                "TreinaEdital, de Aprovaki, es una plataforma de estudio para oposiciones públicas de Brasil. El alumno compra el acceso a un examen y estudia con clases en texto, práctica de preguntas con apoyo de IA, simulacros cronometrados, seguimiento de desempeño y un ranking contra las vacantes reales. Construida como un monorepo Turborepo con tres apps Next.js (sitio público, app del alumno, admin) sobre una capa de paquetes compartidos, con pagos Stripe, 2FA obligatorio y Anthropic Claude para la generación de preguntas. Como fundador y CEO, soy dueño de producto, ingeniería y go to market.",
+            role: "Fundador y CEO, visión de producto y construcción full stack",
+            context:
+                "Los candidatos a oposiciones públicas suelen fracasar no por falta de esfuerzo, sino por estudiar el material equivocado. TreinaEdital enfoca a cada candidato solo en lo que su convocatoria realmente exige, materia por materia, ponderado por importancia, con un ranking que compara el desempeño contra el número real de vacantes.",
+            problem:
+                "Entregar esto exigió tres productos distintos (un sitio público que vende, una app de estudio del alumno y un admin para operar exámenes, contenido, ventas y marketing) en una sola plataforma segura y lista para pagos: el importe nunca se confía desde el navegador, webhooks idempotentes, admin protegido por 2FA, contenido detrás de enlaces firmados y un banco de preguntas que crece con IA sin perder calidad.",
+            solution: [
+                "Monorepo Turborepo y pnpm: web (sitio público y checkout), app (alumno), admin (operación), más una capa de paquetes compartidos.",
+                "Compra única por examen con acceso vitalicio, con precio calculado en el servidor; una suscripción all access en el roadmap.",
+                "Pagos Stripe (tarjeta y Pix) con webhooks firmados e idempotentes, para que un mismo evento nunca libere el acceso dos veces.",
+                "PostgreSQL con Prisma, NextAuth v5 con 2FA TOTP obligatorio en el admin, y rutinas de LGPD.",
+                "Generación de preguntas y extracción de exámenes en PDF con Anthropic Claude, salida validada por zod, con modelo configurable y tope de gasto.",
+                "Cloudflare R2 para contenido detrás de enlaces firmados, Resend para correo, Upstash Redis para rate limit y caché, además de Sentry, PostHog, GA4 y Meta Pixel.",
+            ],
+            highlights: [
+                "Fundador y CEO: definí la visión de producto y construí la plataforma de punta a punta.",
+                "Monorepo Turborepo de tres apps (web, app del alumno, admin) sobre una capa de paquetes compartidos.",
+                "Precio en el servidor más webhooks Stripe firmados e idempotentes (tarjeta y Pix), así el acceso nunca se libera doble.",
+                "Admin protegido por NextAuth v5 con 2FA TOTP obligatorio, más un paquete de seguridad dedicado.",
+                "Generación de preguntas y extracción de PDF con Anthropic Claude, validadas por zod y con tope de costo.",
+                "PostgreSQL y Prisma, enlaces firmados en Cloudflare R2, Upstash Redis, Resend, Sentry y PostHog.",
+            ],
+            metrics: [
+                { value: "3 apps", label: "Sitio, app del alumno, admin" },
+                { value: "Fundador & CEO", label: "Producto y construcción full stack" },
+                { value: "Tarjeta + Pix", label: "Stripe, precio en el servidor" },
+                { value: "Preguntas por IA", label: "Claude, validadas por zod" },
+            ],
+        },
+        "distopico-solutions": {
+            title: "Distópico Solutions, el sitio y el admin de la holding",
+            oneLiner: "El sitio multilingüe y el admin de una holding creativa global, en Next.js 16 en el edge de Cloudflare.",
+            summary:
+                "El sitio institucional multilingüe (PT/EN/ES) y el panel administrativo de Distópico Solutions, una holding creativa global hecha sobre el resultado por encima de la apariencia. Un sitio público que presenta las cinco verticales de la holding, método y manifiesto, más un admin propio (auth, RBAC, leads, analítica, SEO, audit log), publicado en Next.js 16 sobre Cloudflare Workers con D1, R2 y KV.",
+            role: "CPTO, construí el sitio multilingüe y el admin de punta a punta",
+            context:
+                "Distópico Solutions es una holding creativa global que gobierna toda la arquitectura de ingresos de una empresa (estrategia, creación, distribución, performance, reputación y medición) en un único ciclo integrado, a través de cinco verticales (Performance, AD, Influence, Films, Academy). Necesitaba una presencia trilingüe de alto acabado con la cara de la marca, resultado por encima de la apariencia, y un back office de verdad para capturar y trabajar leads.",
+            problem:
+                "El sitio tenía que sentirse premium y vivo, con animación de principio a fin, y a la vez ser rápido y listo para SEO en tres idiomas, con slugs traducidos y hreflang, y tenía que venir con un admin de verdad (auth, roles, leads, analítica, auditoría) en vez de un folleto estático, todo barato de operar y mantenible en solitario.",
+            solution: [
+                "Sitio público en PT/EN/ES con next-intl: slugs traducidos por idioma y hreflang, cubriendo home, Ecosistema (5 verticales), Método, Manifiesto, Academy, Contacto y páginas legales.",
+                "Panel admin propio (noindex): dashboard, leads, analítica, editor de SEO, usuarios y audit log.",
+                "Auth propio: hash de contraseña Argon2id, sesiones opacas de 256 bits en base de datos, RBAC owner/admin/editor/viewer, cambio obligatorio de contraseña temporal y audit log.",
+                "Fondo animado Rede Viva (Canvas 2D) con motion y lenis, respetando prefers-reduced-motion.",
+                "Drizzle ORM sobre SQLite en dev y Cloudflare D1 en producción, a partir de un solo esquema.",
+                "Publicado en Cloudflare Workers vía OpenNext (D1, R2 y KV).",
+            ],
+            highlights: [
+                "Next.js 16 (App Router, React 19): SSG en las páginas públicas, dinámico en admin y API.",
+                "Trilingüe por diseño con next-intl: slugs traducidos, hreflang y paridad total PT/EN/ES.",
+                "Auth Argon2id propio con sesiones en base de datos, RBAC de 4 roles y audit log, sin SaaS de auth de terceros.",
+                "Fondo animado Rede Viva en Canvas 2D, motion y lenis, consciente de reduced motion.",
+                "Drizzle ORM: SQLite en dev y Cloudflare D1 en producción desde un único esquema.",
+                "Deploy en el edge vía OpenNext en Workers con D1, R2 y KV.",
+            ],
+            metrics: [
+                { value: "PT / EN / ES", label: "Trilingüe, slugs traducidos" },
+                { value: "5 verticales", label: "Ecosistema de la holding" },
+                { value: "Sitio + admin", label: "Sitio público y back office" },
+                { value: "Edge", label: "Next.js 16 en Cloudflare" },
+            ],
+        },
         "gov-systems-websis": {
             title: "Sistemas críticos de gobierno",
             oneLiner: "Construcción y liderazgo de entrega de sistemas de alto riesgo para agencias federales.",
@@ -321,12 +519,19 @@ export type TimelineText = { title: string; org?: string; date: string; summary:
 
 export const timelineText: Record<Lang, Record<string, TimelineText>> = {
     en: {
-        "2026-55hub-cpo-cto": {
-            title: "Diretor de Produto e Tecnologia (CPO/CTO)",
-            org: "+55 HUB & Corporate Group",
+        "2026-distopico-cpto": {
+            title: "Diretor de Produto e Tecnologia (CPTO)",
+            org: "Distópico Holding",
             date: "Since 2026",
             summary:
-                "Promoted from Head of Product to lead product and technology end to end. I own the roadmap (PMF, UX/UI across the customer journey), architecture and scalability (99.9% uptime target), Security and Compliance (LGPD), agile team leadership (Scrum/Kanban, 5 landing pages in 2 days), and systems integration (Bitrix CRM). I built the company platform on my own, 55hubcorp.com, and structured a data driven RevOps motion. KPIs I own: technical churn, product NPS, lead time and deployment, SLA.",
+                "Promoted from Head of Product to lead product and technology end to end across the Distópico holding and its +55 HUB & Corporate Group. I own the roadmap (PMF, UX/UI across the customer journey), architecture and scalability (99.9% uptime target), Security and Compliance (LGPD), agile team leadership (Scrum/Kanban, 8 landing pages, 3 websites and a CRM in 13 days), and systems integration (Bitrix CRM). I built the group platforms on my own, 55hubcorp.com and distopicoglobal.com, and structured a data driven RevOps motion. KPIs I own: technical churn, product NPS, lead time, deployment frequency, SLA.",
+        },
+        "2025-aprovaki-founder": {
+            title: "Founder & CEO",
+            org: "Aprovaki (TreinaEdital)",
+            date: "Since 2025",
+            summary:
+                "Founded and lead Aprovaki, the company behind TreinaEdital, a study platform for Brazilian public service exams. I set the product vision and built the platform end to end: a Turborepo monorepo with three Next.js apps (public site, student app, admin) over a shared package layer, PostgreSQL with Prisma, NextAuth v5 with mandatory 2FA for admin, Stripe payments (card and Pix) with server side pricing and idempotent webhooks, Cloudflare R2 with signed links, and AI generated and reviewed questions with Anthropic Claude. I own strategy, engineering, security (LGPD) and go to market.",
         },
         "2025-pg-innovation": {
             title: "Postgrad in Innovation, AI and Robotics",
@@ -393,12 +598,19 @@ export const timelineText: Record<Lang, Record<string, TimelineText>> = {
         },
     },
     pt: {
-        "2026-55hub-cpo-cto": {
-            title: "Diretor de Produto e Tecnologia (CPO/CTO)",
-            org: "+55 HUB & Corporate Group",
+        "2026-distopico-cpto": {
+            title: "Diretor de Produto e Tecnologia (CPTO)",
+            org: "Distópico Holding",
             date: "Desde 2026",
             summary:
-                "Promovido de Head of Product para liderar produto e tecnologia de ponta a ponta. Sou dono do roadmap (PMF, UX/UI em toda a jornada), da arquitetura e escalabilidade (meta de 99,9% de uptime), de Segurança e Conformidade (LGPD), da liderança ágil do time (Scrum/Kanban, 5 landing pages em 2 dias) e da integração de sistemas (Bitrix CRM). Construí a plataforma da empresa sozinho, a 55hubcorp.com, e estruturei um RevOps orientado a dados. KPIs que carrego: churn técnico, NPS de produto, lead time e deploy, SLA.",
+                "Promovido de Head of Product para liderar produto e tecnologia de ponta a ponta na holding Distópico e no seu +55 HUB & Corporate Group. Sou dono do roadmap (PMF, UX/UI em toda a jornada), da arquitetura e escalabilidade (meta de 99,9% de uptime), de Segurança e Conformidade (LGPD), da liderança ágil do time (Scrum/Kanban, 8 landing pages, 3 sites e um CRM em 13 dias) e da integração de sistemas (Bitrix CRM). Construí as plataformas do grupo sozinho, a 55hubcorp.com e a distopicoglobal.com, e estruturei um RevOps orientado a dados. KPIs que carrego: churn técnico, NPS de produto, lead time, frequência de deploy, SLA.",
+        },
+        "2025-aprovaki-founder": {
+            title: "Fundador & CEO",
+            org: "Aprovaki (TreinaEdital)",
+            date: "Desde 2025",
+            summary:
+                "Fundei e lidero a Aprovaki, empresa por trás da TreinaEdital, uma plataforma de estudos para concursos públicos. Defini a visão de produto e construí a plataforma de ponta a ponta: um monorepo Turborepo com três apps Next.js (site público, app do aluno, admin) sobre uma camada de pacotes compartilhados, PostgreSQL com Prisma, NextAuth v5 com 2FA obrigatório no admin, pagamentos Stripe (cartão e Pix) com preço no servidor e webhooks idempotentes, Cloudflare R2 com links assinados e questões geradas e revisadas com apoio de IA (Anthropic Claude). Sou dono de estratégia, engenharia, segurança (LGPD) e go to market.",
         },
         "2025-pg-innovation": {
             title: "Pós em Inovação, IA e Robótica",
@@ -465,12 +677,19 @@ export const timelineText: Record<Lang, Record<string, TimelineText>> = {
         },
     },
     es: {
-        "2026-55hub-cpo-cto": {
-            title: "Director de Producto y Tecnología (CPO/CTO)",
-            org: "+55 HUB & Corporate Group",
+        "2026-distopico-cpto": {
+            title: "Director de Producto y Tecnología (CPTO)",
+            org: "Distópico Holding",
             date: "Desde 2026",
             summary:
-                "Promovido de Head of Product a liderar producto y tecnología de punta a punta. Soy dueño del roadmap (PMF, UX/UI en todo el recorrido), de la arquitectura y escalabilidad (meta de 99,9% de uptime), de Seguridad y Cumplimiento (LGPD), del liderazgo ágil del equipo (Scrum/Kanban, 5 landing pages en 2 días) y de la integración de sistemas (Bitrix CRM). Construí la plataforma de la empresa en solitario, 55hubcorp.com, y estructuré un RevOps orientado a datos. KPIs que llevo: churn técnico, NPS de producto, lead time y deploy, SLA.",
+                "Promovido de Head of Product a liderar producto y tecnología de punta a punta en la holding Distópico y su +55 HUB & Corporate Group. Soy dueño del roadmap (PMF, UX/UI en todo el recorrido), de la arquitectura y escalabilidad (meta de 99,9% de uptime), de Seguridad y Cumplimiento (LGPD), del liderazgo ágil del equipo (Scrum/Kanban, 8 landing pages, 3 sitios y un CRM en 13 días) y de la integración de sistemas (Bitrix CRM). Construí las plataformas del grupo en solitario, 55hubcorp.com y distopicoglobal.com, y estructuré un RevOps orientado a datos. KPIs que llevo: churn técnico, NPS de producto, lead time, frecuencia de despliegue, SLA.",
+        },
+        "2025-aprovaki-founder": {
+            title: "Fundador & CEO",
+            org: "Aprovaki (TreinaEdital)",
+            date: "Desde 2025",
+            summary:
+                "Fundé y lidero Aprovaki, la empresa detrás de TreinaEdital, una plataforma de estudio para oposiciones públicas de Brasil. Definí la visión de producto y construí la plataforma de punta a punta: un monorepo Turborepo con tres apps Next.js (sitio público, app del alumno, admin) sobre una capa de paquetes compartidos, PostgreSQL con Prisma, NextAuth v5 con 2FA obligatorio en el admin, pagos Stripe (tarjeta y Pix) con precio en el servidor y webhooks idempotentes, Cloudflare R2 con enlaces firmados y preguntas generadas y revisadas con apoyo de IA (Anthropic Claude). Soy dueño de estrategia, ingeniería, seguridad (LGPD) y go to market.",
         },
         "2025-pg-innovation": {
             title: "Posgrado en Innovación, IA y Robótica",

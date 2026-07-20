@@ -9,8 +9,8 @@ const en = {
     hero: {
         eyebrow: "Product & Technology Leadership",
         roleTitle: "Diretor de Produto e Tecnologia",
-        roleShort: "CPO / CTO",
-        org: "+55 HUB & Corporate Group",
+        roleShort: "CPTO",
+        org: "Distópico Holding (+55 HUB & Corporate Group)",
         role2Title: "Software Engineer & Software Architect",
         role2Org: "CBOO",
         rolesLabel: "Two active roles",
@@ -21,7 +21,7 @@ const en = {
             "I decide what to build, then I build it.",
         ],
         pitch:
-            "I run product and technology at +55 HUB, and I'm the software engineer and architect behind CBOO's systems. I set the roadmap, design the architecture, and build the RevOps that turns leads into revenue, and I still ship the code. I answer for product NPS, lead time to production, and 99.9% uptime.",
+            "I run product and technology across Distópico Holding and its +55 HUB & Corporate Group, and I'm the software engineer and architect behind CBOO's systems. I set the roadmap, design the architecture, and build the RevOps that turns leads into revenue, and I still ship the code. I answer for product NPS, lead time to production, and 99.9% uptime.",
         location: "Brasília, DF, Brazil",
         ctaPrimary: "View case studies",
         ctaSecondary: "Get in touch",
@@ -29,7 +29,7 @@ const en = {
     stats: [
         { value: "99.9%", label: "Uptime / SLA target" },
         { value: "PT/EN/ES", label: "Trilingual platform, built solo" },
-        { value: "5 / 2 days", label: "Landing pages delivered" },
+        { value: "13 days", label: "8 landing pages, 3 sites + CRM" },
         { value: "2 products", label: "Public site + internal CRM" },
     ],
     about: {
@@ -37,7 +37,7 @@ const en = {
         sub: "I own the roadmap and the architecture.",
         paragraphs: [
             "I started in code. I built and tested mission critical systems for ANTT, SEST SENAT and SISRH as a full stack .NET developer, then led delivery as a Scrum Master. I ran database architecture and performance as a DBA, and modernized legacy PHP platforms into Vue.js. I have worked across the whole stack, from database design to sprint planning.",
-            "That work pulled me toward the decisions above the code. At +55 HUB & Corporate Group I moved from Head of Product to Diretor de Produto e Tecnologia (CPO/CTO), where I own what we build, how it scales, and how it converts. I built the company platform on my own: a multilingual PT/EN/ES public site and an internal CRM with a full lead to deal pipeline, RBAC and analytics, running on Cloudflare Workers, D1 and Workers AI.",
+            "That work pulled me toward the decisions above the code. At Distópico Holding, the global creative group that includes +55 HUB & Corporate Group, I moved from Head of Product to Diretor de Produto e Tecnologia (CPTO), where I own what we build, how it scales, and how it converts. I built the group platforms on my own, 55hubcorp.com and distopicoglobal.com, from multilingual PT/EN/ES public sites to an internal CRM with a full lead to deal pipeline, RBAC and analytics, running on Cloudflare Workers, D1 and Workers AI.",
             "I work on both sides. I read the architecture and I own the roadmap, so product decisions match what the code can actually deliver. Security and compliance (LGPD) are treated as engineering, not paperwork.",
         ],
         timelineLink: "See the full timeline",
@@ -132,8 +132,8 @@ const pt: Shape = {
     hero: {
         eyebrow: "Liderança de Produto e Tecnologia",
         roleTitle: "Diretor de Produto e Tecnologia",
-        roleShort: "CPO / CTO",
-        org: "+55 HUB & Corporate Group",
+        roleShort: "CPTO",
+        org: "Distópico Holding (+55 HUB & Corporate Group)",
         role2Title: "Engenheiro e Arquiteto de Software",
         role2Org: "CBOO",
         rolesLabel: "Dois cargos ativos",
@@ -144,7 +144,7 @@ const pt: Shape = {
             "Decido o que construir e construo.",
         ],
         pitch:
-            "Toco produto e tecnologia na +55 HUB e sou o engenheiro e arquiteto de software por trás dos sistemas do CBOO. Defino o roadmap, desenho a arquitetura e construo o RevOps que transforma leads em receita, e continuo entregando o código. Respondo por NPS de produto, lead time até produção e 99,9% de uptime.",
+            "Toco produto e tecnologia na holding Distópico e no seu +55 HUB & Corporate Group, e sou o engenheiro e arquiteto de software por trás dos sistemas do CBOO. Defino o roadmap, desenho a arquitetura e construo o RevOps que transforma leads em receita, e continuo entregando o código. Respondo por NPS de produto, lead time até produção e 99,9% de uptime.",
         location: "Brasília, DF, Brasil",
         ctaPrimary: "Ver cases",
         ctaSecondary: "Falar comigo",
@@ -152,7 +152,7 @@ const pt: Shape = {
     stats: [
         { value: "99,9%", label: "Meta de uptime / SLA" },
         { value: "PT/EN/ES", label: "Plataforma trilíngue, feita sozinho" },
-        { value: "5 / 2 dias", label: "Landing pages entregues" },
+        { value: "13 dias", label: "8 landing pages, 3 sites + CRM" },
         { value: "2 produtos", label: "Site público + CRM interno" },
     ],
     about: {
@@ -160,7 +160,7 @@ const pt: Shape = {
         sub: "Sou dono do roadmap e da arquitetura.",
         paragraphs: [
             "Comecei no código. Construí e testei sistemas críticos para ANTT, SEST SENAT e SISRH como desenvolvedor full stack .NET, e depois liderei a entrega como Scrum Master. Cuidei da arquitetura e da performance do banco como DBA, e modernizei plataformas legadas em PHP para Vue.js. Trabalhei na stack inteira, do desenho do banco ao planejamento das sprints.",
-            "Esse trabalho me levou às decisões acima do código. Na +55 HUB & Corporate Group passei de Head of Product a Diretor de Produto e Tecnologia (CPO/CTO), onde sou dono do que construímos, de como escala e de como converte. Construí a plataforma da empresa sozinho: um site público multilíngue PT/EN/ES e um CRM interno com pipeline completo de lead a negócio, RBAC e análises, rodando em Cloudflare Workers, D1 e Workers AI.",
+            "Esse trabalho me levou às decisões acima do código. Na Distópico Holding, o grupo criativo global que inclui a +55 HUB & Corporate Group, passei de Head of Product a Diretor de Produto e Tecnologia (CPTO), onde sou dono do que construímos, de como escala e de como converte. Construí as plataformas do grupo sozinho, a 55hubcorp.com e a distopicoglobal.com, de sites públicos multilíngues PT/EN/ES a um CRM interno com pipeline completo de lead a negócio, RBAC e análises, rodando em Cloudflare Workers, D1 e Workers AI.",
             "Atuo dos dois lados. Leio a arquitetura e sou dono do roadmap, então as decisões de produto batem com o que o código entrega de fato. Segurança e conformidade (LGPD) são tratadas como engenharia, não como papelada.",
         ],
         timelineLink: "Ver a trajetória completa",
@@ -253,8 +253,8 @@ const es: Shape = {
     hero: {
         eyebrow: "Liderazgo de Producto y Tecnología",
         roleTitle: "Director de Producto y Tecnología",
-        roleShort: "CPO / CTO",
-        org: "+55 HUB & Corporate Group",
+        roleShort: "CPTO",
+        org: "Distópico Holding (+55 HUB & Corporate Group)",
         role2Title: "Ingeniero y Arquitecto de Software",
         role2Org: "CBOO",
         rolesLabel: "Dos cargos activos",
@@ -265,7 +265,7 @@ const es: Shape = {
             "Decido qué construir y lo construyo.",
         ],
         pitch:
-            "Llevo producto y tecnología en +55 HUB y soy el ingeniero y arquitecto de software detrás de los sistemas de CBOO. Defino el roadmap, diseño la arquitectura y construyo el RevOps que convierte leads en ingresos, y sigo entregando el código. Respondo por NPS de producto, lead time hasta producción y 99,9% de uptime.",
+            "Llevo producto y tecnología en la holding Distópico y su +55 HUB & Corporate Group, y soy el ingeniero y arquitecto de software detrás de los sistemas de CBOO. Defino el roadmap, diseño la arquitectura y construyo el RevOps que convierte leads en ingresos, y sigo entregando el código. Respondo por NPS de producto, lead time hasta producción y 99,9% de uptime.",
         location: "Brasília, DF, Brasil",
         ctaPrimary: "Ver casos",
         ctaSecondary: "Hablar conmigo",
@@ -273,7 +273,7 @@ const es: Shape = {
     stats: [
         { value: "99,9%", label: "Meta de uptime / SLA" },
         { value: "PT/EN/ES", label: "Plataforma trilingüe, hecha en solitario" },
-        { value: "5 / 2 días", label: "Landing pages entregadas" },
+        { value: "13 días", label: "8 landing pages, 3 sitios + CRM" },
         { value: "2 productos", label: "Sitio público + CRM interno" },
     ],
     about: {
@@ -281,7 +281,7 @@ const es: Shape = {
         sub: "Soy dueño del roadmap y de la arquitectura.",
         paragraphs: [
             "Empecé en el código. Construí y probé sistemas críticos para ANTT, SEST SENAT y SISRH como desarrollador full stack .NET, y luego lideré la entrega como Scrum Master. Me encargué de la arquitectura y del rendimiento de la base de datos como DBA, y modernicé plataformas heredadas en PHP hacia Vue.js. Trabajé en toda la stack, desde el diseño de la base de datos hasta la planificación de los sprints.",
-            "Ese trabajo me llevó a las decisiones por encima del código. En +55 HUB & Corporate Group pasé de Head of Product a Director de Producto y Tecnología (CPO/CTO), donde soy dueño de lo que construimos, de cómo escala y de cómo convierte. Construí la plataforma de la empresa en solitario: un sitio público multilingüe PT/EN/ES y un CRM interno con un pipeline completo de lead a negocio, RBAC y analítica, corriendo en Cloudflare Workers, D1 y Workers AI.",
+            "Ese trabajo me llevó a las decisiones por encima del código. En Distópico Holding, el grupo creativo global que incluye a +55 HUB & Corporate Group, pasé de Head of Product a Director de Producto y Tecnología (CPTO), donde soy dueño de lo que construimos, de cómo escala y de cómo convierte. Construí las plataformas del grupo en solitario, 55hubcorp.com y distopicoglobal.com, de sitios públicos multilingües PT/EN/ES a un CRM interno con un pipeline completo de lead a negocio, RBAC y analítica, corriendo en Cloudflare Workers, D1 y Workers AI.",
             "Trabajo en los dos lados. Leo la arquitectura y soy dueño del roadmap, así que las decisiones de producto coinciden con lo que el código entrega de verdad. La seguridad y el cumplimiento (LGPD) se tratan como ingeniería, no como papeleo.",
         ],
         timelineLink: "Ver la trayectoria completa",

@@ -5,7 +5,7 @@ export const metadata: Metadata = buildMetadata({
     title: "Contact",
     path: "/contact",
     description:
-        "Get in touch with Carlos Eduardo (Cadu), Product and Technology Director (CPO/CTO). " +
+        "Get in touch with Carlos Eduardo (Cadu), Product and Technology Director (CPTO). " +
         "Send a message about product, technology, RevOps or engineering leadership.",
 });
 

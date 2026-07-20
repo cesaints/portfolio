@@ -37,15 +37,15 @@ export const siteConfig: SiteConfig = {
     siteName: "Carlos Eduardo · Cadu",
     author: "Carlos Eduardo Gonçalves dos Santos",
     nickname: "Cadu",
-    jobTitle: "Diretor de Produto e Tecnologia (CPO/CTO)",
-    organization: "+55 HUB & Corporate Group",
+    jobTitle: "Diretor de Produto e Tecnologia (CPTO)",
+    organization: "Distópico Holding",
     defaultTitle:
-        "Carlos Eduardo · Diretor de Produto e Tecnologia (CPO/CTO)",
+        "Carlos Eduardo · Diretor de Produto e Tecnologia (CPTO)",
     titleTemplate: "%s · Carlos Eduardo (Cadu)",
     description:
-        "Product and Technology Director (CPO/CTO) at +55 HUB & Corporate Group. " +
-        "A product leader with engineering roots. I own product strategy, architecture, " +
-        "scalability and RevOps, and I still ship the code.",
+        "Product and Technology Director (CPTO) at Distópico Holding and its +55 HUB & Corporate Group, " +
+        "and Founder & CEO of Aprovaki (TreinaEdital). A product leader with engineering roots. " +
+        "I own product strategy, architecture, scalability and RevOps, and I still ship the code.",
     url: resolveUrl(),
     locale: "en",
     ogLocale: "en_US",
@@ -53,10 +53,17 @@ export const siteConfig: SiteConfig = {
     keywords: [
         "Carlos Eduardo Gonçalves dos Santos",
         "Cadu",
+        "CPTO",
         "CPO",
         "CTO",
         "Diretor de Produto e Tecnologia",
         "Product Director",
+        "Founder",
+        "CEO",
+        "Distópico",
+        "Distópico Holding",
+        "Aprovaki",
+        "TreinaEdital",
         "Product Strategy",
         "Product-Market Fit",
         "RevOps",
@@ -78,7 +85,7 @@ export const siteConfig: SiteConfig = {
     socials: {
         linkedin: "https://www.linkedin.com/in/carlossaints",
         github: "https://github.com/cesaints",
-        company: "https://55hubcorp.com",
+        company: "https://distopicoglobal.com/pt",
         email: "cesaints.engineer@gmail.com",
     },
 };
