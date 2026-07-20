@@ -58,7 +58,7 @@ export const caseStudyText: Record<Lang, Record<string, CaseStudyText>> = {
             title: "TreinaEdital, a study platform for public exams",
             oneLiner: "Three apps, payments and AI generated questions, founded and built end to end.",
             summary:
-                "TreinaEdital, by Aprovaki, is a study platform for Brazilian public service exams. Students buy access to a specific exam and study through text lessons, AI assisted question practice, timed mock exams, performance tracking and a ranking against real vacancies. Built as a Turborepo monorepo with three Next.js apps (public site, student app, admin) over a shared package layer, with Stripe payments, mandatory 2FA and Anthropic Claude for question generation. As founder and CEO, I own product, engineering and go to market.",
+                "TreinaEdital is a study platform for Brazilian public service exams. Students buy access to a specific exam and study through text lessons, AI assisted question practice, timed mock exams, performance tracking and a ranking against real vacancies. Built as a Turborepo monorepo with three Next.js apps (public site, student app, admin) over a shared package layer, with Stripe payments, mandatory 2FA and Anthropic Claude for question generation. As founder and CEO, I own product, engineering and go to market.",
             role: "Founder and CEO, product vision and full stack build",
             context:
                 "Candidates for Brazilian public service exams often fail not from lack of effort but from studying the wrong material. TreinaEdital focuses each candidate only on what their specific edital actually charges, subject by subject, weighted by importance, with a ranking that compares performance against the real number of vacancies.",
@@ -221,7 +221,7 @@ export const caseStudyText: Record<Lang, Record<string, CaseStudyText>> = {
             title: "TreinaEdital, plataforma de estudos para concursos",
             oneLiner: "Três apps, pagamentos e questões geradas por IA, fundada e construída de ponta a ponta.",
             summary:
-                "A TreinaEdital, da Aprovaki, é uma plataforma de estudos para concursos públicos. O aluno compra o acesso de um concurso e estuda por aulas em texto, prática de questões com apoio de IA, simulados cronometrados, acompanhamento de desempenho e um ranking contra as vagas reais. Construída como um monorepo Turborepo com três apps Next.js (site público, app do aluno, admin) sobre uma camada de pacotes compartilhados, com pagamentos Stripe, 2FA obrigatório e Anthropic Claude para geração de questões. Como fundador e CEO, sou dono de produto, engenharia e go to market.",
+                "A TreinaEdital é uma plataforma de estudos para concursos públicos. O aluno compra o acesso de um concurso e estuda por aulas em texto, prática de questões com apoio de IA, simulados cronometrados, acompanhamento de desempenho e um ranking contra as vagas reais. Construída como um monorepo Turborepo com três apps Next.js (site público, app do aluno, admin) sobre uma camada de pacotes compartilhados, com pagamentos Stripe, 2FA obrigatório e Anthropic Claude para geração de questões. Como fundador e CEO, sou dono de produto, engenharia e go to market.",
             role: "Fundador e CEO, visão de produto e construção full stack",
             context:
                 "Candidatos a concursos públicos costumam ser reprovados não por falta de esforço, mas por estudar o material errado. A TreinaEdital foca cada candidato só no que o edital dele realmente cobra, matéria por matéria, com peso por importância, e um ranking que compara o desempenho ao número real de vagas.",
@@ -384,7 +384,7 @@ export const caseStudyText: Record<Lang, Record<string, CaseStudyText>> = {
             title: "TreinaEdital, plataforma de estudio para oposiciones",
             oneLiner: "Tres apps, pagos y preguntas generadas por IA, fundada y construida de punta a punta.",
             summary:
-                "TreinaEdital, de Aprovaki, es una plataforma de estudio para oposiciones públicas de Brasil. El alumno compra el acceso a un examen y estudia con clases en texto, práctica de preguntas con apoyo de IA, simulacros cronometrados, seguimiento de desempeño y un ranking contra las vacantes reales. Construida como un monorepo Turborepo con tres apps Next.js (sitio público, app del alumno, admin) sobre una capa de paquetes compartidos, con pagos Stripe, 2FA obligatorio y Anthropic Claude para la generación de preguntas. Como fundador y CEO, soy dueño de producto, ingeniería y go to market.",
+                "TreinaEdital es una plataforma de estudio para oposiciones públicas de Brasil. El alumno compra el acceso a un examen y estudia con clases en texto, práctica de preguntas con apoyo de IA, simulacros cronometrados, seguimiento de desempeño y un ranking contra las vacantes reales. Construida como un monorepo Turborepo con tres apps Next.js (sitio público, app del alumno, admin) sobre una capa de paquetes compartidos, con pagos Stripe, 2FA obligatorio y Anthropic Claude para la generación de preguntas. Como fundador y CEO, soy dueño de producto, ingeniería y go to market.",
             role: "Fundador y CEO, visión de producto y construcción full stack",
             context:
                 "Los candidatos a oposiciones públicas suelen fracasar no por falta de esfuerzo, sino por estudiar el material equivocado. TreinaEdital enfoca a cada candidato solo en lo que su convocatoria realmente exige, materia por materia, ponderado por importancia, con un ranking que compara el desempeño contra el número real de vacantes.",
@@ -524,14 +524,21 @@ export const timelineText: Record<Lang, Record<string, TimelineText>> = {
             org: "Distópico Holding",
             date: "Since 2026",
             summary:
-                "Promoted from Head of Product to lead product and technology end to end across the Distópico holding and its +55 HUB & Corporate Group. I own the roadmap (PMF, UX/UI across the customer journey), architecture and scalability (99.9% uptime target), Security and Compliance (LGPD), agile team leadership (Scrum/Kanban, 8 landing pages, 3 websites and a CRM in 13 days), and systems integration (Bitrix CRM). I built the group platforms on my own, 55hubcorp.com and distopicoglobal.com, and structured a data driven RevOps motion. KPIs I own: technical churn, product NPS, lead time, deployment frequency, SLA.",
+                "Promoted from Head of Product to lead product and technology end to end across the Distópico holding, a global creative group with five verticals that also owns the +55 HUB & Corporate Group. I own the roadmap (PMF, UX/UI across the journey), architecture and scalability (99.9% uptime target), Security and Compliance (LGPD), agile team leadership (Scrum/Kanban, 8 landing pages, 3 websites and a CRM in 13 days), and systems integration (Bitrix CRM). I built the holding platform distopicoglobal.com on my own (Next.js 16 on Cloudflare) and structured a data driven RevOps motion across the group's brands. KPIs I own: technical churn, product NPS, lead time, deployment frequency, SLA.",
         },
-        "2025-aprovaki-founder": {
+        "2026-55hub-cpo-cto": {
+            title: "Diretor de Produto e Tecnologia (CPO/CTO)",
+            org: "+55 HUB & Corporate Group",
+            date: "Since 2026",
+            summary:
+                "Product and technology lead for +55 HUB & Corporate Group, the Distópico group company that helps international businesses and investors land and expand in Brazil. I built the +55 platform on my own, 55hubcorp.com, a trilingual PT/EN/ES public site plus an internal CRM with a full lead to deal pipeline, 5 role RBAC and analytics, on Astro 5 and Cloudflare Workers (D1, R2, Workers AI). I integrated Bitrix CRM into the RevOps motion and turned captured leads into a working sales pipeline.",
+        },
+        "2025-treinaedital-founder": {
             title: "Founder & CEO",
-            org: "Aprovaki (TreinaEdital)",
+            org: "TreinaEdital",
             date: "Since 2025",
             summary:
-                "Founded and lead Aprovaki, the company behind TreinaEdital, a study platform for Brazilian public service exams. I set the product vision and built the platform end to end: a Turborepo monorepo with three Next.js apps (public site, student app, admin) over a shared package layer, PostgreSQL with Prisma, NextAuth v5 with mandatory 2FA for admin, Stripe payments (card and Pix) with server side pricing and idempotent webhooks, Cloudflare R2 with signed links, and AI generated and reviewed questions with Anthropic Claude. I own strategy, engineering, security (LGPD) and go to market.",
+                "Founded and lead TreinaEdital, a study platform for Brazilian public service exams. I set the product vision and built the platform end to end: a Turborepo monorepo with three Next.js apps (public site, student app, admin) over a shared package layer, PostgreSQL with Prisma, NextAuth v5 with mandatory 2FA for admin, Stripe payments (card and Pix) with server side pricing and idempotent webhooks, Cloudflare R2 with signed links, and AI generated and reviewed questions with Anthropic Claude. I own strategy, engineering, security (LGPD) and go to market.",
         },
         "2025-pg-innovation": {
             title: "Postgrad in Innovation, AI and Robotics",
@@ -603,14 +610,21 @@ export const timelineText: Record<Lang, Record<string, TimelineText>> = {
             org: "Distópico Holding",
             date: "Desde 2026",
             summary:
-                "Promovido de Head of Product para liderar produto e tecnologia de ponta a ponta na holding Distópico e no seu +55 HUB & Corporate Group. Sou dono do roadmap (PMF, UX/UI em toda a jornada), da arquitetura e escalabilidade (meta de 99,9% de uptime), de Segurança e Conformidade (LGPD), da liderança ágil do time (Scrum/Kanban, 8 landing pages, 3 sites e um CRM em 13 dias) e da integração de sistemas (Bitrix CRM). Construí as plataformas do grupo sozinho, a 55hubcorp.com e a distopicoglobal.com, e estruturei um RevOps orientado a dados. KPIs que carrego: churn técnico, NPS de produto, lead time, frequência de deploy, SLA.",
+                "Promovido de Head of Product para liderar produto e tecnologia de ponta a ponta na holding Distópico, um grupo criativo global de cinco verticais que também é dono da +55 HUB & Corporate Group. Sou dono do roadmap (PMF, UX/UI em toda a jornada), da arquitetura e escalabilidade (meta de 99,9% de uptime), de Segurança e Conformidade (LGPD), da liderança ágil do time (Scrum/Kanban, 8 landing pages, 3 sites e um CRM em 13 dias) e da integração de sistemas (Bitrix CRM). Construí a plataforma da holding, a distopicoglobal.com, sozinho (Next.js 16 na Cloudflare) e estruturei um RevOps orientado a dados entre as marcas do grupo. KPIs que carrego: churn técnico, NPS de produto, lead time, frequência de deploy, SLA.",
         },
-        "2025-aprovaki-founder": {
+        "2026-55hub-cpo-cto": {
+            title: "Diretor de Produto e Tecnologia (CPO/CTO)",
+            org: "+55 HUB & Corporate Group",
+            date: "Desde 2026",
+            summary:
+                "Líder de produto e tecnologia da +55 HUB & Corporate Group, a empresa do grupo Distópico que ajuda empresas e investidores internacionais a chegar e crescer no Brasil. Construí a plataforma da +55 sozinho, a 55hubcorp.com, um site público trilíngue PT/EN/ES mais um CRM interno com pipeline completo de lead a negócio, RBAC de 5 papéis e análises, em Astro 5 e Cloudflare Workers (D1, R2, Workers AI). Integrei o Bitrix CRM ao RevOps e transformei os leads capturados em um pipeline de vendas de verdade.",
+        },
+        "2025-treinaedital-founder": {
             title: "Fundador & CEO",
-            org: "Aprovaki (TreinaEdital)",
+            org: "TreinaEdital",
             date: "Desde 2025",
             summary:
-                "Fundei e lidero a Aprovaki, empresa por trás da TreinaEdital, uma plataforma de estudos para concursos públicos. Defini a visão de produto e construí a plataforma de ponta a ponta: um monorepo Turborepo com três apps Next.js (site público, app do aluno, admin) sobre uma camada de pacotes compartilhados, PostgreSQL com Prisma, NextAuth v5 com 2FA obrigatório no admin, pagamentos Stripe (cartão e Pix) com preço no servidor e webhooks idempotentes, Cloudflare R2 com links assinados e questões geradas e revisadas com apoio de IA (Anthropic Claude). Sou dono de estratégia, engenharia, segurança (LGPD) e go to market.",
+                "Fundei e lidero a TreinaEdital, uma plataforma de estudos para concursos públicos. Defini a visão de produto e construí a plataforma de ponta a ponta: um monorepo Turborepo com três apps Next.js (site público, app do aluno, admin) sobre uma camada de pacotes compartilhados, PostgreSQL com Prisma, NextAuth v5 com 2FA obrigatório no admin, pagamentos Stripe (cartão e Pix) com preço no servidor e webhooks idempotentes, Cloudflare R2 com links assinados e questões geradas e revisadas com apoio de IA (Anthropic Claude). Sou dono de estratégia, engenharia, segurança (LGPD) e go to market.",
         },
         "2025-pg-innovation": {
             title: "Pós em Inovação, IA e Robótica",
@@ -682,14 +696,21 @@ export const timelineText: Record<Lang, Record<string, TimelineText>> = {
             org: "Distópico Holding",
             date: "Desde 2026",
             summary:
-                "Promovido de Head of Product a liderar producto y tecnología de punta a punta en la holding Distópico y su +55 HUB & Corporate Group. Soy dueño del roadmap (PMF, UX/UI en todo el recorrido), de la arquitectura y escalabilidad (meta de 99,9% de uptime), de Seguridad y Cumplimiento (LGPD), del liderazgo ágil del equipo (Scrum/Kanban, 8 landing pages, 3 sitios y un CRM en 13 días) y de la integración de sistemas (Bitrix CRM). Construí las plataformas del grupo en solitario, 55hubcorp.com y distopicoglobal.com, y estructuré un RevOps orientado a datos. KPIs que llevo: churn técnico, NPS de producto, lead time, frecuencia de despliegue, SLA.",
+                "Promovido de Head of Product a liderar producto y tecnología de punta a punta en la holding Distópico, un grupo creativo global de cinco verticales que también es dueño de +55 HUB & Corporate Group. Soy dueño del roadmap (PMF, UX/UI en todo el recorrido), de la arquitectura y escalabilidad (meta de 99,9% de uptime), de Seguridad y Cumplimiento (LGPD), del liderazgo ágil del equipo (Scrum/Kanban, 8 landing pages, 3 sitios y un CRM en 13 días) y de la integración de sistemas (Bitrix CRM). Construí la plataforma de la holding, distopicoglobal.com, en solitario (Next.js 16 en Cloudflare) y estructuré un RevOps orientado a datos entre las marcas del grupo. KPIs que llevo: churn técnico, NPS de producto, lead time, frecuencia de despliegue, SLA.",
         },
-        "2025-aprovaki-founder": {
+        "2026-55hub-cpo-cto": {
+            title: "Director de Producto y Tecnología (CPO/CTO)",
+            org: "+55 HUB & Corporate Group",
+            date: "Desde 2026",
+            summary:
+                "Líder de producto y tecnología de +55 HUB & Corporate Group, la empresa del grupo Distópico que ayuda a empresas e inversores internacionales a llegar y crecer en Brasil. Construí la plataforma de +55 en solitario, 55hubcorp.com, un sitio público trilingüe PT/EN/ES más un CRM interno con un pipeline completo de lead a negocio, RBAC de 5 roles y analítica, en Astro 5 y Cloudflare Workers (D1, R2, Workers AI). Integré Bitrix CRM al RevOps y convertí los leads capturados en un pipeline de ventas de verdad.",
+        },
+        "2025-treinaedital-founder": {
             title: "Fundador & CEO",
-            org: "Aprovaki (TreinaEdital)",
+            org: "TreinaEdital",
             date: "Desde 2025",
             summary:
-                "Fundé y lidero Aprovaki, la empresa detrás de TreinaEdital, una plataforma de estudio para oposiciones públicas de Brasil. Definí la visión de producto y construí la plataforma de punta a punta: un monorepo Turborepo con tres apps Next.js (sitio público, app del alumno, admin) sobre una capa de paquetes compartidos, PostgreSQL con Prisma, NextAuth v5 con 2FA obligatorio en el admin, pagos Stripe (tarjeta y Pix) con precio en el servidor y webhooks idempotentes, Cloudflare R2 con enlaces firmados y preguntas generadas y revisadas con apoyo de IA (Anthropic Claude). Soy dueño de estrategia, ingeniería, seguridad (LGPD) y go to market.",
+                "Fundé y lidero TreinaEdital, una plataforma de estudio para oposiciones públicas de Brasil. Definí la visión de producto y construí la plataforma de punta a punta: un monorepo Turborepo con tres apps Next.js (sitio público, app del alumno, admin) sobre una capa de paquetes compartidos, PostgreSQL con Prisma, NextAuth v5 con 2FA obligatorio en el admin, pagos Stripe (tarjeta y Pix) con precio en el servidor y webhooks idempotentes, Cloudflare R2 con enlaces firmados y preguntas generadas y revisadas con apoyo de IA (Anthropic Claude). Soy dueño de estrategia, ingeniería, seguridad (LGPD) y go to market.",
         },
         "2025-pg-innovation": {
             title: "Posgrado en Innovación, IA y Robótica",

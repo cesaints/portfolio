@@ -6,7 +6,8 @@ export const metadata: Metadata = buildMetadata({
     path: "/timeline",
     description:
         "Career timeline of Carlos Eduardo (Cadu): from Software Developer Intern to " +
-        "Diretor de Produto e Tecnologia (CPTO) at Distópico Holding and Founder & CEO of Aprovaki (TreinaEdital). " +
+        "Diretor de Produto e Tecnologia (CPTO) at Distópico Holding, CPO/CTO at +55 HUB & Corporate Group, " +
+        "and Founder & CEO of TreinaEdital. " +
         "Websis, CBOO, TCB, education and certifications.",
 });
 

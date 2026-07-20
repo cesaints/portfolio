@@ -64,9 +64,22 @@ export default function Hero() {
                                     />
                                     <div>
                                         <p className="font-display text-lg font-semibold tracking-tight text-ink md:text-xl">
-                                            {h.role2Title}
+                                            {h.role2Title} ·{" "}
+                                            <span className="text-cyan-300">{h.role2Short}</span>
                                         </p>
                                         <p className="text-sm text-muted">{h.role2Org}</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                    <span
+                                        aria-hidden
+                                        className="mt-1.5 h-9 w-1 rounded-full bg-emerald-400/80"
+                                    />
+                                    <div>
+                                        <p className="font-display text-lg font-semibold tracking-tight text-ink md:text-xl">
+                                            {h.role3Title}
+                                        </p>
+                                        <p className="text-sm text-muted">{h.role3Org}</p>
                                     </div>
                                 </div>
                             </div>

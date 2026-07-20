@@ -68,14 +68,14 @@ export const projects: Project[] = [
     },
     {
         slug: "treinaedital",
-        title: "treinaedital.com.br — TreinaEdital (Aprovaki)",
+        title: "treinaedital.com.br — TreinaEdital",
         category: "Product & Platform",
         year: "2025 – present",
         role: "Founder & CEO — product vision and full-stack build",
         oneLiner:
             "A study platform for Brazilian public exams: three apps, payments and AI-generated questions, founded and built end-to-end.",
         summary:
-            "TreinaEdital, by Aprovaki, is a study platform for Brazilian concursos públicos: students buy access to a specific exam and study through text lessons, AI-assisted question practice, timed mock exams, performance tracking and a ranking against real vacancies. Built as a Turborepo monorepo with three Next.js apps (public site, student app, admin) over a shared package layer, with Stripe payments, mandatory 2FA and Anthropic Claude for question generation. As founder and CEO, I own product, engineering and go-to-market.",
+            "TreinaEdital is a study platform for Brazilian concursos públicos: students buy access to a specific exam and study through text lessons, AI-assisted question practice, timed mock exams, performance tracking and a ranking against real vacancies. Built as a Turborepo monorepo with three Next.js apps (public site, student app, admin) over a shared package layer, with Stripe payments, mandatory 2FA and Anthropic Claude for question generation. As founder and CEO, I own product, engineering and go-to-market.",
         context:
             "Candidates for Brazilian public-service exams often fail not from lack of effort but from studying the wrong material. TreinaEdital focuses each candidate only on what their specific edital actually charges — subject by subject, weighted by importance — with a ranking that compares performance against the real number of vacancies.",
         problem:

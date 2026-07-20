@@ -44,7 +44,7 @@ export const siteConfig: SiteConfig = {
     titleTemplate: "%s · Carlos Eduardo (Cadu)",
     description:
         "Product and Technology Director (CPTO) at Distópico Holding and its +55 HUB & Corporate Group, " +
-        "and Founder & CEO of Aprovaki (TreinaEdital). A product leader with engineering roots. " +
+        "and Founder & CEO of TreinaEdital. A product leader with engineering roots. " +
         "I own product strategy, architecture, scalability and RevOps, and I still ship the code.",
     url: resolveUrl(),
     locale: "en",
@@ -62,7 +62,6 @@ export const siteConfig: SiteConfig = {
         "CEO",
         "Distópico",
         "Distópico Holding",
-        "Aprovaki",
         "TreinaEdital",
         "Product Strategy",
         "Product-Market Fit",

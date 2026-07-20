@@ -19,20 +19,33 @@ const data: TimelineItem[] = [
         title: "Diretor de Produto e Tecnologia (CPTO)",
         org: "Distópico Holding",
         summary:
-            "Promoted from Head of Product to lead product and technology end-to-end across the Distópico holding and its +55 HUB & Corporate Group. Own the product roadmap (PMF, UX/UI across the customer journey), architecture & scalability (99.9% uptime target), Security & Compliance (LGPD), agile team leadership (Scrum/Kanban — 8 landing pages, 3 websites and a CRM in 13 days), and systems integration (Bitrix CRM). Built the group platforms solo — 55hubcorp.com and distopicoglobal.com — and structured a data-driven RevOps motion. KPIs owned: Technical Churn, Product NPS, Lead Time, Deployment Frequency, SLA.",
+            "Promoted from Head of Product to lead product and technology end-to-end across the Distópico holding, a global creative group with five verticals that also owns the +55 HUB & Corporate Group. Own the product roadmap (PMF, UX/UI), architecture & scalability (99.9% uptime target), Security & Compliance (LGPD), agile team leadership (Scrum/Kanban — 8 landing pages, 3 websites and a CRM in 13 days), and systems integration (Bitrix CRM). Built the holding platform distopicoglobal.com solo (Next.js 16 on Cloudflare) and structured a data-driven RevOps motion across the group's brands. KPIs owned: Technical Churn, Product NPS, Lead Time, Deployment Frequency, SLA.",
         tags: ["Product Strategy", "Architecture", "RevOps", "LGPD", "Cloudflare", "Next.js", "Astro"],
+        color: "violet",
+        icon: "star",
+    },
+
+    // 2026 — the +55 HUB group role
+    {
+        id: "2026-55hub-cpo-cto",
+        date: "2026 – present",
+        title: "Diretor de Produto e Tecnologia (CPO/CTO)",
+        org: "+55 HUB & Corporate Group",
+        summary:
+            "Product and technology lead for +55 HUB & Corporate Group, the Distópico group company that helps international businesses and investors land and expand in Brazil. Built the +55 platform solo — 55hubcorp.com — a trilingual PT/EN/ES public site plus an internal CRM with a full lead-to-deal pipeline, 5-role RBAC and analytics, on Astro 5 and Cloudflare Workers (D1, R2, Workers AI). Integrated Bitrix CRM into the RevOps motion and turned captured leads into a working sales pipeline.",
+        tags: ["Product Strategy", "Astro", "Cloudflare Workers", "RevOps", "Bitrix", "LGPD"],
         color: "violet",
         icon: "star",
     },
 
     // 2025 — founder
     {
-        id: "2025-aprovaki-founder",
+        id: "2025-treinaedital-founder",
         date: "2025 – present",
         title: "Founder & CEO",
-        org: "Aprovaki (TreinaEdital)",
+        org: "TreinaEdital",
         summary:
-            "Founded and lead Aprovaki, the company behind TreinaEdital, a study platform for Brazilian public-service exams. Set the product vision and built the platform end-to-end: a Turborepo monorepo with three Next.js apps (public site, student app, admin) over a shared package layer. PostgreSQL with Prisma, NextAuth v5 with mandatory 2FA for admin, Stripe payments (card and Pix) with server-side pricing and idempotent webhooks, Cloudflare R2 with signed links, and AI-generated and reviewed questions with Anthropic Claude. Own strategy, engineering, security (LGPD) and go-to-market.",
+            "Founded and lead TreinaEdital, a study platform for Brazilian public-service exams. Set the product vision and built the platform end-to-end: a Turborepo monorepo with three Next.js apps (public site, student app, admin) over a shared package layer. PostgreSQL with Prisma, NextAuth v5 with mandatory 2FA for admin, Stripe payments (card and Pix) with server-side pricing and idempotent webhooks, Cloudflare R2 with signed links, and AI-generated and reviewed questions with Anthropic Claude. Own strategy, engineering, security (LGPD) and go-to-market.",
         tags: ["Founder", "CEO", "Product Strategy", "Next.js", "Turborepo", "PostgreSQL", "Prisma", "Stripe", "NextAuth", "Claude AI"],
         color: "violet",
         icon: "star",
